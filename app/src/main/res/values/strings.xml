@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CampAssistant</string>
+    <string name="ui_personal_info">Personal Information</string>
+    <string name="ui_contact_details">Contact Details</string>
+</resources>
