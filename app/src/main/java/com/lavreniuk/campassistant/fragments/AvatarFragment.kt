@@ -12,12 +12,7 @@ import com.lavreniuk.campassistant.viewmodels.AvatarViewModel
 
 class AvatarFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            AvatarFragment()
-    }
-
-    private lateinit var viewModel: AvatarViewModel
+    private lateinit var avatarViewModel: AvatarViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +23,15 @@ class AvatarFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
-        // TODO: Use the ViewModel
+        avatarViewModel = ViewModelProvider(this).get(AvatarViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // TODO()
+        //  avatarViewModel.avatar_path.observe(viewLifecycleOwner) {
+            // update UI
+        // }
     }
 
 }

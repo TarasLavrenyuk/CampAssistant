@@ -3,11 +3,14 @@ package com.lavreniuk.campassistant.pageadapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.lavreniuk.campassistant.fragments.ContactListFragment
+import com.lavreniuk.campassistant.fragments.PersonInfoListFragment
 import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.utils.Logger
 
 class UserActivityPagerAdapter(
-    fm: FragmentManager
+    fm: FragmentManager,
+    private val personId: String
 ) : FragmentStatePagerAdapter(fm) {
 
     companion object {
@@ -17,14 +20,14 @@ class UserActivityPagerAdapter(
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
-                PersonInfoFragment(userId, User::class.java)
+                PersonInfoListFragment(personId)
             }
             1 -> {
-                PersonContactsFragment(userId)
+                ContactListFragment(personId)
             }
             else -> {
                 Logger.error(this.javaClass) { "Adapter ${UserActivityPagerAdapter::class.java.name}  should have only 2 tabs." }
-                PersonInfoFragment(userId, User::class.java)
+                PersonInfoListFragment(personId)
             }
         }
     }
