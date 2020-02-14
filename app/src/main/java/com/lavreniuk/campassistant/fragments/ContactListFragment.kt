@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.models.PersonInfo
 import com.lavreniuk.campassistant.viewmodels.ContactListViewModel
 
 

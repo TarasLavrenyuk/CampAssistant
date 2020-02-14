@@ -2,6 +2,7 @@ package com.lavreniuk.campassistant.utils
 
 import androidx.room.TypeConverter
 import com.lavreniuk.campassistant.enums.Gender
+import com.lavreniuk.campassistant.enums.PersonType
 import java.util.*
 
 class TypeConverters {
@@ -23,4 +24,12 @@ class TypeConverters {
         return if (dateString == "null") null
         else Date(dateString.toLong())
     }
+
+    @TypeConverter
+    fun fromPersonTypeToString(personType: PersonType) = "$personType"
+
+    @TypeConverter
+    fun fromStringToPersonType(personTypeString: String) = Gender.valueOf(personTypeString)
+
+
 }

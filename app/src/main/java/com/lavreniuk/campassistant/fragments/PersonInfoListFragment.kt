@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.viewmodels.PersonInfoViewModel
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.PersonInfoListAdapter
-import com.lavreniuk.campassistant.models.PersonInfo
+import com.lavreniuk.campassistant.models.Person
 import kotlinx.android.synthetic.main.person_info_list_fragment.*
 
 
@@ -43,7 +43,7 @@ class PersonInfoListFragment(
             adapter = personInfoListAdapter
         }
 
-        personInfoViewModel.user.observe(viewLifecycleOwner, Observer<PersonInfo> { personInfo ->
+        personInfoViewModel.user.observe(viewLifecycleOwner, Observer<Person> { personInfo ->
             personInfoListAdapter.updatePersonInfo(personInfo)
         })
     }

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.enums.UserParameterType
-import com.lavreniuk.campassistant.models.PersonInfo
+import com.lavreniuk.campassistant.models.Person
 import com.lavreniuk.campassistant.utils.ConverterUtils
 import com.lavreniuk.campassistant.utils.Logger
 import kotlinx.android.synthetic.main.person_info_list_item.view.*
@@ -16,7 +16,7 @@ class PersonInfoListAdapter(
     private val getString: (resId: Int) -> String
 ) : RecyclerView.Adapter<PersonInfoListAdapter.ViewHolder>() {
 
-    private lateinit var personInfo: PersonInfo
+    private lateinit var person: Person
 
 
     override fun onCreateViewHolder(
@@ -37,21 +37,21 @@ class PersonInfoListAdapter(
             1 -> {
                 holder.fill(
                     infoParam = getString(R.string.ui_first_name),
-                    infoValue = personInfo.firstName,
+                    infoValue = person.firstName,
                     userParameterType = UserParameterType.Name
                 )
             }
             2 -> {
                 holder.fill(
                     infoParam = getString(R.string.ui_last_name),
-                    infoValue = personInfo.lastName ?: "No information",
+                    infoValue = person.lastName ?: "No information",
                     userParameterType = UserParameterType.Name
                 )
             }
             3 -> {
                 holder.fill(
                     infoParam = getString(R.string.ui_date_of_birth),
-                    infoValue = personInfo.db?.let { ConverterUtils.fromDateToString(it) }
+                    infoValue = person.db?.let { ConverterUtils.fromDateToString(it) }
                         ?: getString(R.string.ui_no_info),
                     userParameterType = UserParameterType.Date
                 )
@@ -59,7 +59,7 @@ class PersonInfoListAdapter(
             4 -> {
                 holder.fill(
                     infoParam = getString(R.string.ui_gender),
-                    infoValue = personInfo.gender?.getResId()?.let { getString(it) }
+                    infoValue = person.gender?.getResId()?.let { getString(it) }
                         ?: getString(R.string.ui_no_info),
                     userParameterType = UserParameterType.Gender
                 )
@@ -67,12 +67,12 @@ class PersonInfoListAdapter(
         }
     }
 
-    fun updatePersonInfo(personInfo: PersonInfo?) {
-        personInfo?.let {
-            this@PersonInfoListAdapter.personInfo = it
+    fun updatePersonInfo(person: Person?) {
+        person?.let {
+            this@PersonInfoListAdapter.person = it
             notifyDataSetChanged()
         }
-        Logger.error(this.javaClass) { "personInfo must not be null." }
+        Logger.error(this.javaClass) { "person must not be null." }
     }
 
 

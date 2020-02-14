@@ -2,15 +2,16 @@ package com.lavreniuk.campassistant.dao
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.lavreniuk.campassistant.models.User
+import androidx.room.TypeConverters
+import com.lavreniuk.campassistant.models.Person
 
 @Database(
-    entities = [User::class],
+    entities = [Person::class],
     version = 1
 )
-@TypeConverters(TypeConverters::class)
+@TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun userDao(): UserDao
+    abstract fun userDao(): PersonDao
 
 }
