@@ -4,7 +4,7 @@ import androidx.room.TypeConverter
 import com.lavreniuk.campassistant.enums.Gender
 import java.util.*
 
-class Converters {
+class TypeConverters {
 
     @TypeConverter
     fun fromGenderToString(gender: Gender?): String = "$gender"

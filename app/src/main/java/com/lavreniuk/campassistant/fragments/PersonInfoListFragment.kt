@@ -1,14 +1,17 @@
 package com.lavreniuk.campassistant.fragments
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.lavreniuk.campassistant.viewmodels.PersonInfoListViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.lavreniuk.campassistant.viewmodels.PersonInfoViewModel
 import com.lavreniuk.campassistant.R
+import com.lavreniuk.campassistant.adapters.PersonInfoListAdapter
+import com.lavreniuk.campassistant.models.PersonInfo
 import kotlinx.android.synthetic.main.person_info_list_fragment.*
 
 
@@ -16,7 +19,7 @@ class PersonInfoListFragment(
     private val personId: String
 ) : Fragment() {
 
-    private lateinit var viewModel: PersonInfoListViewModel
+    private lateinit var personInfoViewModel: PersonInfoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +31,20 @@ class PersonInfoListFragment(
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        personInfoViewModel = ViewModelProvider(this).get(PersonInfoViewModel::class.java).also {
+            it.personId = personId
+        }
+        val personInfoListAdapter = PersonInfoListAdapter { resId -> getString(resId) }.also {
+            it.updatePersonInfo(personInfoViewModel.user.value)
+        }
         user_info_list.apply {
             setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
+            layoutManager = LinearLayoutManager(this@PersonInfoListFragment.context)
+            adapter = personInfoListAdapter
         }
 
-
-        viewModel = ViewModelProvider(this).get(PersonInfoListViewModel::class.java)
-        // TODO: Use the ViewModel
+        personInfoViewModel.user.observe(viewLifecycleOwner, Observer<PersonInfo> { personInfo ->
+            personInfoListAdapter.updatePersonInfo(personInfo)
+        })
     }
 }

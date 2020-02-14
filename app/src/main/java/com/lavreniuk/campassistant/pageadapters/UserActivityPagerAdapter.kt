@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.lavreniuk.campassistant.fragments.ContactListFragment
 import com.lavreniuk.campassistant.fragments.PersonInfoListFragment
-import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.utils.Logger
 
 class UserActivityPagerAdapter(

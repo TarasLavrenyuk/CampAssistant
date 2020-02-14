@@ -7,10 +7,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.enums.UserParameterType
+import com.lavreniuk.campassistant.models.PersonInfo
+import com.lavreniuk.campassistant.utils.ConverterUtils
+import com.lavreniuk.campassistant.utils.Logger
+import kotlinx.android.synthetic.main.person_info_list_item.view.*
 
 class PersonInfoListAdapter(
-    private val personInfo: PersonInfo
-): RecyclerView.Adapter<PersonInfoListAdapter.ViewHolder>() {
+    private val getString: (resId: Int) -> String
+) : RecyclerView.Adapter<PersonInfoListAdapter.ViewHolder>() {
+
+    private lateinit var personInfo: PersonInfo
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,24 +30,63 @@ class PersonInfoListAdapter(
         )
     }
 
-    override fun getItemCount(): Int = personInfoArray.size
+    override fun getItemCount(): Int = TODO()
 
     override fun onBindViewHolder(holder: PersonInfoListAdapter.ViewHolder, position: Int) {
         when (position) {
             1 -> {
-                holder.key.text = "First Name"
-                holder.value.text = personInfo.fname
-                holder.userParameterType = UserParameterType.Name
+                holder.fill(
+                    infoParam = getString(R.string.ui_first_name),
+                    infoValue = personInfo.firstName,
+                    userParameterType = UserParameterType.Name
+                )
             }
-            //TODO(end this shit)
+            2 -> {
+                holder.fill(
+                    infoParam = getString(R.string.ui_last_name),
+                    infoValue = personInfo.lastName ?: "No information",
+                    userParameterType = UserParameterType.Name
+                )
+            }
+            3 -> {
+                holder.fill(
+                    infoParam = getString(R.string.ui_date_of_birth),
+                    infoValue = personInfo.db?.let { ConverterUtils.fromDateToString(it) }
+                        ?: getString(R.string.ui_no_info),
+                    userParameterType = UserParameterType.Date
+                )
+            }
+            4 -> {
+                holder.fill(
+                    infoParam = getString(R.string.ui_gender),
+                    infoValue = personInfo.gender?.getResId()?.let { getString(it) }
+                        ?: getString(R.string.ui_no_info),
+                    userParameterType = UserParameterType.Gender
+                )
+            }
         }
     }
 
+    fun updatePersonInfo(personInfo: PersonInfo?) {
+        personInfo?.let {
+            this@PersonInfoListAdapter.personInfo = it
+            notifyDataSetChanged()
+        }
+        Logger.error(this.javaClass) { "personInfo must not be null." }
+    }
+
+
     class ViewHolder(
         view: View,
-        internal val key: TextView = view.findViewById(key_text_view_id),
-        internal val value: TextView = view.findViewById(value_text_view_id)
+        val key: TextView = view.person_info_param,
+        val value: TextView = view.person_info_value
     ) : RecyclerView.ViewHolder(view) {
         lateinit var userParameterType: UserParameterType
+
+        fun fill(infoParam: String, infoValue: String, userParameterType: UserParameterType) {
+            key.text = infoParam
+            value.text = infoValue
+            this.userParameterType = userParameterType
+        }
     }
 }
