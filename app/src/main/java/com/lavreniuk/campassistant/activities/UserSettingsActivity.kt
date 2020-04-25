@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.UserParamListAdapter
 import com.lavreniuk.campassistant.models.Param
@@ -24,8 +24,13 @@ class UserSettingsActivity : AppCompatActivity() {
             // TODO: observe user object
         })
 
-        val paramListAdapter = UserParamListAdapter(context = this)
-        user_settings_information_list.adapter = paramListAdapter
+        val paramListAdapter = UserParamListAdapter()
+
+        // setup param list
+        user_settings_information_list.apply {
+            layoutManager = LinearLayoutManager(this@UserSettingsActivity)
+            adapter = paramListAdapter
+        }
 
         userSettingsViewModel.params.observe(this, Observer<List<Param>> { params ->
             // TODO: observe user params
