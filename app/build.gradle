@@ -11,7 +11,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.lavreniuk.campassistant"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -25,8 +25,11 @@ android {
     }
     buildToolsVersion = '28.0.3'
     compileOptions {
-        sourceCompatibility = kotlin_version
-        targetCompatibility = kotlin_version
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
     sourceSets {
         main {
@@ -44,9 +47,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0-alpha03'
 
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
+    // material design
+    implementation group: 'com.google.android.material', name: 'material', version: '1.1.0'
 
     implementation 'com.google.dagger:dagger:2.16'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -55,15 +61,23 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.16'
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
+    implementation "androidx.paging:paging-runtime:2.1.2"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.room:room-runtime:2.2.3'
-    kapt 'androidx.room:room-compiler:2.2.3'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    kapt 'androidx.room:room-compiler:2.2.5'
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // for circle image
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.google.android.material:material:1.1.0'
+
+    // drag-and-drop listview
+    implementation 'com.github.woxthebox:draglistview:1.6.3'
+
+    // round corner layout
+    implementation 'com.jcminarro:RoundKornerLayouts:0.4.0'
 }

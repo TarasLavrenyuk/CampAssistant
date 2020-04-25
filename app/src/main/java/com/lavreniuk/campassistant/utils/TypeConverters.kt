@@ -2,7 +2,8 @@ package com.lavreniuk.campassistant.utils
 
 import androidx.room.TypeConverter
 import com.lavreniuk.campassistant.enums.Gender
-import com.lavreniuk.campassistant.enums.PersonType
+import com.lavreniuk.campassistant.enums.ParameterType
+import com.lavreniuk.campassistant.enums.SocialType
 import java.util.*
 
 class TypeConverters {
@@ -26,10 +27,20 @@ class TypeConverters {
     }
 
     @TypeConverter
-    fun fromPersonTypeToString(personType: PersonType) = "$personType"
+    fun fromParameterTypeToString(parameterType: ParameterType?): String = "$parameterType"
 
     @TypeConverter
-    fun fromStringToPersonType(personTypeString: String) = Gender.valueOf(personTypeString)
+    fun fromStringToParameterType(parameterType: String): ParameterType? {
+        return if (parameterType == "null") null
+        else ParameterType.valueOf(parameterType)
+    }
 
+    @TypeConverter
+    fun fromSocialTypeToString(socialType: SocialType?): String = "$socialType"
 
+    @TypeConverter
+    fun fromStringToSocialType(socialType: String): SocialType? {
+        return if (socialType == "null") null
+        else SocialType.valueOf(socialType)
+    }
 }
