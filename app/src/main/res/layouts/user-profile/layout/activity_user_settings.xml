@@ -49,6 +49,23 @@
         android:layout_below="@id/user_settings_avatar_card_view"
         android:background="@color/backgroundColor">
 
+        <ImageView
+            android:id="@+id/user_settings_red_spot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="-40dp"
+            card_view:srcCompat="@drawable/red_spot" />
+
+        <ImageView
+            android:id="@+id/user_settings_blue_spot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-40dp"
+            android:layout_marginBottom="-50dp"
+            card_view:srcCompat="@drawable/blue_spot" />
 
         <TextView
             android:id="@+id/user_settings_information_label"
