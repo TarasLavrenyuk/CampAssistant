@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="ui_plan_and_monitor">Plan and monitor</string>
+    <string name="ui_plan_and_monitor_description">Plan stuff easily in your own calendar and checking results</string>
+
+    <string name="ui_stay_connected">Stay connected</string>
+    <string name="ui_stay_connected_description">Stay in touch with kids and their parents in any situation</string>
+
+    <string name="ui_take_care">Take care</string>
+    <string name="ui_take_care_description">Pay attention to children health and keep important information </string>
+
+</resources>
