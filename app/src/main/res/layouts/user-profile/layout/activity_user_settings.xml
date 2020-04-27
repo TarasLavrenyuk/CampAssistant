@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-30dp"
-            android:layout_marginEnd="-40dp"
+            android:layout_marginEnd="@dimen/red_spot_marginEnd"
             card_view:srcCompat="@drawable/red_spot" />
 
         <ImageView
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="-40dp"
-            android:layout_marginBottom="-50dp"
+            android:layout_marginBottom="@dimen/blue_spot_marginBottom"
             card_view:srcCompat="@drawable/blue_spot" />
 
         <TextView
