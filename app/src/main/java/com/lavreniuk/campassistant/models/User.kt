@@ -2,18 +2,22 @@ package com.lavreniuk.campassistant.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.lavreniuk.campassistant.enums.Gender
-import com.lavreniuk.campassistant.utils.GeneratorUtils
-import java.util.*
 
-@Entity(tableName = "users")
-data class User(
-    @PrimaryKey val userId: String = GeneratorUtils.generateUUID(),
-    val firstName: String,
-    val secondName: String? = null,
-    val lastName: String? = null,
-    val birthday: Date? = null,
-    val photo: String? = null,
-    val addInfo: String? = null,
-    val gender: Gender? = null
-)
+/**
+ * Singleton class - only one instance per application
+ */
+@Entity(tableName = "user")
+class User(
+    @PrimaryKey val userId: String = USER_ID,
+    var firstName: String,
+    var lastName: String? = null,
+    var photo: String? = null
+) {
+    companion object {
+        const val USER_ID = "76c62e5a-1cb0-4772-9d5c-62b7c39bd3f3"
+    }
+
+    fun getFullName(): String {
+        return lastName?.let { "$firstName $it" } ?: firstName
+    }
+}

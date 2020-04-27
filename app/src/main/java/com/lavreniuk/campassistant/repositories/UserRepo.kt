@@ -10,9 +10,5 @@ import javax.inject.Singleton
 class UserRepo @Inject constructor(
     private val userDao: UserDao
 ) {
-
-    fun getUser(userId: String): LiveData<User> {
-        return userDao.load(userId)
-    }
-
+    val user: LiveData<User> = userDao.getUser()
 }

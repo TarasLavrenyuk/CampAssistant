@@ -4,8 +4,4 @@ import androidx.lifecycle.ViewModel
 
 class AvatarViewModel : ViewModel() {
 
-
-
-
-
 }

@@ -9,5 +9,4 @@ object Logger {
     }
 
     private fun getTag(clazz: Class<Any>) = clazz.name
-
 }
