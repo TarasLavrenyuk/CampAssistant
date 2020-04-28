@@ -25,7 +25,7 @@ open class OnboardingActivity : TutorialActivity() {
                         )
                     )
                 )
-                .setDrawable(R.drawable.blue_spot)
+                .setDrawable(R.drawable.plan_and_monitor)
                 .build()
         )
         addFragment(
@@ -40,7 +40,7 @@ open class OnboardingActivity : TutorialActivity() {
                         )
                     )
                 )
-                .setDrawable(R.drawable.red_spot)
+                .setDrawable(R.drawable.stay_connected)
                 .build()
         )
         addFragment(
@@ -55,7 +55,7 @@ open class OnboardingActivity : TutorialActivity() {
                         )
                     )
                 )
-                .setDrawable(R.drawable.yellow_spot)
+                .setDrawable(R.drawable.take_care)
                 .build()
         )
     }
