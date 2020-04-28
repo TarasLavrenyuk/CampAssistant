@@ -9,4 +9,11 @@
     <string name="ui_take_care">Take care</string>
     <string name="ui_take_care_description">Pay attention to children health and keep important information </string>
 
+    <string name="ui_next">Next</string>
+    <string name="ui_back">Back</string>
+    <string name="ui_finish">Finish</string>
+    <string name="ui_cancel">Cancel</string>
+    <string name="ui_give">Give</string>
+
+
 </resources>

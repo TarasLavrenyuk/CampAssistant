@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -40,7 +39,8 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     private int currentItem;
 
     private String prevText, nextText, finishText, cancelText, givePermissionText;
-    private int selectedIndicator = R.drawable.circle_black, indicator = R.drawable.circle_white;
+    private int selectedIndicator = R.drawable.onboarding_fragment_indicator_selected;
+    private int indicator = R.drawable.onboarding_fragment_indicator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,11 +59,11 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     }
 
     private void initTexts() {
-        prevText = "Back";
-        cancelText = "Cancel";
-        finishText = "Finish";
-        nextText = "Next";
-        givePermissionText = "Give";
+        prevText = getString(R.string.ui_back);
+        cancelText = getString(R.string.ui_cancel);
+        finishText = getString(R.string.ui_finish);
+        nextText = getString(R.string.ui_next);
+        givePermissionText = getString(R.string.ui_give);
     }
 
     private void initAdapter() {
@@ -129,23 +129,18 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     private void preparePermissionView() {
         next.setText(givePermissionText);
 
-        pager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        pager.setOnTouchListener((v, event) -> true);
     }
 
     private void initViews() {
         currentItem = 0;
 
-        pager = (ViewPager) findViewById(R.id.viewPager);
-        next = (Button) findViewById(R.id.next);
-        prev = (Button) findViewById(R.id.prev);
-        indicatorLayout = (LinearLayout) findViewById(R.id.indicatorLayout);
-        containerLayout = (FrameLayout) findViewById(R.id.containerLayout);
-        buttonContainer = (RelativeLayout) findViewById(R.id.buttonContainer);
+        pager = findViewById(R.id.viewPager);
+        next = findViewById(R.id.next);
+        prev = findViewById(R.id.prev);
+        indicatorLayout = findViewById(R.id.indicatorLayout);
+        containerLayout = findViewById(R.id.containerLayout);
+        buttonContainer = findViewById(R.id.buttonContainer);
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
@@ -170,7 +165,8 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
 
         for (int i = 0; i < steps.size(); i++) {
             ImageView imageView = new ImageView(this);
-            imageView.setPadding(8, 8, 8, 8);
+            int padding = (int) getResources().getDimension(R.dimen.onboarding_fragment_indicator_padding);
+            imageView.setPadding(padding, padding, padding, padding);
             int drawable = indicator;
             if (i == currentItem)
                 drawable = selectedIndicator;
@@ -178,12 +174,7 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
             imageView.setImageResource(drawable);
 
             final int finalI = i;
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    changeFragment(finalI);
-                }
-            });
+            imageView.setOnClickListener(v -> changeFragment(finalI));
 
             indicatorLayout.addView(imageView);
         }
@@ -218,7 +209,7 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     }
 
     private boolean controlPermission() {
-        if (!steps.isEmpty() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
+        if (!steps.isEmpty() && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
 
             for (String permission : ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions()) {
                 int permissionResult = checkSelfPermission(permission);
@@ -249,39 +240,6 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
         finish();
     }
 
-    public void setPrevText(String text) {
-        prevText = text;
-        controlPosition(0);
-    }
-
-    public void setNextText(String text) {
-        nextText = text;
-        controlPosition(0);
-    }
-
-    public void setFinishText(String text) {
-        finishText = text;
-        controlPosition(0);
-    }
-
-    public void setCancelText(String text) {
-        cancelText = text;
-        controlPosition(0);
-    }
-
-    public void setGivePermissionText(String text) {
-        givePermissionText = text;
-        controlPosition(0);
-    }
-
-    public void setIndicatorSelected(int drawable) {
-        selectedIndicator = drawable;
-    }
-
-    public void setIndicator(int drawable) {
-        indicator = drawable;
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -290,6 +248,4 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
             changeFragment(true);
         }
     }
-
-
 }

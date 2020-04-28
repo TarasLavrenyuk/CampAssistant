@@ -15,7 +15,6 @@ public class StepFragment extends StepView {
 
     private TextView title;
     private TextView content;
-    private TextView summary;
     private ImageView imageView;
     private View layout;
 
@@ -55,9 +54,6 @@ public class StepFragment extends StepView {
         if (content != null) {
             content.setText(step.getContent());
         }
-        if (summary != null) {
-            summary.setText(step.getSummary());
-        }
         if (imageView != null) {
             imageView.setImageResource(step.getDrawable());
         }
@@ -70,7 +66,6 @@ public class StepFragment extends StepView {
     private void initViews(View view) {
         title = view.findViewById(R.id.onboarding_step_fragment_title);
         content = view.findViewById(R.id.onboarding_step_fragment_content);
-        summary = view.findViewById(R.id.onboarding_step_fragment_summary);
         imageView = view.findViewById(R.id.onboarding_step_fragment_image);
         layout = view.findViewById(R.id.onboarding_step_fragment_container);
     }

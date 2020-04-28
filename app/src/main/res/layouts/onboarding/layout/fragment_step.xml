@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/onboarding_step_fragment_image"
+        android:src="@drawable/plan_and_monitor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -25,7 +26,9 @@
         android:paddingEnd="16dp"
         android:paddingStart="16dp"
         android:text="Lorem ipsum dolor sit amet"
-        android:textColor="#FFF" />
+        android:fontFamily="@font/helvetica_rounded_bold"
+        android:textSize="26sp"
+        android:textColor="@color/colorDarkGrey" />
 
     <TextView
         android:id="@+id/onboarding_step_fragment_content"
@@ -36,20 +39,8 @@
         android:paddingEnd="32dp"
         android:paddingStart="32dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus elementum sem congue laoreet. Sed pulvinar at purus quis aliquet. Quisque feugiat sed leo nec aliquet. In hac habitasse platea dictumst. Vestibulum enim sapien, gravida et tempus vel, feugiat in turpis. Fusce interdum elit et libero rhoncus dapibus"
-        android:textColor="#FFF"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/onboarding_step_fragment_summary"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|center_horizontal"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        android:textColor="#FFF"
-        android:textSize="12sp" />
-
+        android:fontFamily="@font/roboto"
+        android:textSize="20sp"
+        android:textColor="@color/colorOnboardingDescription" />
 
 </LinearLayout>
