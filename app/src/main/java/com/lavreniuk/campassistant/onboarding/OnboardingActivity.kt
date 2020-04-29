@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.graphics.Color
 
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.activities.UserSettingsActivity
+import com.lavreniuk.campassistant.activities.MainActivity
 import com.lavreniuk.campassistant.utils.Helpers
 
 open class OnboardingActivity : TutorialActivity() {
@@ -62,7 +62,7 @@ open class OnboardingActivity : TutorialActivity() {
 
     override fun finishTutorial() {
         finish()
-        startActivity(Intent(this, UserSettingsActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     override fun currentFragmentPosition(position: Int) {
