@@ -42,7 +42,8 @@ android {
                     'src/main/res/layouts/calendar',
                     'src/main/res/layouts/reports',
                     'src/main/res/layouts/user-profile',
-                    'src/main/res/layouts/other'
+                    'src/main/res/layouts/other',
+                    'src/main/res/layouts/registration'
             ]
         }
     }

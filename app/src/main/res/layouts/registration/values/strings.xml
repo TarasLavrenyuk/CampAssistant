@@ -1,0 +1,8 @@
+<resources>
+    <string name="ui_fname">First name</string>
+    <string name="ui_lname">Last name</string>
+
+    <string name="ui_registration">Registration</string>
+    <string name="ui_start">Start</string>
+
+</resources>
