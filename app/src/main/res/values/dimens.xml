@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="user_avatar_size">100dp</dimen>
+    <dimen name="default_textsize">20sp</dimen>
+
+    <!--  BUTTON  -->
+    <dimen name="default_button_corner_radius">20dp</dimen>
+    <dimen name="default_button_width">144dp</dimen>
+    <dimen name="default_button_height">36dp</dimen>
+    <dimen name="default_button_padding_horizontal">15dp</dimen>
+
+
+
+
     <dimen name="user_settings_default_padding">25dp</dimen>
     <dimen name="user_name_start_margin">150dp</dimen>
     <dimen name="user_name_top_margin">60dp</dimen>
@@ -12,17 +22,24 @@
     <dimen name="user_info_list_item_padding_horizontal">15dp</dimen>
     <dimen name="user_info_list_item_padding_top">5dp</dimen>
 
-    <dimen name="default_textsize">20sp</dimen>
 
     <dimen name="user_info_list_value_textsize">18sp</dimen>
     <dimen name="user_info_list_hint_textsize">15sp</dimen>
 
     <!--  SPOTS  -->
-    <dimen name="red_spot_marginEnd">-30dp</dimen>
+    <!--  user settings activity  -->
+    <dimen name="user_settings_activity_red_spot_marginEnd">-30dp</dimen>
+    <dimen name="user_settings_activity_blue_spot_marginStart">-40dp</dimen>
+    <dimen name="user_settings_activity_blue_spot_marginBottom">-50dp</dimen>
 
-    <dimen name="blue_spot_marginStart">-40dp</dimen>
-    <dimen name="blue_spot_marginBottom">-50dp</dimen>
+    <!--  main activity  -->
+    <dimen name="main_activity_yellow_spot_marginTop">-20dp</dimen>
+    <dimen name="main_activity_yellow_spot_marginStart">-60dp</dimen>
 
+    <dimen name="main_activity_red_spot_marginTop">250dp</dimen>
+    <dimen name="main_activity_red_spot_marginEnd">-70dp</dimen>
 
+    <dimen name="main_activity_blue_spot_marginTop">420dp</dimen>
+    <dimen name="main_activity_blue_spot_marginStart">-40dp</dimen>
 
 </resources>

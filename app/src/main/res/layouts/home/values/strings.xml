@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="ui_hi">Hi, </string>
+    <string name="ui_no_squad_yet" tools:ignore="Typos">It seems like you have no squads yet. Do you wanna add one?</string>
+    <string name="ui_my_squads">My squads</string>
+    <string name="ui_new_squad">New squad</string>
+
+</resources>
