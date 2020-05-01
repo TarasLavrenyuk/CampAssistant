@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fragment_home_margin_horizontal">25dp</dimen>
+
+    <dimen name="fragment_home_user_avatar_size">60dp</dimen>
+    <dimen name="fragment_home_avatar_margin_top">40dp</dimen>
+
+    <dimen name="fragment_home_settings_button_size">40dp</dimen>
+
+    <dimen name="fragment_home_user_greetings_margin_top">10dp</dimen>
+    <dimen name="fragment_home_user_greetings_text_size">25sp</dimen>
+
+    <dimen name="fragment_home_poster_margin_top">10dp</dimen>
+    <dimen name="fragment_home_poster_text_size">20sp</dimen>
+
+    <dimen name="fragment_home_squad_list_layout_margin_top">25dp</dimen>
+
+    <dimen name="fragment_home_my_squads_label_text_size">20sp</dimen>
+
+    <dimen name="fragment_home_squad_list_margin_top">10dp</dimen>
+
+    <dimen name="fragment_home_new_squad_button_margin_top">25dp</dimen>
+    <dimen name="fragment_home_new_squad_button_margin_end">50dp</dimen>
+
+
+</resources>

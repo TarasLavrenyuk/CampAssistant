@@ -17,8 +17,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_settings_user_avatar"
-            android:layout_width="@dimen/user_avatar_size"
-            android:layout_height="@dimen/user_avatar_size"
+            android:layout_width="@dimen/fragment_home_user_avatar_size"
+            android:layout_height="@dimen/fragment_home_user_avatar_size"
             android:layout_marginStart="@dimen/user_settings_default_padding"
             android:layout_marginTop="@dimen/user_settings_default_padding"
             android:layout_marginBottom="@dimen/user_settings_default_padding"
@@ -50,22 +50,20 @@
         android:background="@color/backgroundColor">
 
         <ImageView
-            android:id="@+id/user_settings_red_spot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-30dp"
-            android:layout_marginEnd="@dimen/red_spot_marginEnd"
-            card_view:srcCompat="@drawable/red_spot" />
+            android:layout_marginEnd="@dimen/user_settings_activity_red_spot_marginEnd"
+            android:src="@drawable/red_spot" />
 
         <ImageView
-            android:id="@+id/user_settings_blue_spot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="-40dp"
-            android:layout_marginBottom="@dimen/blue_spot_marginBottom"
-            card_view:srcCompat="@drawable/blue_spot" />
+            android:layout_marginBottom="@dimen/user_settings_activity_blue_spot_marginBottom"
+            android:src="@drawable/blue_spot" />
 
         <TextView
             android:id="@+id/user_settings_information_label"
@@ -90,6 +88,4 @@
             android:dividerHeight="0dp" />
 
     </RelativeLayout>
-
-
 </RelativeLayout>

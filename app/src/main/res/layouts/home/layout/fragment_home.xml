@@ -4,12 +4,114 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-    <TextView
+    <com.lavreniuk.campassistant.customviews.YellowSpot
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home layout"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:layout_marginStart="@dimen/main_activity_yellow_spot_marginStart"
+        android:layout_marginTop="@dimen/main_activity_yellow_spot_marginTop" />
+
+    <com.lavreniuk.campassistant.customviews.RedSpot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/main_activity_red_spot_marginTop"
+        android:layout_marginEnd="@dimen/main_activity_red_spot_marginEnd" />
+
+    <com.lavreniuk.campassistant.customviews.BlueSpot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_activity_blue_spot_marginStart"
+        android:layout_marginTop="@dimen/main_activity_blue_spot_marginTop" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fragment_home_user_avatar"
+        android:layout_width="@dimen/fragment_home_user_avatar_size"
+        android:layout_height="@dimen/fragment_home_user_avatar_size"
+        android:layout_marginStart="@dimen/fragment_home_margin_horizontal"
+        android:layout_marginTop="@dimen/fragment_home_avatar_margin_top"
+        android:src="@drawable/ic_default_avatar" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fragment_home_settings_button"
+        android:layout_width="@dimen/fragment_home_settings_button_size"
+        android:layout_height="@dimen/fragment_home_settings_button_size"
+        android:layout_alignTop="@id/fragment_home_user_avatar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/fragment_home_margin_horizontal"
+        android:src="@drawable/ic_settings" />
+
+    <TextView
+        android:id="@+id/fragment_home_user_greetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/fragment_home_user_avatar"
+        android:layout_marginStart="@dimen/fragment_home_margin_horizontal"
+        android:layout_marginTop="@dimen/fragment_home_user_greetings_margin_top"
+        android:layout_marginEnd="@dimen/fragment_home_margin_horizontal"
+        android:layout_toStartOf="@id/fragment_home_settings_button"
+        android:layout_toEndOf="@id/fragment_home_user_avatar"
+        android:fontFamily="@font/helvetica_rounded_bold"
+        android:maxLines="1"
+        android:text="@string/ui_hi"
+        android:textColor="@color/colorAlmostBlack"
+        android:textSize="@dimen/fragment_home_user_greetings_text_size" />
+
+    <TextView
+        android:id="@+id/fragment_home_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_home_user_greetings"
+        android:layout_alignStart="@id/fragment_home_user_greetings"
+        android:layout_alignEnd="@id/fragment_home_user_greetings"
+        android:layout_marginTop="@dimen/fragment_home_poster_margin_top"
+        android:fontFamily="@font/roboto"
+        android:maxLines="4"
+        android:text="@string/ui_no_squad_yet"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="@dimen/fragment_home_poster_text_size" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_home_squad_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_home_poster"
+        android:layout_alignStart="@id/fragment_home_user_avatar"
+        android:layout_marginTop="@dimen/fragment_home_squad_list_layout_margin_top">
+
+        <TextView
+            android:id="@+id/fragment_home_my_squads_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:text="@string/ui_my_squads"
+            android:textColor="@color/colorAlmostBlack"
+            android:textSize="@dimen/fragment_home_my_squads_label_text_size" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_home_squad_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_home_my_squads_label"
+            android:layout_marginTop="@dimen/fragment_home_squad_list_margin_top"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/fragment_home_new_squad_button"
+        android:layout_width="@dimen/default_button_width"
+        android:layout_height="@dimen/default_button_height"
+        android:layout_below="@id/fragment_home_squad_list_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/fragment_home_new_squad_button_margin_top"
+        android:layout_marginEnd="@dimen/fragment_home_new_squad_button_margin_end"
+        android:background="@drawable/round_button"
+        android:drawableEnd="@drawable/ic_plus"
+        android:drawableTint="@color/colorWhite"
+        android:paddingStart="@dimen/default_button_padding_horizontal"
+        android:paddingEnd="@dimen/default_button_padding_horizontal"
+        android:text="@string/ui_new_squad"
+        android:textColor="@color/colorWhite" />
+
 
 </RelativeLayout>
