@@ -1,31 +1,67 @@
 package com.lavreniuk.campassistant.utils
 
-import android.annotation.TargetApi
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentResolver
-import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.media.MediaScannerConnection
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import com.lavreniuk.campassistant.R
+import java.io.*
 import java.util.*
 
 
 object ImageLoaderUtils {
 
-    private const val APP_DIRECTORY = "/CampAssistant"
+    private val APP_DIRECTORY = "${Environment.getExternalStorageDirectory()}/CampAssistant/"
+
+    @JvmOverloads
+    fun selectImageAction(
+        activity: Activity,
+        deletePicture: (() -> Unit)? = null
+    ) {
+        val actions = mutableListOf(
+            activity.getString(R.string.ui_take_photo),
+            activity.getString(R.string.ui_select_from_gallery)
+        )
+        if (deletePicture != null) {
+            actions += activity.getString(R.string.ui_remove_photo)
+        }
+
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle(activity.getString(R.string.ui_choose_action))
+
+        builder.setItems(actions.toTypedArray()) { dialog: DialogInterface, index: Int ->
+            when (actions[index]) {
+                activity.getString(R.string.ui_take_photo) -> {
+                    activity.startActivityForResult(
+                        Intent(MediaStore.ACTION_IMAGE_CAPTURE),
+                        RequestCodes.REQUEST_CODE_PHOTO_FROM_CAMERA
+                    )
+                }
+                activity.getString(R.string.ui_select_from_gallery) -> {
+                    activity.startActivityForResult(
+                        Intent(Intent.ACTION_PICK).also { it.type = "image/*" },
+                        RequestCodes.REQUEST_CODE_PHOTO_FROM_GALLERY
+                    )
+                }
+                activity.getString(R.string.ui_remove_photo) -> {
+                    deletePicture!!()
+                }
+                activity.getString(R.string.ui_cancel) -> {
+                    dialog.dismiss()
+                }
+            }
+        }
+        builder.show()
+    }
 
     fun choosePhotoFromGallery(activity: Activity) {
         val galleryIntent = Intent(Intent.ACTION_PICK)
@@ -49,11 +85,13 @@ object ImageLoaderUtils {
         fragment.startActivityForResult(intent, RequestCodes.REQUEST_CODE_PHOTO_FROM_CAMERA)
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
     fun getBitmapFromGalleryUri(contentResolver: ContentResolver, imageUri: Uri?): Bitmap {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri!!)
         val exifInterface = ExifInterface(contentResolver.openInputStream(imageUri))
-        val orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        val orientation = exifInterface.getAttributeInt(
+            ExifInterface.TAG_ORIENTATION,
+            ExifInterface.ORIENTATION_NORMAL
+        )
 
         return when (orientation) {
             ExifInterface.ORIENTATION_ROTATE_90 -> rotate(bitmap, 90f)
@@ -92,31 +130,32 @@ object ImageLoaderUtils {
     }
 
     @Throws(IOException::class)
-    fun saveImage(myBitmap: Bitmap, context: Context): String {
-        val bytes = ByteArrayOutputStream()
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
-        val wallpaperDirectory = File(
-            Environment.getExternalStorageDirectory().toString() + APP_DIRECTORY
-        )
-        // have the object build the directory structure, if needed.
-        if (!wallpaperDirectory.exists()) {
-            wallpaperDirectory.mkdirs()
+    fun saveImage(myBitmap: Bitmap): String {
+        val avatarFile = File("$APP_DIRECTORY${Calendar.getInstance().timeInMillis}.png")
+        createImgDirectoryIfNotExists()
+
+        try {
+            avatarFile.createNewFile()
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
 
-        val f = File(
-            wallpaperDirectory, ((Calendar.getInstance().timeInMillis).toString() + ".jpg")
-        )
-        f.createNewFile()
-        val fo = FileOutputStream(f)
-        fo.write(bytes.toByteArray())
-        MediaScannerConnection.scanFile(
-            context,
-            arrayOf(f.path),
-            arrayOf("image/jpeg"), null
-        )
-        fo.close()
-
-        return f.absolutePath
+        try {
+            FileOutputStream(avatarFile).also {
+                myBitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
+                it.flush()
+                it.close()
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return avatarFile.absolutePath
     }
 
+    private fun createImgDirectoryIfNotExists() {
+        val imageDirectory = File(APP_DIRECTORY)
+        if (!imageDirectory.exists()) {
+            imageDirectory.mkdirs()
+        }
+    }
 }

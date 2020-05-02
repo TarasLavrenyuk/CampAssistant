@@ -11,6 +11,7 @@ import com.lavreniuk.campassistant.models.Param
 import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.repositories.ParamRepo
 import com.lavreniuk.campassistant.repositories.UserRepo
+import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,8 +25,10 @@ class UserSettingsViewModel @JvmOverloads constructor(
         ParamRepo(personId, AppDatabase.getAppDataBase(application).paramDao())
 
     val user: LiveData<User> = userRepo.user
-    val userPhoto: LiveData<String> = userRepo.getUserPhoto()
+    val userPhoto: LiveData<String> = userRepo.userPhoto
     val params: LiveData<List<Param>> = paramRepo.personParams
+
+    fun getUserPhoto(): String? = userRepo.getUserPhoto()
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
@@ -47,5 +50,14 @@ class UserSettingsViewModel @JvmOverloads constructor(
 
             paramRepo.insertParam(newParam)
         }
+
+    fun updateAvatar(path: String? = null) {
+        userPhoto.value?.let {
+            ImageLoaderUtils.deleteImage(it)
+        } ?: run {
+            userRepo.getUser()?.photo?.let { ImageLoaderUtils.deleteImage(it) }
+        }
+        userRepo.updateAvatar(path)
+    }
 
 }

@@ -15,6 +15,13 @@
     <string name="ui_information">Information</string>
     <string name="ui_general">General</string>
 
+    <!--  FOR IMAGE PICKING  -->
+    <string name="ui_take_photo">Take photo</string>
+    <string name="ui_select_from_gallery">Select from gallery</string>
+    <string name="ui_remove_photo">Remove photo</string>
+    <string name="ui_choose_action">Choose action</string>
+
+
     <!--  NAVIGATION STRINGS  -->
     <string name="ui_home">Home</string>
     <string name="ui_squad">Squad</string>

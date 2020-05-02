@@ -13,7 +13,7 @@ class HomeViewModel(
 
     private val userRepo: UserRepo = UserRepo(AppDatabase.getAppDataBase(application).userDao())
 
-    val userPhoto: LiveData<String> = userRepo.getUserPhoto()
+    val userPhoto: LiveData<String> = userRepo.userPhoto
 
     /**
      * @return [LiveData] object with user's first name

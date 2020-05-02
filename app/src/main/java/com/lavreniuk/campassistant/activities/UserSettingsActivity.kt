@@ -1,5 +1,7 @@
 package com.lavreniuk.campassistant.activities
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.UserParamListAdapter
-import com.lavreniuk.campassistant.models.Param
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
+import com.lavreniuk.campassistant.utils.RequestCodes
 import com.lavreniuk.campassistant.viewmodels.UserSettingsViewModel
 import kotlinx.android.synthetic.main.activity_user_settings.*
 
@@ -20,13 +22,26 @@ class UserSettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_settings)
 
+        user_settings_user_avatar.setOnClickListener {
+            ImageLoaderUtils.selectImageAction(
+                activity = this,
+                deletePicture = userSettingsViewModel.getUserPhoto()?.let {
+                    {
+                        userSettingsViewModel.updateAvatar()
+                    }
+                }
+            )
+        }
+
         userSettingsViewModel.user.observe(this, Observer { user ->
             user_settings_user_name.text = user.getFullName()
         })
 
-        userSettingsViewModel.userPhoto.observe(this, Observer { photoSrc ->
-            ImageLoaderUtils.getBitmapFromPath(photoSrc)?.let {
+        userSettingsViewModel.userPhoto.observe(this, Observer { userPhotoPath ->
+            ImageLoaderUtils.getBitmapFromPath(userPhotoPath)?.let {
                 user_settings_user_avatar.setImageBitmap(it)
+            } ?: run {
+                user_settings_user_avatar.setImageDrawable(getDrawable(R.drawable.ic_default_avatar))
             }
         })
 
@@ -38,8 +53,30 @@ class UserSettingsActivity : AppCompatActivity() {
             adapter = paramListAdapter
         }
 
-        userSettingsViewModel.params.observe(this, Observer<List<Param>> { params ->
+        userSettingsViewModel.params.observe(this, Observer { params ->
             // TODO: observe user params
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == 0) return
+
+        when (requestCode) {
+            RequestCodes.REQUEST_CODE_PHOTO_FROM_GALLERY -> {
+                userSettingsViewModel.updateAvatar(
+                    ImageLoaderUtils.saveImage(
+                        ImageLoaderUtils.getBitmapFromGalleryUri(contentResolver, data!!.data)
+                    )
+                )
+            }
+            RequestCodes.REQUEST_CODE_PHOTO_FROM_CAMERA -> {
+                userSettingsViewModel.updateAvatar(
+                    ImageLoaderUtils.saveImage(
+                        data?.extras?.get("data") as Bitmap
+                    )
+                )
+            }
+        }
     }
 }

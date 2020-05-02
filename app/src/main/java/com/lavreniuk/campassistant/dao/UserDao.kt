@@ -25,4 +25,10 @@ interface UserDao {
 
     @Query("SELECT U.photo FROM user U WHERE U.userId = :userId")
     fun getUserPhoto(userId: String = USER_ID): LiveData<String>
+
+    @Query("SELECT U.photo FROM user U WHERE U.userId = :userId")
+    fun getUserPhotoObject(userId: String = USER_ID): String
+
+    @Query("UPDATE user SET photo = :path WHERE userId = :userId")
+    fun updateAvatar(userId: String = USER_ID, path: String? = null)
 }

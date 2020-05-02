@@ -14,9 +14,13 @@ class UserRepo @Inject constructor(
 
     val userName: LiveData<String> = userDao.getUserName()
 
+    val userPhoto: LiveData<String> = userDao.getUserPhoto()
+
     fun save(user: User) = userDao.save(user)
 
     fun getUser(): User? = userDao.getUserObject()
 
-    fun getUserPhoto(): LiveData<String> = userDao.getUserPhoto()
+    fun getUserPhoto(): String? = userDao.getUserPhotoObject()
+
+    fun updateAvatar(path: String? = null) = userDao.updateAvatar(path = path)
 }
