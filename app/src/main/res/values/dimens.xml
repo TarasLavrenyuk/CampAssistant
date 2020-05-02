@@ -13,14 +13,13 @@
 
 
     <dimen name="user_settings_default_padding">25dp</dimen>
-    <dimen name="user_name_start_margin">150dp</dimen>
-    <dimen name="user_name_top_margin">60dp</dimen>
+    <dimen name="user_name_start_margin">120dp</dimen>
+    <dimen name="user_name_top_margin">30dp</dimen>
 
     <dimen name="user_info_list_item_corner_radius">5dp</dimen>
 
     <dimen name="user_info_list_item_margin_between_list_items">10dp</dimen>
-    <dimen name="user_info_list_item_padding_horizontal">15dp</dimen>
-    <dimen name="user_info_list_item_padding_top">5dp</dimen>
+    <dimen name="user_info_list_item_padding">10dp</dimen>
 
 
     <dimen name="user_info_list_value_textsize">18sp</dimen>
