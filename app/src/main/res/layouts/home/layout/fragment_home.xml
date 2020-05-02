@@ -31,15 +31,6 @@
         android:layout_marginTop="@dimen/fragment_home_avatar_margin_top"
         android:src="@drawable/ic_default_avatar" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fragment_home_settings_button"
-        android:layout_width="@dimen/fragment_home_settings_button_size"
-        android:layout_height="@dimen/fragment_home_settings_button_size"
-        android:layout_alignTop="@id/fragment_home_user_avatar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/fragment_home_margin_horizontal"
-        android:src="@drawable/ic_settings" />
-
     <TextView
         android:id="@+id/fragment_home_user_greetings"
         android:layout_width="wrap_content"
@@ -48,7 +39,6 @@
         android:layout_marginStart="@dimen/fragment_home_margin_horizontal"
         android:layout_marginTop="@dimen/fragment_home_user_greetings_margin_top"
         android:layout_marginEnd="@dimen/fragment_home_margin_horizontal"
-        android:layout_toStartOf="@id/fragment_home_settings_button"
         android:layout_toEndOf="@id/fragment_home_user_avatar"
         android:fontFamily="@font/helvetica_rounded_bold"
         android:maxLines="1"

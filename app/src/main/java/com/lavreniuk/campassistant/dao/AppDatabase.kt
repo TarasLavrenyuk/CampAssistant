@@ -10,7 +10,7 @@ import com.lavreniuk.campassistant.models.User
 
 @Database(
     entities = [User::class, Param::class],
-    version = 3
+    version = 5
 )
 @TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {

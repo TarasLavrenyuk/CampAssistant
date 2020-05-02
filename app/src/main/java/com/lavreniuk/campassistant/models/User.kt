@@ -14,7 +14,7 @@ class User(
     var photo: String? = null
 ) {
     companion object {
-        const val USER_ID = "76c62e5a-1cb0-4772-9d5c-62b7c39bd3f3"
+        const val USER_ID = "USER_ID"
     }
 
     fun getFullName(): String {
