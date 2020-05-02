@@ -17,4 +17,6 @@ class UserRepo @Inject constructor(
     fun save(user: User) = userDao.save(user)
 
     fun getUser(): User? = userDao.getUserObject()
+
+    fun getUserPhoto(): LiveData<String> = userDao.getUserPhoto()
 }

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.UserParamListAdapter
 import com.lavreniuk.campassistant.models.Param
-import com.lavreniuk.campassistant.models.User
+import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import com.lavreniuk.campassistant.viewmodels.UserSettingsViewModel
 import kotlinx.android.synthetic.main.activity_user_settings.*
 
@@ -20,8 +20,14 @@ class UserSettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_settings)
 
-        userSettingsViewModel.user.observe(this, Observer<User> { user ->
-            // TODO: observe user object
+        userSettingsViewModel.user.observe(this, Observer { user ->
+            user_settings_user_name.text = user.getFullName()
+        })
+
+        userSettingsViewModel.userPhoto.observe(this, Observer { photoSrc ->
+            ImageLoaderUtils.getBitmapFromPath(photoSrc)?.let {
+                user_settings_user_avatar.setImageBitmap(it)
+            }
         })
 
         val paramListAdapter = UserParamListAdapter()

@@ -86,4 +86,5 @@ dependencies {
 
     // round corner layout
     implementation 'com.jcminarro:RoundKornerLayouts:0.4.0'
+    implementation 'androidx.exifinterface:exifinterface:1.1.0-beta01'
 }

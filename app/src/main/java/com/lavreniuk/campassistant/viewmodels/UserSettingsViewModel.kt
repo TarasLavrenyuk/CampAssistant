@@ -24,6 +24,7 @@ class UserSettingsViewModel @JvmOverloads constructor(
         ParamRepo(personId, AppDatabase.getAppDataBase(application).paramDao())
 
     val user: LiveData<User> = userRepo.user
+    val userPhoto: LiveData<String> = userRepo.getUserPhoto()
     val params: LiveData<List<Param>> = paramRepo.personParams
 
     /**
