@@ -11,7 +11,6 @@ import com.lavreniuk.campassistant.fragments.HomeFragment
 import com.lavreniuk.campassistant.fragments.ReportsFragment
 import com.lavreniuk.campassistant.fragments.SquadFragment
 import com.lavreniuk.campassistant.onboarding.OnboardingActivity
-import com.lavreniuk.campassistant.viewmodels.UserSettingsViewModel
 import com.lavreniuk.campassistant.viewmodels.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
