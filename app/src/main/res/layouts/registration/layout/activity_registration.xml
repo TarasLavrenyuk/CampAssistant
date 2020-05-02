@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".activities.RegistrationActivity">
+
+    <com.lavreniuk.campassistant.customviews.YellowSpot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_activity_yellow_spot_marginStart"
+        android:layout_marginTop="@dimen/main_activity_yellow_spot_marginTop" />
+
+    <com.lavreniuk.campassistant.customviews.RedSpot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/main_activity_red_spot_marginTop"
+        android:layout_marginEnd="@dimen/main_activity_red_spot_marginEnd" />
+
+    <com.lavreniuk.campassistant.customviews.BlueSpot
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/main_activity_blue_spot_marginStart"
+        android:layout_marginTop="@dimen/main_activity_blue_spot_marginTop" />
+
+    <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/registration_activity_horizontal_margin"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        app:corner_radius="@dimen/registration_activity_corner_radius">
+
+        <TextView
+            android:id="@+id/registration_activity_registration_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:text="@string/ui_registration"
+            android:textColor="@color/colorLightGrey"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registration_activity_fname_label"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_activity_registration_label"
+            android:layout_marginHorizontal="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:hint="@string/ui_fname"
+            app:errorTextColor="@color/colorRed"
+            android:textColorHint="@color/colorLightGrey"
+            app:boxStrokeColor="@color/colorLightGrey"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:hintTextColor="@color/colorLightGrey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registration_activity_fname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="15"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:textColor="@color/colorDarkGrey"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registration_activity_lname_label"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_activity_fname_label"
+            android:layout_marginHorizontal="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:hint="@string/ui_last_name"
+            android:textColorHint="@color/colorLightGrey"
+            app:boxStrokeColor="@color/colorLightGrey"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:hintTextColor="@color/colorLightGrey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registration_activity_lname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="25"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:textColor="@color/colorDarkGrey"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/registration_activity_start_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/registration_activity_lname_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:layout_marginEnd="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginBottom="@dimen/registration_activity_vertical_padding"
+            android:clickable="true"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:text="@string/ui_start"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp" />
+
+    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+
+</RelativeLayout>

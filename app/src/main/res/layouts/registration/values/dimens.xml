@@ -1,0 +1,9 @@
+<resources>
+
+    <dimen name="registration_activity_corner_radius">10dp</dimen>
+
+    <dimen name="registration_activity_horizontal_margin">50dp</dimen>
+    <dimen name="registration_activity_horizontal_padding">30dp</dimen>
+    <dimen name="registration_activity_vertical_padding">30dp</dimen>
+
+</resources>

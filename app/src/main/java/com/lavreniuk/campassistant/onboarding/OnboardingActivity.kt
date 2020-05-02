@@ -6,6 +6,7 @@ import android.graphics.Color
 
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.activities.MainActivity
+import com.lavreniuk.campassistant.activities.RegistrationActivity
 import com.lavreniuk.campassistant.utils.Helpers
 
 open class OnboardingActivity : TutorialActivity() {
@@ -62,7 +63,7 @@ open class OnboardingActivity : TutorialActivity() {
 
     override fun finishTutorial() {
         finish()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 
     override fun currentFragmentPosition(position: Int) {

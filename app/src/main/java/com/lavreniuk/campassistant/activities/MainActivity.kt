@@ -1,20 +1,29 @@
 package com.lavreniuk.campassistant.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.fragments.CalendarFragment
 import com.lavreniuk.campassistant.fragments.HomeFragment
 import com.lavreniuk.campassistant.fragments.ReportsFragment
 import com.lavreniuk.campassistant.fragments.SquadFragment
+import com.lavreniuk.campassistant.onboarding.OnboardingActivity
+import com.lavreniuk.campassistant.viewmodels.UserSettingsViewModel
+import com.lavreniuk.campassistant.viewmodels.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private val userViewModel: UserViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        checkIfOnboardingNeeded()
 
         title = resources.getString(R.string.ui_home)
         loadFragment(HomeFragment())
@@ -46,6 +55,13 @@ class MainActivity : AppCompatActivity() {
 
             }
             false
+        }
+    }
+
+    private fun checkIfOnboardingNeeded() {
+        if (!userViewModel.isUserAlreadyExists()) {
+            finish()
+            startActivity(Intent(this, OnboardingActivity::class.java))
         }
     }
 

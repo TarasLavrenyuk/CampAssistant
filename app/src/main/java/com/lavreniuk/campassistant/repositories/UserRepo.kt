@@ -11,4 +11,10 @@ class UserRepo @Inject constructor(
     private val userDao: UserDao
 ) {
     val user: LiveData<User> = userDao.getUser()
+
+    val userName: LiveData<String> = userDao.getUserName()
+
+    fun save(user: User) = userDao.save(user)
+
+    fun getUser(): User? = userDao.getUserObject()
 }
