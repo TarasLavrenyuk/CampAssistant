@@ -23,4 +23,6 @@ class UserRepo @Inject constructor(
     fun getUserPhoto(): String? = userDao.getUserPhotoObject()
 
     fun updateAvatar(path: String? = null) = userDao.updateAvatar(path = path)
+
+    fun update(user: User) = userDao.update(user)
 }

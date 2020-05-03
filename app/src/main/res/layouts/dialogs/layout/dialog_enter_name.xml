@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".dialogs.EnterNameDialog">
+
+    <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        app:corner_radius="@dimen/registration_activity_corner_radius">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enter_name_dialog_fname_label"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:hint="@string/ui_fname"
+            android:textColorHint="@color/colorLightGrey"
+            app:boxStrokeColor="@color/colorLightGrey"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="15"
+            app:errorTextColor="@color/colorRed"
+            app:hintTextColor="@color/colorLightGrey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_name_dialog_fname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="15"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:textColor="@color/colorDarkGrey"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enter_name_dialog_lname_label"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/enter_name_dialog_fname_label"
+            android:layout_marginHorizontal="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:hint="@string/ui_last_name"
+            android:textColorHint="@color/colorLightGrey"
+            app:boxStrokeColor="@color/colorLightGrey"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:hintTextColor="@color/colorLightGrey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enter_name_dialog_lname_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLength="25"
+                android:paddingTop="15dp"
+                android:singleLine="true"
+                android:textColor="@color/colorDarkGrey"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/enter_name_dialog_start_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/enter_name_dialog_lname_label"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/registration_activity_vertical_padding"
+            android:layout_marginEnd="@dimen/registration_activity_horizontal_padding"
+            android:layout_marginBottom="@dimen/registration_activity_vertical_padding"
+            android:clickable="true"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:text="@string/ui_submit"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp" />
+
+    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+
+</RelativeLayout>

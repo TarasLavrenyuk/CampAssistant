@@ -4,6 +4,7 @@
 
     <string name="ui_registration">Registration</string>
     <string name="ui_start">Start</string>
+    <string name="ui_submit">Submit</string>
 
     <string name="ui_field_cannot_be_empty">Field name cannot be empty</string>
 </resources>

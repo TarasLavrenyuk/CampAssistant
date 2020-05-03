@@ -30,6 +30,8 @@ class UserSettingsViewModel @JvmOverloads constructor(
 
     fun getUserPhoto(): String? = userRepo.getUserPhoto()
 
+    fun getUser(): User? = userRepo.getUser()
+
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
@@ -58,6 +60,14 @@ class UserSettingsViewModel @JvmOverloads constructor(
             userRepo.getUser()?.photo?.let { ImageLoaderUtils.deleteImage(it) }
         }
         userRepo.updateAvatar(path)
+    }
+
+    fun updateName(fName: String, lName: String? = null) {
+        userRepo.getUser()?.let {
+            it.firstName = fName
+            it.lastName = lName
+            userRepo.update(it)
+        }
     }
 
 }

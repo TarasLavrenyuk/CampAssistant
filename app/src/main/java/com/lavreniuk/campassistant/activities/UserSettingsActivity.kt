@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.UserParamListAdapter
+import com.lavreniuk.campassistant.dialogs.EnterNameContract
+import com.lavreniuk.campassistant.dialogs.Name
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import com.lavreniuk.campassistant.utils.RequestCodes
 import com.lavreniuk.campassistant.viewmodels.UserSettingsViewModel
@@ -17,6 +19,13 @@ import kotlinx.android.synthetic.main.activity_user_settings.*
 class UserSettingsActivity : AppCompatActivity() {
 
     private val userSettingsViewModel: UserSettingsViewModel by viewModels()
+
+    private val enterNameContractRegistration =
+        registerForActivityResult(EnterNameContract()) { name ->
+            name?.let {
+                userSettingsViewModel.updateName(name.fName, name.lName)
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +38,14 @@ class UserSettingsActivity : AppCompatActivity() {
                     {
                         userSettingsViewModel.updateAvatar()
                     }
+                }
+            )
+        }
+
+        user_settings_user_name.setOnClickListener {
+            enterNameContractRegistration.launch(
+                userSettingsViewModel.getUser()?.let {
+                    Name(it.firstName, it.lastName)
                 }
             )
         }
