@@ -46,5 +46,4 @@ class UserSettingsViewModel @JvmOverloads constructor(
 
             paramRepo.insertParam(newParam)
         }
-
 }

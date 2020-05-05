@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-
         userViewModel.getUserName().observe(viewLifecycleOwner, Observer { userFirstName ->
             userFirstName?.let {
                 fragment_home_user_greetings.text = "${getString(R.string.ui_hi)} $userFirstName"

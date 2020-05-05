@@ -12,8 +12,7 @@ public class Step implements Parcelable {
     private int backgroundColor;
     private int viewType;
 
-    public Step() {
-    }
+    public Step() {}
 
     public int getViewType() {
         return viewType;
@@ -106,7 +105,6 @@ public class Step implements Parcelable {
         }
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -131,15 +129,16 @@ public class Step implements Parcelable {
         this.viewType = in.readInt();
     }
 
-    public static final Creator<Step> CREATOR = new Creator<Step>() {
-        @Override
-        public Step createFromParcel(Parcel source) {
-            return new Step(source);
-        }
+    public static final Creator<Step> CREATOR =
+            new Creator<Step>() {
+                @Override
+                public Step createFromParcel(Parcel source) {
+                    return new Step(source);
+                }
 
-        @Override
-        public Step[] newArray(int size) {
-            return new Step[size];
-        }
-    };
+                @Override
+                public Step[] newArray(int size) {
+                    return new Step[size];
+                }
+            };
 }

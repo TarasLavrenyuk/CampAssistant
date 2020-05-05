@@ -10,5 +10,4 @@ object ConverterUtils {
         val year = date.year + 1900
         return "$day/$month/$year"
     }
-
 }
