@@ -6,8 +6,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
+import com.lavreniuk.campassistant.adapters.SwipeToDeleteCallback
 import com.lavreniuk.campassistant.adapters.UserParamListAdapter
 import com.lavreniuk.campassistant.dialogs.EnterNameContract
 import com.lavreniuk.campassistant.dialogs.Name
@@ -68,6 +71,15 @@ class UserSettingsActivity : AppCompatActivity() {
         user_settings_information_list.apply {
             layoutManager = LinearLayoutManager(this@UserSettingsActivity)
             adapter = paramListAdapter
+
+            val swipeHandler = object : SwipeToDeleteCallback(context) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    paramListAdapter.removeAt(viewHolder.adapterPosition)
+                }
+            }
+
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(this@apply)
         }
 
         userSettingsViewModel.params.observe(this, Observer { params ->

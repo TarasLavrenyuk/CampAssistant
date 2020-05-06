@@ -13,7 +13,7 @@ import com.lavreniuk.campassistant.models.Param
 import com.lavreniuk.campassistant.models.User
 
 class UserParamListAdapter(
-    private var params: List<Param> = listOf(
+    private var params: ArrayList<Param> = arrayListOf(
         Param(
             ownerId = User.USER_ID,
             type = ParameterType.Text,
@@ -55,9 +55,14 @@ class UserParamListAdapter(
 
     override fun getItemCount(): Int = params.size
 
-    fun updateParams(newParams: List<Param>) {
+    fun updateParams(newParams: ArrayList<Param>) {
         params = newParams
         notifyDataSetChanged()
+    }
+
+    fun removeAt(position: Int) {
+        params.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     class ViewHolder(
@@ -71,6 +76,10 @@ class UserParamListAdapter(
         fun bind(param: Param) {
             hint.hint = param.name
             param.value?.let { value.setText(it) }
+
+            hint.setEndIconOnClickListener {
+                println("${param.value} -> ${param.paramId}")
+            }
         }
     }
 }
