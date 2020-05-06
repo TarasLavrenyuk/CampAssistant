@@ -1,9 +1,9 @@
 package com.lavreniuk.campassistant.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.fragments.CalendarFragment
@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(ReportsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-
             }
             false
         }

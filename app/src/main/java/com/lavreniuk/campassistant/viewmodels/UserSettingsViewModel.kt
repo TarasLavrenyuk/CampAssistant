@@ -69,5 +69,4 @@ class UserSettingsViewModel @JvmOverloads constructor(
             userRepo.update(it)
         }
     }
-
 }

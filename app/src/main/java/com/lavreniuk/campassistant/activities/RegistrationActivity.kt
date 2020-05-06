@@ -1,9 +1,9 @@
 package com.lavreniuk.campassistant.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.viewmodels.UserViewModel
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_registration.*
 class RegistrationActivity : AppCompatActivity() {
 
     private val userViewModel: UserViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

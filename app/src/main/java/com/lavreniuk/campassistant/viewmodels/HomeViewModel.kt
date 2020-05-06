@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.lavreniuk.campassistant.dao.AppDatabase
-import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.repositories.UserRepo
 
 class HomeViewModel(

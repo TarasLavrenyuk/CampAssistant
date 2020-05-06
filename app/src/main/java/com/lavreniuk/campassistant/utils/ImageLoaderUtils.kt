@@ -17,7 +17,6 @@ import com.lavreniuk.campassistant.R
 import java.io.*
 import java.util.*
 
-
 object ImageLoaderUtils {
 
     private val APP_DIRECTORY = "${Environment.getExternalStorageDirectory()}/CampAssistant/"
@@ -65,13 +64,13 @@ object ImageLoaderUtils {
 
     fun choosePhotoFromGallery(activity: Activity) {
         val galleryIntent = Intent(Intent.ACTION_PICK)
-        galleryIntent.type = "image/*";
+        galleryIntent.type = "image/*"
         activity.startActivityForResult(galleryIntent, RequestCodes.REQUEST_CODE_PHOTO_FROM_GALLERY)
     }
 
     fun choosePhotoFromGallery(fragment: Fragment) {
         val galleryIntent = Intent(Intent.ACTION_PICK)
-        galleryIntent.type = "image/*";
+        galleryIntent.type = "image/*"
         fragment.startActivityForResult(galleryIntent, RequestCodes.REQUEST_CODE_PHOTO_FROM_GALLERY)
     }
 
@@ -119,7 +118,7 @@ object ImageLoaderUtils {
         if (!path.isNullOrBlank()) {
             val imageFile = File(path)
             if (imageFile.exists()) {
-                return BitmapFactory.decodeFile(imageFile.absolutePath);
+                return BitmapFactory.decodeFile(imageFile.absolutePath)
             }
         }
         return null

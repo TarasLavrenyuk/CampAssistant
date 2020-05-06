@@ -8,5 +8,4 @@ object Helpers {
     fun getColorAsStringValue(context: Context, resourceCode: Int): String {
         return "#${Integer.toHexString(ContextCompat.getColor(context, resourceCode))}"
     }
-
 }

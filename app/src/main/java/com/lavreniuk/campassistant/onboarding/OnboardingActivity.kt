@@ -2,12 +2,11 @@ package com.lavreniuk.campassistant.onboarding
 
 import android.Manifest
 import android.content.Intent
-import android.os.Bundle
 import android.graphics.Color
+import android.os.Bundle
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.activities.RegistrationActivity
 import com.lavreniuk.campassistant.utils.Helpers
-
 
 open class OnboardingActivity : TutorialActivity() {
 
