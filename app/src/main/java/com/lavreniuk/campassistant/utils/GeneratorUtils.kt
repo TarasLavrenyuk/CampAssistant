@@ -7,5 +7,4 @@ object GeneratorUtils {
     fun generateUUID(): String {
         return "${UUID.randomUUID()}"
     }
-
 }

@@ -2,9 +2,7 @@ package com.lavreniuk.campassistant.onboarding;
 
 import android.os.Build;
 import android.os.Parcelable;
-
 import androidx.annotation.RequiresApi;
-
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class PermissionStep extends Step implements Parcelable {
@@ -62,5 +60,4 @@ public class PermissionStep extends Step implements Parcelable {
             return this;
         }
     }
-
 }

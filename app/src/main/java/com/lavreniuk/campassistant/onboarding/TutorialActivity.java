@@ -12,19 +12,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import com.lavreniuk.campassistant.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TutorialActivity extends AppCompatActivity implements View.OnClickListener, CurrentFragmentListener {
+public abstract class TutorialActivity extends AppCompatActivity
+        implements View.OnClickListener, CurrentFragmentListener {
 
     private List<Step> steps;
     private StepPagerAdapter adapter;
@@ -69,24 +67,22 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     private void initAdapter() {
         adapter = new StepPagerAdapter(getSupportFragmentManager(), steps);
         pager.setAdapter(adapter);
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        pager.addOnPageChangeListener(
+                new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(
+                            int position, float positionOffset, int positionOffsetPixels) {}
 
-            }
+                    @Override
+                    public void onPageSelected(int position) {
+                        currentItem = position;
+                        currentFragmentListener.currentFragmentPosition(position);
+                        controlPosition(position);
+                    }
 
-            @Override
-            public void onPageSelected(int position) {
-                currentItem = position;
-                currentFragmentListener.currentFragmentPosition(position);
-                controlPosition(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+                    @Override
+                    public void onPageScrollStateChanged(int state) {}
+                });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -160,16 +156,17 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     }
 
     public void notifyIndicator() {
-        if (indicatorLayout.getChildCount() > 0)
-            indicatorLayout.removeAllViews();
+        if (indicatorLayout.getChildCount() > 0) indicatorLayout.removeAllViews();
 
         for (int i = 0; i < steps.size(); i++) {
             ImageView imageView = new ImageView(this);
-            int padding = (int) getResources().getDimension(R.dimen.onboarding_fragment_indicator_padding);
+            int padding =
+                    (int)
+                            getResources()
+                                    .getDimension(R.dimen.onboarding_fragment_indicator_padding);
             imageView.setPadding(padding, padding, padding, padding);
             int drawable = indicator;
-            if (i == currentItem)
-                drawable = selectedIndicator;
+            if (i == currentItem) drawable = selectedIndicator;
 
             imageView.setImageResource(drawable);
 
@@ -178,7 +175,6 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
 
             indicatorLayout.addView(imageView);
         }
-
     }
 
     @Override
@@ -194,24 +190,25 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.next) {
-            if (controlPermission())
-                changeFragment(true);
+            if (controlPermission()) changeFragment(true);
             else
-                requestPermissions(((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions(), 1903);
+                requestPermissions(
+                        ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions(),
+                        1903);
         } else if (v.getId() == R.id.prev) {
             changeFragment(false);
         }
     }
 
     private void changeFragment(int position) {
-        if (controlPermission())
-            pager.setCurrentItem(position, true);
+        if (controlPermission()) pager.setCurrentItem(position, true);
     }
 
     private boolean controlPermission() {
         if (!steps.isEmpty() && steps.get(pager.getCurrentItem()) instanceof PermissionStep) {
 
-            for (String permission : ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions()) {
+            for (String permission :
+                    ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions()) {
                 int permissionResult = checkSelfPermission(permission);
 
                 if (permissionResult != PackageManager.PERMISSION_GRANTED) {
@@ -232,8 +229,7 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
 
         if (item < 0 || item == steps.size()) {
             finishTutorial();
-        } else
-            pager.setCurrentItem(item, true);
+        } else pager.setCurrentItem(item, true);
     }
 
     public void finishTutorial() {
@@ -241,7 +237,8 @@ public abstract class TutorialActivity extends AppCompatActivity implements View
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(
+            int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

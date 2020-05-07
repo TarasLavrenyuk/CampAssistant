@@ -5,5 +5,4 @@ enum class ParameterType {
     Date,
     Social,
     Text
-
 }

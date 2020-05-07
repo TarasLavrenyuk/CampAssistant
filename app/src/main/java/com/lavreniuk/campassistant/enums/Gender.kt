@@ -11,6 +11,5 @@ enum class Gender {
         override fun getResId(): Int = R.string.ui_female_gender
     };
 
-    abstract fun getResId():Int
-
+    abstract fun getResId(): Int
 }
