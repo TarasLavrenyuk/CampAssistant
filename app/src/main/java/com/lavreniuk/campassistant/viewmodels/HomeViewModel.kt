@@ -12,8 +12,10 @@ class HomeViewModel(
 
     private val userRepo: UserRepo = UserRepo(AppDatabase.getAppDataBase(application).userDao())
 
+    val userPhoto: LiveData<String> = userRepo.userPhoto
+
     /**
-     * @return [LiveData] object with user's name
+     * @return [LiveData] object with user's first name
      */
     fun getUserName(): LiveData<String> = userRepo.userName
 }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lavreniuk.campassistant">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +15,11 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".onboarding.OnboardingActivity" />
+
+        <activity
+            android:name=".dialogs.EnterNameDialog"
+            android:excludeFromRecents="true"
+            android:theme="@style/DialogTheme" />
 
         <activity
             android:name=".activities.RegistrationActivity"
@@ -27,7 +36,9 @@
 
         <activity
             android:name=".activities.UserSettingsActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:parentActivityName=".activities.MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:label="@string/ui_settings" />
 
     </application>
 

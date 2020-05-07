@@ -1,5 +1,6 @@
 package com.lavreniuk.campassistant.onboarding
 
+import android.Manifest
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,6 +13,24 @@ open class OnboardingActivity : TutorialActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        addFragment(
+            PermissionStep.Builder().setTitle("Title permissions")
+                .setContent("Title content")
+                .setBackgroundColor(
+                    Color.parseColor(
+                        Helpers.getColorAsStringValue(this, R.color.backgroundColor)
+                    )
+                )
+                .setDrawable(R.drawable.blue_spot)
+                .setPermissions(
+                    arrayOf(
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                )
+                .build()
+        )
         addFragment(
             Step.Builder()
                 .setTitle(getString(R.string.ui_plan_and_monitor))

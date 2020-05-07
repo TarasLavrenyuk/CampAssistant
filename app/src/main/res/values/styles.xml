@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorBlue</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorBlue</item>
+    </style>
+
     <style name="UserSetting.UserParams.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/roboto</item>
         <item name="android:fontFamily">@font/roboto</item>
