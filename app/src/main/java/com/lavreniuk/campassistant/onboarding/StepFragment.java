@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.lavreniuk.campassistant.R;
 
 public class StepFragment extends StepView {
@@ -17,7 +15,6 @@ public class StepFragment extends StepView {
     private TextView content;
     private ImageView imageView;
     private View layout;
-
 
     static StepFragment createFragment(Step step) {
         StepFragment fragment = new StepFragment();
@@ -36,7 +33,10 @@ public class StepFragment extends StepView {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(
+            LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         int layout = step.getViewType() > 0 ? step.getViewType() : R.layout.fragment_step;
 
         View view = inflater.inflate(layout, container, false);
