@@ -41,6 +41,6 @@
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus elementum sem congue laoreet. Sed pulvinar at purus quis aliquet. Quisque feugiat sed leo nec aliquet. In hac habitasse platea dictumst. Vestibulum enim sapien, gravida et tempus vel, feugiat in turpis. Fusce interdum elit et libero rhoncus dapibus"
         android:fontFamily="@font/roboto"
         android:textSize="20sp"
-        android:textColor="@color/colorOnboardingDescription" />
+        android:textColor="@color/colorVeryDark" />
 
 </LinearLayout>

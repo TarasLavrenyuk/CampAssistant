@@ -10,7 +10,7 @@ class UserViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val userRepo: UserRepo = UserRepo(AppDatabase.getAppDataBase(application).userDao())
+    private val userRepo: UserRepo = UserRepo(AppDatabase.getInstance(application).userDao())
 
     fun isUserAlreadyExists(): Boolean {
         return userRepo.getUser()?.let {

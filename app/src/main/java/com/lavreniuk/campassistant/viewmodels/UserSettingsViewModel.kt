@@ -20,9 +20,9 @@ class UserSettingsViewModel @JvmOverloads constructor(
     personId: String = User.USER_ID
 ) : AndroidViewModel(application) {
 
-    private val userRepo: UserRepo = UserRepo(AppDatabase.getAppDataBase(application).userDao())
+    private val userRepo: UserRepo = UserRepo(AppDatabase.getInstance(application).userDao())
     private val paramRepo: ParamRepo =
-        ParamRepo(personId, AppDatabase.getAppDataBase(application).paramDao())
+        ParamRepo(personId, AppDatabase.getInstance(application).paramDao())
 
     val user: LiveData<User> = userRepo.user
     val userPhoto: LiveData<String> = userRepo.userPhoto

@@ -24,4 +24,7 @@
     <dimen name="fragment_home_new_squad_button_margin_end">50dp</dimen>
 
 
+    <dimen name="squad_list_item_corner_radius">10dp</dimen>
+
+
 </resources>

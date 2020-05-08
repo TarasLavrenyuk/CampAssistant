@@ -8,6 +8,8 @@
     <color name="colorDarkGrey">#484848</color>
     <color name="colorLightGrey">#7A7A7A</color>
     <color name="colorAlmostBlack">#3C3A39</color>
+    <color name="colorVeryDark">#636363</color>
 
     <color name="colorRed">#D20202</color>
+    <color name="colorYellow">#FFA834</color>
 </resources>
