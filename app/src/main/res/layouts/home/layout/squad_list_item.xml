@@ -2,44 +2,57 @@
 <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/squad_list_item_corner_layout"
-    android:layout_width="160dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    android:paddingVertical="10dp"
+    android:layout_marginEnd="@dimen/squad_list_item_margin_between_items"
     android:background="@color/colorWhite"
     android:orientation="vertical"
+    android:padding="@dimen/squad_list_item_border_size"
     app:corner_radius="@dimen/squad_list_item_corner_radius">
 
-    <TextView
-        android:id="@+id/squad_list_item_squad_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/roboto"
-        android:textStyle="bold"
-        android:text="Breaking Bad"
-        android:textColor="@color/colorVeryDark"
-        android:textSize="16sp" />
+    <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+        android:layout_width="@dimen/squad_list_item_width"
+        android:layout_height="@dimen/squad_list_item_height"
+        android:background="@color/colorWhite"
+        android:paddingHorizontal="@dimen/squad_list_item_padding"
+        android:paddingVertical="@dimen/squad_list_item_padding"
+        app:corner_radius="@dimen/squad_list_item_corner_radius">
 
-    <TextView
-        android:id="@+id/squad_list_item_pupils_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/squad_list_item_squad_name"
-        android:layout_alignStart="@id/squad_list_item_squad_name"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/roboto"
-        android:text="22 children"
-        android:textColor="@color/colorLightGrey"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/squad_list_item_squad_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/squad_list_item_squad_name_height"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto"
+            android:maxLines="1"
+            android:text="Breaking Bad"
+            android:textColor="@color/colorVeryDark"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/squad_list_item_pupil_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/squad_list_item_pupils_number"
-        android:layout_alignStart="@id/squad_list_item_squad_name"
-        android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/squad_list_item_pupils_number"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/squad_list_item_pupils_number_height"
+            android:layout_below="@id/squad_list_item_squad_name"
+            android:layout_alignStart="@id/squad_list_item_squad_name"
+            android:layout_alignEnd="@id/squad_list_item_squad_name"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto"
+            android:maxLines="1"
+            android:text="22 children"
+            android:textColor="@color/colorLightGrey"
+            android:textSize="14sp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/squad_list_item_pupil_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_list_item_pupils_number"
+            android:layout_alignStart="@id/squad_list_item_squad_name"
+            android:layout_marginTop="10dp" />
+
+    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
 
 </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>

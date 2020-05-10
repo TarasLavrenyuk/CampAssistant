@@ -1,8 +1,8 @@
 package com.lavreniuk.campassistant.homescreen
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +10,7 @@ import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.models.crossrefs.SquadWithPupils
 
 class SquadListAdapter(
-    private var squadsWithPupils: List<SquadWithPupils> = listOf(),
-    private val context: Context
+    private var squadsWithPupils: List<SquadWithPupils> = listOf()
 ) : RecyclerView.Adapter<SquadListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +38,7 @@ class SquadListAdapter(
 
     class ViewHolder(
         inflater: LayoutInflater,
-        parent: ViewGroup
+        private val parent: ViewGroup
     ) : RecyclerView.ViewHolder(inflater.inflate(R.layout.squad_list_item, parent, false)) {
 
         private val squadNameView: TextView = itemView.findViewById(R.id.squad_list_item_squad_name)
@@ -47,10 +46,15 @@ class SquadListAdapter(
             itemView.findViewById(R.id.squad_list_item_pupils_number)
         private val pupilListRecyclerView: RecyclerView =
             itemView.findViewById(R.id.squad_list_item_pupil_list)
+        private val layout: RelativeLayout =
+            itemView.findViewById(R.id.squad_list_item_corner_layout)
 
         fun bind(squadWithPupils: SquadWithPupils) {
             squadNameView.text = squadWithPupils.squad.squadName
             numberOfPupilsView.text = squadWithPupils.getNumberOfChildrenAsString()
+            if (squadWithPupils.squad.isCurrent) {
+                layout.setBackgroundColor(parent.context.getColor(R.color.borderColor))
+            }
 
             val squadListPupilListAdapter = SquadListPupilListAdapter(
                 items = if (squadWithPupils.pupils.size >= 5) {

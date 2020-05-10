@@ -12,6 +12,7 @@ import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
 import com.lavreniuk.campassistant.utils.ioThread
+import java.util.*
 
 @Database(
     entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class],
@@ -44,50 +45,6 @@ abstract class AppDatabase : RoomDatabase() {
             )
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
-                .addCallback(object : Callback() {
-                    override fun onOpen(db: SupportSQLiteDatabase) {
-                        super.onOpen(db)
-                        // moving to a new thread
-                        ioThread {
-                            with(getInstance(context)) {
-                                squadDao().deleteAll()
-                                pupilDao().deleteAll()
-                                squadPupilCrossRefDao().deleteAll()
-
-                                val squad1 =
-                                    Squad(squadName = "Clever forever", isCurrent = true)
-                                val squad2 =
-                                    Squad(squadName = "Breaking bad", isCurrent = false)
-                                squadDao().insert(squad1, squad2)
-
-                                val pupil1_1 = Pupil(firstName = "Taras")
-                                val pupil1_2 = Pupil(firstName = "Dima")
-
-                                val pupil2_1 = Pupil(firstName = "Ivan")
-                                val pupil2_2 = Pupil(firstName = "Vadim")
-                                val pupil2_3 = Pupil(firstName = "Alex")
-                                val pupil2_4 = Pupil(firstName = "Oleg")
-                                val pupil2_5 = Pupil(firstName = "Oleg")
-                                val pupil2_6 = Pupil(firstName = "Oleg")
-                                pupilDao().insert(
-                                    pupil1_1, pupil1_2,
-                                    pupil2_1, pupil2_2, pupil2_3, pupil2_4, pupil2_5, pupil2_6
-                                )
-
-                                squadPupilCrossRefDao().insert(
-                                    SquadPupilCrossRef(squad1.squadId, pupil1_1.pupilId),
-                                    SquadPupilCrossRef(squad1.squadId, pupil1_2.pupilId),
-
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_1.pupilId),
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_2.pupilId),
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_3.pupilId),
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_4.pupilId),
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_5.pupilId),
-                                    SquadPupilCrossRef(squad2.squadId, pupil2_6.pupilId)
-                                )
-                            }
-                        }
-                    }
-                }).build()
+                .build()
     }
 }

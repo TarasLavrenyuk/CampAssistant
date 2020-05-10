@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
         }
 
         // setup squad list
-        val squadListAdapter = SquadListAdapter(context = requireContext())
+        val squadListAdapter = SquadListAdapter()
         fragment_home_squad_list.apply {
             layoutManager = LinearLayoutManager(
                 this@HomeFragment.context,
