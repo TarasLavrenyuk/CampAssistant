@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorOnboardingDescription">#636363</color>
+
+    <color name="borderColor">#01C3FF</color>
+
 </resources>

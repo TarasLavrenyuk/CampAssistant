@@ -6,39 +6,42 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.lavreniuk.campassistant.models.Param
+import com.lavreniuk.campassistant.models.Pupil
+import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.User
+import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
 
 @Database(
-    entities = [User::class, Param::class],
-    version = 5
+    entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class],
+    version = 7
 )
 @TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun paramDao(): ParamDao
+    abstract fun squadDao(): SquadDao
+    abstract fun pupilDao(): PupilDao
+
+    abstract fun squadPupilCrossRefDao(): SquadPupilCrossRefDao
 
     companion object {
-        var INSTANCE: AppDatabase? = null
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
-        fun getAppDataBase(context: Context): AppDatabase {
-            if (INSTANCE == null) {
-                synchronized(this) {
-                    INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,
-                        AppDatabase::class.java,
-                        "campassistant_database"
-                    )
-                        .allowMainThreadQueries()
-                        .fallbackToDestructiveMigration()
-                        .build()
-                }
+        fun getInstance(context: Context): AppDatabase =
+            INSTANCE ?: synchronized(this) {
+                buildDB(context).also { INSTANCE = it }
             }
-            return INSTANCE as AppDatabase
-        }
 
-        fun destroyDataBase() {
-            INSTANCE = null
-        }
+        private fun buildDB(context: Context): AppDatabase =
+            Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java,
+                "campassistant_database"
+            )
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build()
     }
 }

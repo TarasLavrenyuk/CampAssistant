@@ -4,7 +4,7 @@ import androidx.room.TypeConverter
 import com.lavreniuk.campassistant.enums.Gender
 import com.lavreniuk.campassistant.enums.ParameterType
 import com.lavreniuk.campassistant.enums.SocialType
-import java.util.*
+import java.util.Date
 
 class TypeConverters {
 

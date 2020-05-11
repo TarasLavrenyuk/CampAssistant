@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.fragments.CalendarFragment
-import com.lavreniuk.campassistant.fragments.HomeFragment
 import com.lavreniuk.campassistant.fragments.ReportsFragment
 import com.lavreniuk.campassistant.fragments.SquadFragment
+import com.lavreniuk.campassistant.homescreen.HomeFragment
 import com.lavreniuk.campassistant.onboarding.OnboardingActivity
 import com.lavreniuk.campassistant.viewmodels.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*

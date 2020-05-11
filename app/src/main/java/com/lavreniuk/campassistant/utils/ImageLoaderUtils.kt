@@ -14,8 +14,10 @@ import android.provider.MediaStore
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import com.lavreniuk.campassistant.R
-import java.io.*
-import java.util.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.Calendar
 
 object ImageLoaderUtils {
 

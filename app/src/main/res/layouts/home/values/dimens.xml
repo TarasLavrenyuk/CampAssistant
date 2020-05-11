@@ -2,26 +2,28 @@
 <resources>
 
     <dimen name="fragment_home_margin_horizontal">25dp</dimen>
-
     <dimen name="fragment_home_user_avatar_size">60dp</dimen>
     <dimen name="fragment_home_avatar_margin_top">40dp</dimen>
-
     <dimen name="fragment_home_settings_button_size">40dp</dimen>
-
     <dimen name="fragment_home_user_greetings_margin_top">10dp</dimen>
     <dimen name="fragment_home_user_greetings_text_size">25sp</dimen>
-
     <dimen name="fragment_home_poster_margin_top">10dp</dimen>
     <dimen name="fragment_home_poster_text_size">20sp</dimen>
-
     <dimen name="fragment_home_squad_list_layout_margin_top">25dp</dimen>
-
     <dimen name="fragment_home_my_squads_label_text_size">20sp</dimen>
-
     <dimen name="fragment_home_squad_list_margin_top">10dp</dimen>
-
     <dimen name="fragment_home_new_squad_button_margin_top">25dp</dimen>
     <dimen name="fragment_home_new_squad_button_margin_end">50dp</dimen>
 
+    <dimen name="squad_list_item_corner_radius">10dp</dimen>
+    <dimen name="squad_list_item_border_size">3dp</dimen>
+    <dimen name="squad_list_item_width">160dp</dimen>
+    <dimen name="squad_list_item_height">110dp</dimen>
+    <dimen name="squad_list_item_padding">10dp</dimen>
+    <dimen name="squad_list_item_squad_name_height">25dp</dimen>
+    <dimen name="squad_list_item_pupils_number_height">20dp</dimen>
+    <dimen name="squad_list_item_margin_between_items">10dp</dimen>
+
+    <dimen name="squad_list_pupil_list_item_size">30dp</dimen>
 
 </resources>
