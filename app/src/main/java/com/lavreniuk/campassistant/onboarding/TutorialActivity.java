@@ -18,7 +18,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
 import com.lavreniuk.campassistant.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +74,8 @@ public abstract class TutorialActivity extends AppCompatActivity
                 new ViewPager.OnPageChangeListener() {
                     @Override
                     public void onPageScrolled(
-                            int position, float positionOffset, int positionOffsetPixels) {}
+                            int position, float positionOffset, int positionOffsetPixels) {
+                    }
 
                     @Override
                     public void onPageSelected(int position) {
@@ -82,7 +85,8 @@ public abstract class TutorialActivity extends AppCompatActivity
                     }
 
                     @Override
-                    public void onPageScrollStateChanged(int state) {}
+                    public void onPageScrollStateChanged(int state) {
+                    }
                 });
     }
 

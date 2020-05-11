@@ -5,14 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.lavreniuk.campassistant.models.Param
 import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
-import com.lavreniuk.campassistant.utils.ioThread
-import java.util.*
 
 @Database(
     entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class],

@@ -3,7 +3,7 @@ package com.lavreniuk.campassistant.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.lavreniuk.campassistant.utils.GeneratorUtils
-import java.util.*
+import java.util.Date
 
 @Entity(tableName = "squads")
 data class Squad(
