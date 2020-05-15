@@ -16,4 +16,8 @@ data class Pupil(
     var height: Int? = null,
     var weight: Int? = null,
     var blood: String? = null
-)
+) {
+    fun getFullName(): String {
+        return lastName?.let { "$firstName $it" } ?: firstName
+    }
+}

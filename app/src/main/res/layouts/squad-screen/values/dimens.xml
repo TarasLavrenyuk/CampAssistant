@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="squad_activity_margin_top">20dp</dimen>
+    <dimen name="squad_activity_margin_horizontal">30dp</dimen>
+    <dimen name="squad_activity_margin_top_between_dates">10dp</dimen>
+
+    <dimen name="squad_activity_red_spot_margin_top">150dp</dimen>
+    <dimen name="squad_activity_red_spot_margin_end">-70dp</dimen>
+
+</resources>

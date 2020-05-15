@@ -4,9 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.lavreniuk.campassistant.dao.AppDatabase
+import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.crossrefs.SquadWithPupils
 import com.lavreniuk.campassistant.repositories.SquadRepo
 import com.lavreniuk.campassistant.repositories.UserRepo
+import com.lavreniuk.campassistant.utils.ioThread
 
 class HomeViewModel(
     application: Application
@@ -21,4 +23,10 @@ class HomeViewModel(
     val userName: LiveData<String> = userRepo.userName
 
     val squadsWithPupils: LiveData<List<SquadWithPupils>> = squadRepo.squadsWithPupils
+
+    fun createNewSquad(squadName: String): Squad {
+        return Squad(squadName = squadName).also {
+            squadRepo.save(it)
+        }
+    }
 }

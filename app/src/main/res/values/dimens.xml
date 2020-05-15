@@ -9,9 +9,6 @@
     <dimen name="default_button_height">40dp</dimen>
     <dimen name="default_button_padding_horizontal">15dp</dimen>
 
-
-
-
     <dimen name="user_settings_default_padding">25dp</dimen>
     <dimen name="user_name_start_margin">120dp</dimen>
     <dimen name="user_name_top_margin">30dp</dimen>
@@ -40,5 +37,7 @@
 
     <dimen name="main_activity_blue_spot_marginTop">420dp</dimen>
     <dimen name="main_activity_blue_spot_marginStart">-40dp</dimen>
+
+    <dimen name="switcher_height">30dp</dimen>
 
 </resources>

@@ -13,7 +13,7 @@ import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
 
 @Database(
     entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class],
-    version = 7
+    version = 8
 )
 @TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {

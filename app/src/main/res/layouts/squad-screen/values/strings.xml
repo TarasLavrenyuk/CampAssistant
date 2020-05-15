@@ -1,0 +1,6 @@
+<resources>
+
+    <string name="ui_squad_is_active">Squad is active</string>
+    <string name="ui_squad_is_inactive">Squad is inactive</string>
+
+</resources>
