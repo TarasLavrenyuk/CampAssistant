@@ -24,18 +24,24 @@ interface SquadDao : AbstractDao<Squad> {
     @Query("SELECT S.* FROM squads S WHERE S.squadId = :squadId ")
     fun getSquad(squadId: String): LiveData<Squad>
 
+    @Query("SELECT S.* FROM squads S WHERE S.squadId = :squadId ")
+    fun getSquadObject(squadId: String): Squad
+
     @Query("UPDATE squads SET squadName = :newName WHERE squadId = :squadId ")
     fun updateSquadName(squadId: String, newName: String)
 
     @Query("UPDATE squads SET `from` = :from WHERE squadId = :squadId ")
-    fun updateSquadFromDate(squadId: String, from: Date)
+    fun updateSquadFromDate(squadId: String, from: Date?)
 
     @Query("UPDATE squads SET until = :until WHERE squadId = :squadId ")
-    fun updateSquadUntilDate(squadId: String, until: Date)
+    fun updateSquadUntilDate(squadId: String, until: Date?)
 
     @Query("UPDATE squads SET isCurrent = 0 ")
     fun setAllSquadsInactive()
 
     @Query("UPDATE squads SET isCurrent = :isActive WHERE squadId = :squadId ")
     fun setSquadIsActive(squadId: String, isActive: Boolean)
+
+    @Query("DELETE FROM squads WHERE squadId = :squadId ")
+    fun deleteSquad(squadId: String)
 }

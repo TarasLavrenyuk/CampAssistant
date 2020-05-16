@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import com.lavreniuk.campassistant.dao.AppDatabase
 import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.repositories.PupilRepo
+import com.lavreniuk.campassistant.repositories.SquadPupilCrossRefRepo
 import com.lavreniuk.campassistant.repositories.SquadRepo
 import com.lavreniuk.campassistant.utils.ioThread
 import java.util.*
@@ -15,8 +16,9 @@ class SquadViewModel(
 ) : AndroidViewModel(application) {
 
     private val squadRepo: SquadRepo = SquadRepo(AppDatabase.getInstance(application).squadDao())
-
     private val pupilRepo: PupilRepo = PupilRepo(AppDatabase.getInstance(application).pupilDao())
+    private val squadPupilCrossRefRepo: SquadPupilCrossRefRepo =
+        SquadPupilCrossRefRepo(AppDatabase.getInstance(application).squadPupilCrossRefDao())
 
     fun getSquad(squadId: String): LiveData<Squad> = squadRepo.getSquad(squadId)
 
@@ -26,13 +28,13 @@ class SquadViewModel(
         }
     }
 
-    fun updateFromDate(squadId: String, newFromDate: Date) {
+    fun updateFromDate(squadId: String, newFromDate: Date? = null) {
         ioThread {
             squadRepo.updateFromDate(squadId, newFromDate)
         }
     }
 
-    fun updateUntilDate(squadId: String, newUntilDate: Date) {
+    fun updateUntilDate(squadId: String, newUntilDate: Date?) {
         ioThread {
             squadRepo.updateUntilDate(squadId, newUntilDate)
         }
@@ -46,6 +48,15 @@ class SquadViewModel(
             } else {
                 squadRepo.updateSquadIsActive(squadId, false)
             }
+        }
+    }
+
+    fun getSquadObject(squadId: String): Squad? = squadRepo.getSquadObject(squadId)
+
+    fun deleteSquad(squadId: String) {
+        ioThread {
+            squadPupilCrossRefRepo.deletePupilFromSquad(squadId)
+            squadRepo.deleteSquad(squadId)
         }
     }
 }

@@ -61,8 +61,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
+                android:inputType="textNoSuggestions"
+                android:maxLength="@integer/max_squad_name_length"
                 android:singleLine="true"
-                android:text="New squad"
                 android:textColor="@color/colorDarkGrey"
                 android:textStyle="bold" />
 
@@ -89,7 +90,7 @@
             android:textColorHint="@color/colorLightGrey"
             android:textStyle="normal"
             app:boxStrokeWidth="2dp"
-            app:endIconDrawable="@drawable/ic_delete"
+            app:endIconDrawable="@drawable/ic_delete_grey"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/colorLightGrey">
 
@@ -99,7 +100,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:singleLine="true"
-                android:text="01/06/2020"
                 android:textColor="@color/colorDarkGrey"
                 android:textStyle="bold" />
 
@@ -127,7 +127,7 @@
             android:textColorHint="@color/colorLightGrey"
             android:textStyle="normal"
             app:boxStrokeWidth="2dp"
-            app:endIconDrawable="@drawable/ic_delete"
+            app:endIconDrawable="@drawable/ic_delete_grey"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/colorLightGrey">
 
@@ -137,7 +137,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:singleLine="true"
-                android:text="16/06/2020"
                 android:textColor="@color/colorDarkGrey"
                 android:textStyle="bold" />
 
@@ -145,7 +144,7 @@
 
     </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/squad_activity_is_squad_active_switcher"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/switcher_height"
@@ -167,11 +166,21 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/squad_activity_delete_squad_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete squad nahui"
+        android:drawableEnd="@drawable/ic_delete_black"
+        android:layout_below="@id/squad_activity_is_squad_active_switcher"
+        android:layout_marginStart="@dimen/squad_activity_margin_horizontal"
+        android:layout_marginTop="@dimen/squad_activity_margin_top" />
+
     <TextView
         android:id="@+id/squad_activity_children_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/squad_activity_is_squad_active_switcher"
+        android:layout_below="@id/squad_activity_delete_squad_button"
         android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
         android:layout_marginTop="@dimen/squad_activity_margin_top"
         android:fontFamily="@font/helvetica_rounded_bold"
@@ -187,6 +196,5 @@
         android:layout_below="@id/squad_activity_children_label"
         android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
         android:layout_marginTop="@dimen/squad_activity_margin_top" />
-
 
 </RelativeLayout>

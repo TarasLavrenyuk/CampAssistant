@@ -8,14 +8,18 @@ import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.utils.ConverterUtils
 import com.lavreniuk.campassistant.utils.Helpers
 import java.util.Calendar
+import java.util.Date
 
 class DateInputOnClickListener(
-    private val activity: Activity
+    private val activity: Activity,
+    private val initialDate: () -> Date?
 ) : View.OnClickListener {
 
     override fun onClick(view: View?) {
         Helpers.hideKeyboard(activity)
-        val c = Calendar.getInstance()
+        val c = initialDate.invoke()?.let { initDate ->
+            Calendar.getInstance().also { calendar -> calendar.time = initDate }
+        } ?: Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)

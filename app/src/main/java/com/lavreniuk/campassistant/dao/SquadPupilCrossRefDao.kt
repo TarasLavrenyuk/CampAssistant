@@ -9,4 +9,7 @@ interface SquadPupilCrossRefDao : AbstractDao<SquadPupilCrossRef> {
 
     @Query("DELETE FROM squadpupilcrossref")
     override fun deleteAll()
+
+    @Query("DELETE FROM squadpupilcrossref WHERE squadId = :squadId ")
+    fun deletePupilFromSquad(squadId: String)
 }

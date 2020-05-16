@@ -12,14 +12,17 @@ object ConverterUtils {
         return "$day/$month/$year"
     }
 
-    fun fromStringToDate(text: String): Date {
+    fun fromStringToDate(text: String): Date? {
+        if (!isCorrectDateString(text)) {
+            return null
+        }
         val dateArray = text.split("/")
         val calendar = Calendar.getInstance()
         calendar.set(dateArray[2].toInt(), dateArray[1].toInt() - 1, dateArray[0].toInt())
         return calendar.time
     }
 
-    fun isCorrectDateString(dateString: String): Boolean {
+    private fun isCorrectDateString(dateString: String): Boolean {
         return dateString.matches(Regex("\\d{1,2}/\\d{1,2}/\\d{4}"))
     }
 }

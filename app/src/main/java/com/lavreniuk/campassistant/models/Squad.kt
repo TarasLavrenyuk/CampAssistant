@@ -12,6 +12,6 @@ data class Squad(
     var creationDate: Date = Date(),
     var from: Date? = null,
     var until: Date? = null,
-    var isCurrent: Boolean = true,
+    var isCurrent: Boolean = false,
     var photo: String? = null
 )
