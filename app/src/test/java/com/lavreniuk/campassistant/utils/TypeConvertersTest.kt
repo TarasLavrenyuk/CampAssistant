@@ -45,45 +45,37 @@ class TypeConvertersTest {
 
     @ParameterizedTest
     @MethodSource("genderConverterTestData")
-    fun `gender converter test`(gender: Gender?) {
-        val typeConverter = TypeConverters()
+    fun `gender converter test`(gender: Gender?) = with(TypeConverters()) {
         assertEquals(
             gender,
-            typeConverter.fromStringToGender(typeConverter.fromGenderToString(gender))
+            fromStringToGender(fromGenderToString(gender))
         )
     }
 
     @ParameterizedTest
     @MethodSource("dateConverterTestData")
-    fun `date converter test`(date: Date?) {
-        val typeConverter = TypeConverters()
+    fun `date converter test`(date: Date?) = with(TypeConverters()) {
         assertEquals(
             date,
-            typeConverter.fromStringToDate(typeConverter.fromDateToString(date))
+            fromStringToDate(fromDateToString(date))
         )
     }
 
     @ParameterizedTest
     @MethodSource("socialTypeConverterTestData")
-    fun `social type converter test`(socialType: SocialType?) {
-        val typeConverter = TypeConverters()
+    fun `social type converter test`(socialType: SocialType?) = with(TypeConverters()) {
         assertEquals(
             socialType,
-            typeConverter.fromStringToSocialType(typeConverter.fromSocialTypeToString(socialType))
+            fromStringToSocialType(fromSocialTypeToString(socialType))
         )
     }
 
     @ParameterizedTest
     @MethodSource("parameterTypeConverterTestData")
-    fun `parameter type converter test`(parameterType: ParameterType?) {
-        val typeConverter = TypeConverters()
+    fun `parameter type converter test`(parameterType: ParameterType?) = with(TypeConverters()) {
         assertEquals(
             parameterType,
-            typeConverter.fromStringToParameterType(
-                typeConverter.fromParameterTypeToString(
-                    parameterType
-                )
-            )
+            fromStringToParameterType(fromParameterTypeToString(parameterType))
         )
     }
 }
