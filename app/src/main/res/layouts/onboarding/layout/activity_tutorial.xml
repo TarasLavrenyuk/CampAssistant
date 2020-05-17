@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/containerLayout"
+    android:id="@+id/onboarding_activity_container_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
@@ -9,12 +9,12 @@
     android:orientation="vertical">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/onboarding_activity_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <RelativeLayout
-        android:id="@+id/buttonContainer"
+        android:id="@+id/onboarding_activity_button_container"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
@@ -23,7 +23,7 @@
         android:elevation="24dp">
 
         <TextView
-            android:id="@+id/prev"
+            android:id="@+id/onboarding_activity_prev_button"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
 
 
         <TextView
-            android:id="@+id/next"
+            android:id="@+id/onboarding_activity_next_button"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
 
 
         <LinearLayout
-            android:id="@+id/indicatorLayout"
+            android:id="@+id/onboarding_activity_indicator_layout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
