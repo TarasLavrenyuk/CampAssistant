@@ -4,5 +4,9 @@
     <string name="ui_squad_is_inactive">Squad is inactive</string>
     <string name="ui_squad_name_cannot_be_empty">Squad name cannot be empty</string>
     <string name="ui_children_number">Children:</string>
+    <string name="ui_squad_overview">Squad overview</string>
+    <string name="ui_squad_name">Squad name</string>
+    <string name="ui_from">From</string>
+    <string name="ui_until">Until</string>
 
 </resources>

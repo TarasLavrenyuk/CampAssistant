@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     android:fillViewport="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".squadscreen.SquadActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundColor"
-        tools:context=".squadscreen.SquadActivity">
+        android:layout_height="wrap_content">
 
         <com.lavreniuk.campassistant.customviews.RedSpot
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
             android:layout_marginTop="@dimen/squad_activity_margin_top"
             android:fontFamily="@font/helvetica_rounded_bold"
-            android:text="Squad overview"
+            android:text="@string/ui_squad_overview"
             android:textColor="@color/colorAlmostBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:hint="Squad name"
+                android:hint="@string/ui_squad_name"
                 android:textColorHint="@color/colorLightGrey"
                 android:textStyle="normal"
                 app:boxStrokeWidth="2dp"
@@ -92,7 +92,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="From"
+                android:hint="@string/ui_from"
                 android:textColorHint="@color/colorLightGrey"
                 android:textStyle="normal"
                 app:boxStrokeWidth="2dp"
@@ -128,7 +128,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Until"
+                android:hint="@string/ui_until"
 
                 android:textColorHint="@color/colorLightGrey"
                 android:textStyle="normal"
@@ -168,7 +168,6 @@
             android:layout_toEndOf="@id/squad_activity_is_squad_active_switcher"
             android:fontFamily="@font/roboto"
             android:gravity="center_vertical"
-            android:text="Squad is active"
             android:textSize="20sp"
             android:textStyle="bold" />
 
