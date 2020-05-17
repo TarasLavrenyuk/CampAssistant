@@ -8,7 +8,6 @@ import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.crossrefs.SquadWithPupils
 import com.lavreniuk.campassistant.repositories.SquadRepo
 import com.lavreniuk.campassistant.repositories.UserRepo
-import com.lavreniuk.campassistant.utils.ioThread
 
 class HomeViewModel(
     application: Application

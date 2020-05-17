@@ -1,6 +1,6 @@
 package com.lavreniuk.campassistant.squadscreen
 
-import android.content.DialogInterface
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.CompoundButton
 import android.widget.Toast
@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
@@ -25,6 +26,7 @@ class SquadActivity : AppCompatActivity() {
 
     private lateinit var squadId: String
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_squad)
@@ -39,13 +41,18 @@ class SquadActivity : AppCompatActivity() {
         // setup squad list
         val childrenListAdapter = ChildrenListAdapter()
         squad_activity_children_list.apply {
-            layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
+            layoutManager = object : LinearLayoutManager(context) {
+                override fun canScrollHorizontally() = false
+                override fun canScrollVertically() = false
+            }
             adapter = childrenListAdapter
         }
+        squadViewModel.getPupilList(squadId).observe(this, Observer { pupils ->
+            pupils?.let {
+                squad_activity_children_label.text = "${getString(R.string.ui_children_number)} ${it.size}"
+                childrenListAdapter.updatePupilList(it)
+            }
+        })
 
         squad_activity_from_input.doAfterTextChanged {
             with(it.toString()) {
@@ -72,6 +79,7 @@ class SquadActivity : AppCompatActivity() {
         }
 
         squad_activity_delete_squad_button.setOnClickListener {
+            // TODO(Figure out where to display the button)
             showAlertDialogButtonClicked()
         }
     }

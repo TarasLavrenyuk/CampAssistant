@@ -34,7 +34,6 @@ class DateInputOnClickListener(
                 val targetDate = cal.time
 
                 (view as TextView).text = ConverterUtils.fromDateToString(targetDate)
-
             },
             year,
             month,

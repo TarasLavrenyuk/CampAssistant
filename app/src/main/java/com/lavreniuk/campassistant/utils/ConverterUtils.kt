@@ -1,7 +1,7 @@
 package com.lavreniuk.campassistant.utils
 
-import java.util.Date
 import java.util.Calendar
+import java.util.Date
 
 object ConverterUtils {
 

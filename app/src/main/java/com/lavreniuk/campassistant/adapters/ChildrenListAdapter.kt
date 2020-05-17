@@ -27,6 +27,11 @@ class ChildrenListAdapter(
         holder.bind(pupils[position])
     }
 
+    fun updatePupilList(newPupilList: List<Pupil>) {
+        pupils = newPupilList
+        notifyDataSetChanged()
+    }
+
     class ViewHolder(
         inflater: LayoutInflater,
         private val parent: ViewGroup

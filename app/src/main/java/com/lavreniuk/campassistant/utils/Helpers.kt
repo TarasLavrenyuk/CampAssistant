@@ -6,7 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.ContextCompat
-import java.util.*
+import java.util.Date
 
 object Helpers {
 
@@ -27,4 +27,3 @@ object Helpers {
         return ConverterUtils.fromStringToDate(inputField.text.toString())
     }
 }
-

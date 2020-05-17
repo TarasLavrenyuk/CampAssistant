@@ -10,5 +10,4 @@ class SquadPupilCrossRefRepo @Inject constructor(
 ) {
 
     fun deletePupilFromSquad(squadId: String) = squadPupilCrossRefDao.deletePupilFromSquad(squadId)
-
 }

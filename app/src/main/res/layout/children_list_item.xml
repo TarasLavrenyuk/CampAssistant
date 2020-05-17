@@ -3,23 +3,24 @@
     android:id="@+id/children_list_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="10dp">
+    android:layout_marginBottom="@dimen/children_list_item_indent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/children_list_item_kid_avatar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_user_avatar" />
+        android:layout_width="@dimen/children_list_item_kid_avatar_size"
+        android:layout_height="@dimen/children_list_item_kid_avatar_size"
+        android:src="@drawable/ic_default_avatar" />
 
     <TextView
         android:id="@+id/children_list_item_kid_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_alignTop="@id/children_list_item_kid_avatar"
+        android:layout_marginStart="@dimen/children_list_item_kid_name_margin_start"
+        android:layout_marginTop="@dimen/children_list_item_margin_top_for_labels"
         android:layout_toEndOf="@id/children_list_item_kid_avatar"
         android:fontFamily="@font/roboto"
         android:maxLines="1"
-        android:text="Taras Lavreniuk"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -29,10 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/children_list_item_kid_name"
         android:layout_alignStart="@id/children_list_item_kid_name"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/children_list_item_margin_top_for_labels"
         android:fontFamily="@font/roboto"
         android:maxLines="1"
-        android:text="Room 7"
         android:textSize="14sp" />
 
 </RelativeLayout>

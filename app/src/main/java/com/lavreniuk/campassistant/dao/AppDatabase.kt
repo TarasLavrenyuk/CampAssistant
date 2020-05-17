@@ -47,7 +47,38 @@ abstract class AppDatabase : RoomDatabase() {
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onOpen(db: SupportSQLiteDatabase) {
                         ioThread {
-                            getInstance(context).squadDao().deleteAll()
+                            with(getInstance(context)) {
+                                squadDao().deleteAll()
+
+                                val squad = Squad(squadName = "Awesome squad")
+                                squadDao().insert(squad)
+
+                                val pupil1 = Pupil(firstName = "Taras", room = "Room #3")
+                                val pupil2 = Pupil(firstName = "Max", room = "Room #3")
+                                val pupil3 = Pupil(firstName = "Den", room = "Room #3")
+                                val pupil4 = Pupil(firstName = "Kiril", room = "Room #3")
+
+                                squadPupilCrossRefDao().insert(
+                                    SquadPupilCrossRef(
+                                        squadId = squad.squadId,
+                                        pupilId = pupil1.pupilId
+                                    ),
+                                    SquadPupilCrossRef(
+                                        squadId = squad.squadId,
+                                        pupilId = pupil2.pupilId
+                                    ),
+                                    SquadPupilCrossRef(
+                                        squadId = squad.squadId,
+                                        pupilId = pupil3.pupilId
+                                    ),
+                                    SquadPupilCrossRef(
+                                        squadId = squad.squadId,
+                                        pupilId = pupil4.pupilId
+                                    )
+                                )
+
+                                pupilDao().insert(pupil1, pupil2, pupil3, pupil4)
+                            }
                         }
                     }
                 })

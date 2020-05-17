@@ -40,4 +40,10 @@
 
     <dimen name="switcher_height">30dp</dimen>
 
+    <!--  CHILDREN LIST ITEM  -->
+    <dimen name="children_list_item_indent">15dp</dimen>
+    <dimen name="children_list_item_kid_avatar_size">50dp</dimen>
+    <dimen name="children_list_item_kid_name_margin_start">20dp</dimen>
+    <dimen name="children_list_item_margin_top_for_labels">5dp</dimen>
+
 </resources>
