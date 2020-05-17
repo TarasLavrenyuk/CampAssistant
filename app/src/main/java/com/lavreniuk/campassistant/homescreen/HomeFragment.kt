@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.activities.UserSettingsActivity
+import com.lavreniuk.campassistant.squadscreen.SquadActivity
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -74,6 +74,14 @@ class HomeFragment : Fragment() {
         })
 
         fragment_home_new_squad_button.setOnClickListener {
+            startActivity(
+                Intent(context, SquadActivity::class.java).also {
+                    it.putExtra(
+                        getString(R.string.intent_squad_id),
+                        homeViewModel.createNewSquad(getString(R.string.ui_new_squad)).squadId
+                    )
+                }
+            )
         }
     }
 }

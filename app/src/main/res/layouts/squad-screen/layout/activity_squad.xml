@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:fillViewport="false"
+    android:orientation="vertical"
+    tools:context=".squadscreen.SquadActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.lavreniuk.campassistant.customviews.RedSpot
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/squad_activity_red_spot_margin_top"
+            android:layout_marginEnd="@dimen/squad_activity_red_spot_margin_end" />
+
+        <com.lavreniuk.campassistant.customviews.BlueSpot
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/squad_activity_squad_overview_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:text="@string/ui_squad_overview"
+            android:textColor="@color/colorAlmostBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+            android:id="@+id/squad_activity_squad_name_round_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_squad_overview_label"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/squad_activity_squad_name_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="@string/ui_squad_name"
+                android:textColorHint="@color/colorLightGrey"
+                android:textStyle="normal"
+                app:boxStrokeWidth="2dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="@integer/max_squad_name_length"
+                app:hintTextColor="@color/colorLightGrey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/squad_activity_squad_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="@integer/max_squad_name_length"
+                    android:singleLine="true"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+        <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+            android:id="@+id/squad_activity_from_round_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_squad_name_round_layout"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/squad_activity_from_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ui_from"
+                android:textColorHint="@color/colorLightGrey"
+                android:textStyle="normal"
+                app:boxStrokeWidth="2dp"
+                app:endIconDrawable="@drawable/ic_delete_grey"
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/colorLightGrey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/squad_activity_from_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:singleLine="true"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+        <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+            android:id="@+id/squad_activity_until_round_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_from_round_layout"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top_between_dates"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/squad_activity_until_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ui_until"
+
+                android:textColorHint="@color/colorLightGrey"
+                android:textStyle="normal"
+                app:boxStrokeWidth="2dp"
+                app:endIconDrawable="@drawable/ic_delete_grey"
+                app:endIconMode="clear_text"
+                app:hintTextColor="@color/colorLightGrey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/squad_activity_until_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:singleLine="true"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/squad_activity_is_squad_active_switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/switcher_height"
+            android:layout_below="@id/squad_activity_until_round_layout"
+            android:layout_alignStart="@id/squad_activity_squad_name_round_layout"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:theme="@style/SwitcherTheme" />
+
+        <TextView
+            android:id="@+id/squad_activity_is_squad_active_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/switcher_height"
+            android:layout_alignBottom="@id/squad_activity_is_squad_active_switcher"
+            android:layout_marginStart="@dimen/squad_activity_margin_horizontal"
+            android:layout_toEndOf="@id/squad_activity_is_squad_active_switcher"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/squad_activity_delete_squad_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_is_squad_active_switcher"
+            android:layout_marginStart="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:drawableEnd="@drawable/ic_delete_black"
+            android:text="Delete squad nahui" />
+
+        <TextView
+            android:id="@+id/squad_activity_children_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_delete_squad_button"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:textColor="@color/colorAlmostBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/squad_activity_children_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squad_activity_children_label"
+            android:layout_marginHorizontal="@dimen/squad_activity_margin_horizontal"
+            android:layout_marginTop="@dimen/squad_activity_margin_top" />
+
+    </RelativeLayout>
+</ScrollView>

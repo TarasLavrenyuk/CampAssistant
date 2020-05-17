@@ -13,6 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".squadscreen.SquadActivity"
+            android:parentActivityName=".activities.MainActivity" />
 
         <activity android:name=".onboarding.OnboardingActivity" />
 
@@ -25,21 +37,11 @@
             android:name=".activities.RegistrationActivity"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <activity
             android:name=".activities.UserSettingsActivity"
+            android:label="@string/ui_settings"
             android:parentActivityName=".activities.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/ui_settings" />
-
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

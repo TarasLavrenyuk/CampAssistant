@@ -1,5 +1,6 @@
 package com.lavreniuk.campassistant.homescreen
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.models.crossrefs.SquadWithPupils
+import com.lavreniuk.campassistant.squadscreen.SquadActivity
 
 class SquadListAdapter(
     private var squadsWithPupils: List<SquadWithPupils> = listOf()
@@ -50,10 +52,24 @@ class SquadListAdapter(
             itemView.findViewById(R.id.squad_list_item_corner_layout)
 
         fun bind(squadWithPupils: SquadWithPupils) {
+            val context = parent.context
+            layout.setOnClickListener {
+                context.startActivity(
+                    Intent(context, SquadActivity::class.java).apply {
+                        putExtra(
+                            context.getString(R.string.intent_squad_id),
+                            squadWithPupils.squad.squadId
+                        )
+                    }
+                )
+            }
+
             squadNameView.text = squadWithPupils.squad.squadName
             numberOfPupilsView.text = squadWithPupils.getNumberOfChildrenAsString()
             if (squadWithPupils.squad.isCurrent) {
-                layout.setBackgroundColor(parent.context.getColor(R.color.borderColor))
+                layout.setBackgroundColor(context.getColor(R.color.borderColor))
+            } else {
+                layout.setBackgroundColor(context.getColor(R.color.colorWhite))
             }
 
             val squadListPupilListAdapter = SquadListPupilListAdapter(

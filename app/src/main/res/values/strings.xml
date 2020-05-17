@@ -34,4 +34,8 @@
     <!-- PREFERENCES STRINGS -->
     <string name="pref_user_id">user-id</string>
 
+    <!-- INTENTS -->
+    <string name="intent_squad_id">squad-id</string>
+    <string name="intent_new_squad">new-squad</string>
+
 </resources>

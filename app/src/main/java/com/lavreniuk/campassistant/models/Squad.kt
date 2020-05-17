@@ -10,6 +10,8 @@ data class Squad(
     @PrimaryKey val squadId: String = GeneratorUtils.generateUUID(),
     var squadName: String,
     var creationDate: Date = Date(),
-    var isCurrent: Boolean = true,
+    var from: Date? = null,
+    var until: Date? = null,
+    var isCurrent: Boolean = false,
     var photo: String? = null
 )

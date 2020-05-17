@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import com.lavreniuk.campassistant.dao.ParamDao
 import com.lavreniuk.campassistant.models.Param
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ParamRepo @Inject constructor(
     personId: String,
     private val paramDao: ParamDao
