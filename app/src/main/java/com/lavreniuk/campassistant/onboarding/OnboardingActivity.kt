@@ -14,8 +14,8 @@ open class OnboardingActivity : TutorialActivity() {
         super.onCreate(savedInstanceState)
 
         addFragment(
-            PermissionStep.Builder().setTitle("Title permissions")
-                .setContent("Title content")
+            PermissionStep.Builder().setTitle(getString(R.string.ui_permissions_required))
+                .setContent(getString(R.string.ui_permissions_required_description))
                 .setBackgroundColor(
                     Color.parseColor(
                         Helpers.getColorAsStringValue(this, R.color.backgroundColor)
