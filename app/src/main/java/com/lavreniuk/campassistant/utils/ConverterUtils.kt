@@ -22,7 +22,7 @@ object ConverterUtils {
         return calendar.time
     }
 
-    private fun isCorrectDateString(dateString: String): Boolean {
+    fun isCorrectDateString(dateString: String): Boolean {
         return dateString.matches(Regex("\\d{1,2}/\\d{1,2}/\\d{4}"))
     }
 }

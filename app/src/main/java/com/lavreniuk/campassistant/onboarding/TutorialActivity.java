@@ -136,12 +136,12 @@ public abstract class TutorialActivity extends AppCompatActivity
     private void initViews() {
         currentItem = 0;
 
-        pager = findViewById(R.id.viewPager);
-        next = findViewById(R.id.next);
-        prev = findViewById(R.id.prev);
-        indicatorLayout = findViewById(R.id.indicatorLayout);
-        containerLayout = findViewById(R.id.containerLayout);
-        buttonContainer = findViewById(R.id.buttonContainer);
+        pager = findViewById(R.id.onboarding_activity_view_pager);
+        next = findViewById(R.id.onboarding_activity_next_button);
+        prev = findViewById(R.id.onboarding_activity_prev_button);
+        indicatorLayout = findViewById(R.id.onboarding_activity_indicator_layout);
+        containerLayout = findViewById(R.id.onboarding_activity_container_layout);
+        buttonContainer = findViewById(R.id.onboarding_activity_button_container);
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
@@ -194,13 +194,13 @@ public abstract class TutorialActivity extends AppCompatActivity
     @SuppressLint("NewApi")
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.next) {
+        if (v.getId() == R.id.onboarding_activity_next_button) {
             if (controlPermission()) changeFragment(true);
             else
                 requestPermissions(
                         ((PermissionStep) steps.get(pager.getCurrentItem())).getPermissions(),
                         1903);
-        } else if (v.getId() == R.id.prev) {
+        } else if (v.getId() == R.id.onboarding_activity_prev_button) {
             changeFragment(false);
         }
     }

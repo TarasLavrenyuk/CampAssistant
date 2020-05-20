@@ -20,7 +20,7 @@ class RegistrationActivity : AppCompatActivity() {
             val fName = registration_activity_fname_input.text
             fName?.let {
                 if (it.isBlank()) {
-                    registration_activity_fname_input.error =
+                    registration_activity_fname_label.error =
                         getString(R.string.ui_field_cannot_be_empty)
                     return@setOnClickListener
                 }
