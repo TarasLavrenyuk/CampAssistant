@@ -26,7 +26,7 @@
 
     <!--  NAVIGATION STRINGS  -->
     <string name="ui_home">Home</string>
-    <string name="ui_squad">Squad</string>
+    <string name="ui_kids">Kids</string>
     <string name="ui_calendar">Calendar</string>
     <string name="ui_reports">Reports</string>
 

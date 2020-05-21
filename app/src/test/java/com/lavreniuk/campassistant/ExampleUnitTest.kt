@@ -11,6 +11,15 @@ import org.junit.jupiter.api.Test
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val string: String? = null
+//        val string: String? = "zLEG"
+//        val string = ""
+        val res = if (string.isNullOrBlank()) null else { string[0].toUpperCase().toString() }
+//        val res = string?.get(0)?.toUpperCase().toString()
+        if (res == null) {
+            println("null")
+        } else {
+            println("not null: $res")
+        }
     }
 }

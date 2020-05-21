@@ -17,4 +17,7 @@ interface PupilDao : AbstractDao<Pupil> {
         ORDER BY P.lastName ASC """
     )
     fun getPupilList(squadId: String): LiveData<List<Pupil>>
+
+    @Query("SELECT * FROM pupils ")
+    fun getAll(): LiveData<List<Pupil>>
 }

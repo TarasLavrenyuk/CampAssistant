@@ -12,4 +12,6 @@ class PupilRepo @Inject constructor(
 ) {
 
     fun getPupilList(squadId: String): LiveData<List<Pupil>> = pupilDao.getPupilList(squadId)
+
+    fun getAllPupils(): LiveData<List<Pupil>> = pupilDao.getAll()
 }

@@ -14,8 +14,7 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import com.lavreniuk.campassistant.activities.RegistrationActivity
 import com.lavreniuk.campassistant.models.User
-import com.lavreniuk.campassistant.utils.Helpers
-import kotlinx.android.synthetic.main.activity_registration.*
+import com.lavreniuk.campassistant.utils.TestHelpers
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -41,7 +40,7 @@ class RegistrationActivityTest {
 
         onView(withId(R.id.registration_activity_fname_input)).perform(typeText(""))
         onView(withId(R.id.registration_activity_start_label)).perform(click())
-        onView(withId(R.id.registration_activity_fname_label)).check(matches(Helpers.hasErrorText("Field name cannot be empty")))
+        onView(withId(R.id.registration_activity_fname_label)).check(matches(TestHelpers.hasErrorText("Field name cannot be empty")))
 
         onView(withId(R.id.registration_activity_fname_input)).perform(replaceText("   Taras         "))
         onView(withId(R.id.registration_activity_lname_input)).perform(typeText("Lavreniuk"))

@@ -9,8 +9,8 @@ import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 
-class ChildrenListAdapter(
-    private var pupils: List<Pupil> = listOf()
+open class ChildrenListAdapter(
+    protected var pupils: List<Pupil> = listOf()
 ) : RecyclerView.Adapter<ChildrenListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

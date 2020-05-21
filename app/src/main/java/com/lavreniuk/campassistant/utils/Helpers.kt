@@ -27,3 +27,7 @@ object Helpers {
         return ConverterUtils.fromStringToDate(inputField.text.toString())
     }
 }
+
+fun String?.getFirstLetterUpperCase() =
+    if (this.isNullOrBlank()) null
+    else get(0).toUpperCase().toString()

@@ -1,5 +1,6 @@
 package com.lavreniuk.campassistant.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Insert
 
 interface AbstractDao<T> {

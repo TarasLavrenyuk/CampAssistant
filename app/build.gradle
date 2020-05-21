@@ -93,6 +93,9 @@ dependencies {
 
     ktlint "com.pinterest:ktlint:$KTLINT_VERSION"
 
+    // alphabetical recycle view
+    implementation 'com.github.kapilmhr:AlphabetIndexFastScrollRecyclerview:1.0.0'
+
     // Tests
     testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
