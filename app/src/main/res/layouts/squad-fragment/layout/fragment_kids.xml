@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <TextView
+        android:id="@+id/kids_fragment_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Seems like you don't have any kids in the squad yet. Add some!!!" />
+
+    <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+        android:id="@+id/kids_fragment_search_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kids_fragment_poster"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:corner_radius="25dp">
+
+        <SearchView
+            android:id="@+id/kids_fragment_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/colorWhite"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@null"
+            android:queryHint="Search" />
+
+    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+    <fastscroll.app.fastscrollalphabetindex.AlphabetIndexFastScrollRecyclerView
+        android:id="@+id/kids_fragment_kids_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kids_fragment_search_view_layout"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:setIndexBarColorRes="@color/backgroundColor"
+        app:setIndexBarHighlightTextColorRes="@color/colorBlue"
+        app:setIndexBarTextColorRes="@color/colorVeryDark"
+        app:setIndexTextSize="17" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/kids_fragment_add_kid_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorAlmostBlack"
+        app:srcCompat="@drawable/ic_plus"
+        app:tint="@color/colorWhite" />
+
+</RelativeLayout>
+

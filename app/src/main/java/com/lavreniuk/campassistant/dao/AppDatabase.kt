@@ -50,34 +50,68 @@ abstract class AppDatabase : RoomDatabase() {
                             with(getInstance(context)) {
                                 squadDao().deleteAll()
 
-                                val squad = Squad(squadName = "Awesome squad")
+                                val squad = Squad(squadName = "Awesome squad", isCurrent = true)
                                 squadDao().insert(squad)
 
-                                val pupil1 = Pupil(firstName = "Taras", room = "Room #3")
-                                val pupil2 = Pupil(firstName = "Max", room = "Room #3")
-                                val pupil3 = Pupil(firstName = "Den", room = "Room #3")
-                                val pupil4 = Pupil(firstName = "Kiril", room = "Room #3")
-
-                                squadPupilCrossRefDao().insert(
-                                    SquadPupilCrossRef(
-                                        squadId = squad.squadId,
-                                        pupilId = pupil1.pupilId
+                                val pupils = listOf(
+                                    Pupil(
+                                        firstName = "Taras",
+                                        lastName = "Lavreniuk",
+                                        room = "Room #1"
                                     ),
-                                    SquadPupilCrossRef(
-                                        squadId = squad.squadId,
-                                        pupilId = pupil2.pupilId
+                                    Pupil(
+                                        firstName = "Max",
+                                        lastName = "Kovalenko",
+                                        room = "Room #2"
                                     ),
-                                    SquadPupilCrossRef(
-                                        squadId = squad.squadId,
-                                        pupilId = pupil3.pupilId
+                                    Pupil(firstName = "Den", lastName = "Petrov", room = "Room #3"),
+                                    Pupil(
+                                        firstName = "Kiril",
+                                        lastName = "Ivanov",
+                                        room = "Room #4"
                                     ),
-                                    SquadPupilCrossRef(
-                                        squadId = squad.squadId,
-                                        pupilId = pupil4.pupilId
+                                    Pupil(
+                                        firstName = "Arthur",
+                                        lastName = "Jameson",
+                                        room = "Room #1"
+                                    ),
+                                    Pupil(
+                                        firstName = "Cristiano",
+                                        lastName = "Ronaldo",
+                                        room = "Room #1"
+                                    ),
+                                    Pupil(
+                                        firstName = "Leo",
+                                        lastName = "Messo",
+                                        room = "Room #2"
+                                    ),
+                                    Pupil(
+                                        firstName = "Andres",
+                                        lastName = "Iniesta",
+                                        room = "Room #3"
+                                    ),
+                                    Pupil(
+                                        firstName = "Xavi",
+                                        lastName = "Ernandes",
+                                        room = "Room #3"
+                                    ),
+                                    Pupil(
+                                        firstName = "Carles",
+                                        lastName = "Puyol",
+                                        room = "Room #4"
                                     )
                                 )
 
-                                pupilDao().insert(pupil1, pupil2, pupil3, pupil4)
+                                pupils.forEach {
+                                    squadPupilCrossRefDao().insert(
+                                        SquadPupilCrossRef(
+                                            squadId = squad.squadId,
+                                            pupilId = it.pupilId
+                                        )
+                                    )
+                                }
+
+                                pupils.forEach { pupilDao().insert(it) }
                             }
                         }
                     }

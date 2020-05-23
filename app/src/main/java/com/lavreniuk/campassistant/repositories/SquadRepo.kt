@@ -25,11 +25,14 @@ class SquadRepo @Inject constructor(
 
     fun setAllSquadsInactive() = squadDao.setAllSquadsInactive()
 
-    fun updateSquadIsActive(squadId: String, isActive: Boolean = true) = squadDao.setSquadIsActive(squadId, isActive)
+    fun updateSquadIsActive(squadId: String, isActive: Boolean = true) =
+        squadDao.setSquadIsActive(squadId, isActive)
 
     fun save(squad: Squad) = squadDao.insert(squad)
 
     fun getSquadObject(squadId: String): Squad? = squadDao.getSquadObject(squadId)
 
     fun deleteSquad(squadId: String) = squadDao.deleteSquad(squadId)
+
+    fun getActiveSquad(): Squad? = squadDao.getActiveSquad()
 }

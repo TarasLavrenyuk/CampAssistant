@@ -44,4 +44,7 @@ interface SquadDao : AbstractDao<Squad> {
 
     @Query("DELETE FROM squads WHERE squadId = :squadId ")
     fun deleteSquad(squadId: String)
+
+    @Query("SELECT S.* FROM squads S WHERE S.isCurrent = 1 ")
+    fun getActiveSquad(): Squad?
 }
