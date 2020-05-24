@@ -46,7 +46,7 @@
             android:layout_marginTop="@dimen/squad_activity_margin_top"
             android:background="@color/colorWhite"
             android:orientation="horizontal"
-            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+            app:corner_radius="@dimen/item_corner_radius">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/squad_activity_squad_name_layout"
@@ -85,7 +85,7 @@
             android:layout_marginTop="@dimen/squad_activity_margin_top"
             android:background="@color/colorWhite"
             android:orientation="horizontal"
-            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+            app:corner_radius="@dimen/item_corner_radius">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/squad_activity_from_layout"
@@ -121,7 +121,7 @@
             android:layout_marginTop="@dimen/squad_activity_margin_top_between_dates"
             android:background="@color/colorWhite"
             android:orientation="horizontal"
-            app:corner_radius="@dimen/user_info_list_item_corner_radius">
+            app:corner_radius="@dimen/item_corner_radius">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/squad_activity_until_layout"

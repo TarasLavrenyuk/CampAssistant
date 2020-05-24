@@ -36,6 +36,6 @@
 
     <!-- INTENTS -->
     <string name="intent_squad_id">squad-id</string>
-    <string name="intent_new_squad">new-squad</string>
+    <string name="intent_kid_id">squad-id</string>
 
 </resources>

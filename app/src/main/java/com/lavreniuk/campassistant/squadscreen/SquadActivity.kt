@@ -33,8 +33,8 @@ class SquadActivity : AppCompatActivity() {
 
         squadId = intent.getStringExtra(getString(R.string.intent_squad_id))!!
 
-        setUpDateInputField(squad_activity_from_input)
-        setUpDateInputField(squad_activity_until_input)
+        Helpers.setUpDateInputField(squad_activity_from_input, this)
+        Helpers.setUpDateInputField(squad_activity_until_input, this)
 
         init()
 
@@ -82,21 +82,6 @@ class SquadActivity : AppCompatActivity() {
             // TODO(Figure out where to display the button)
             showAlertDialogButtonClicked()
         }
-    }
-
-    private fun setUpDateInputField(inputField: TextInputEditText) {
-        inputField.setOnClickListener(
-            DateInputOnClickListener(
-                activity = this,
-                initialDate = { Helpers.getDateFromInputField(inputField) }
-            )
-        )
-        inputField.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                v.callOnClick()
-            }
-        }
-        inputField.setOnTouchListener(CustomOnTouchListenerForEditTextView())
     }
 
     private fun init() {

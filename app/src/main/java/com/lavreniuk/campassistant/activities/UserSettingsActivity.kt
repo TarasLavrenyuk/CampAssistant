@@ -39,7 +39,7 @@ class UserSettingsActivity : AppCompatActivity() {
                 activity = this,
                 deletePicture = userSettingsViewModel.getUserPhoto()?.let {
                     {
-                        userSettingsViewModel.updateAvatar()
+                        userSettingsViewModel.deleteAvatar()
                     }
                 }
             )

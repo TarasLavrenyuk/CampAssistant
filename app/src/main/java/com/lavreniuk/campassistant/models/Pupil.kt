@@ -10,12 +10,7 @@ data class Pupil(
     @PrimaryKey val pupilId: String = GeneratorUtils.generateUUID(),
     var firstName: String,
     var lastName: String? = null,
-    var room: String? = null,
-    var photo: String? = null,
-    var bDay: Date? = null,
-    var height: Int? = null,
-    var weight: Int? = null,
-    var blood: String? = null
+    var photo: String? = null
 ) {
     fun getFullName(): String {
         return lastName?.let { "$firstName $it" } ?: firstName

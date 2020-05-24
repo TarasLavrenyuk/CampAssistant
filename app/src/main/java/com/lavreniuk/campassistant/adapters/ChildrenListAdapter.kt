@@ -1,16 +1,18 @@
 package com.lavreniuk.campassistant.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.models.Pupil
+import com.lavreniuk.campassistant.kidscreen.KidActivity
+import com.lavreniuk.campassistant.models.dto.PupilWithRoom
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 
 open class ChildrenListAdapter(
-    protected var pupils: List<Pupil> = listOf()
+    protected var pupils: List<PupilWithRoom> = listOf()
 ) : RecyclerView.Adapter<ChildrenListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +29,7 @@ open class ChildrenListAdapter(
         holder.bind(pupils[position])
     }
 
-    fun updatePupilList(newPupilList: List<Pupil>) {
+    fun updatePupilList(newPupilList: List<PupilWithRoom>) {
         pupils = newPupilList
         notifyDataSetChanged()
     }
@@ -41,14 +43,27 @@ open class ChildrenListAdapter(
             itemView.findViewById(R.id.children_list_item_kid_avatar)
         private val kidNameLabel: TextView = itemView.findViewById(R.id.children_list_item_kid_name)
         private val kidRoomLabel: TextView = itemView.findViewById(R.id.children_list_item_kid_room)
+        private val layout: ViewGroup = itemView.findViewById(R.id.children_list_item_layout)
 
-        fun bind(pupil: Pupil) {
+        fun bind(pupil: PupilWithRoom) {
             ImageLoaderUtils.getBitmapFromPath(path = pupil.photo)?.let {
                 kidAvatarView.setImageBitmap(it)
+            } ?: kotlin.run {
+                kidAvatarView.setImageDrawable(parent.context.getDrawable(R.drawable.ic_default_avatar))
             }
+
             kidNameLabel.text = pupil.getFullName()
-            pupil.room?.let {
-                kidRoomLabel.text = it
+
+            kidRoomLabel.text = pupil.room?.let { it } ?: ""
+
+            layout.setOnClickListener {
+                with(parent.context) {
+                    startActivity(
+                        Intent(this, KidActivity::class.java).also {
+                            it.putExtra(getString(R.string.intent_kid_id), pupil.pupilId)
+                        }
+                    )
+                }
             }
         }
     }

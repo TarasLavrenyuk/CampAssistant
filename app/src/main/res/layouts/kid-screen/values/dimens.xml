@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="kid_activity_red_spot_marginEnd">-30dp</dimen>
+    <dimen name="kid_activity_red_spot_marginTop">-30dp</dimen>
+    <dimen name="kid_activity_blue_spot_marginStart">-40dp</dimen>
+    <dimen name="kid_activity_blue_spot_marginTop">450dp</dimen>
+
+</resources>
