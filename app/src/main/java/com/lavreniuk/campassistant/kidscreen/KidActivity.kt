@@ -3,6 +3,7 @@ package com.lavreniuk.campassistant.kidscreen
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,9 +73,22 @@ class KidActivity : AppCompatActivity() {
             kid_activity_kid_name.text = kid.getFullName()
         })
 
-        // setup squad list
+        setUpGeneralInformationList(
+            kid_activity_information_list,
+            kidViewModel.getPupilGeneralParams(kidId)
+        )
+        setUpGeneralInformationList(
+            kid_activity_health_list,
+            kidViewModel.getPupilHealthParams(kidId)
+        )
+    }
+
+    private fun setUpGeneralInformationList(
+        list: RecyclerView,
+        params: LiveData<List<PupilParam>>
+    ) {
         val kidInformationListAdapter = KidInformationListAdapter(activity = this)
-        kid_activity_information_list.apply {
+        list.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = kidInformationListAdapter
 
@@ -98,10 +112,9 @@ class KidActivity : AppCompatActivity() {
             val itemTouchHelper = ItemTouchHelper(swipeHandler)
             itemTouchHelper.attachToRecyclerView(this@apply)
         }
-        kidViewModel.getKidInformationParams(kidId)
-            .observe(this, Observer { params: List<PupilParam> ->
-                kidInformationListAdapter.updateParams(ArrayList(params))
-            })
+        params.observe(this, Observer { params: List<PupilParam> ->
+            kidInformationListAdapter.updateParams(ArrayList(params))
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -115,8 +128,7 @@ class KidActivity : AppCompatActivity() {
     }
 
     private fun updatePupilParams() {
-        val informationListAdapter = kid_activity_information_list.adapter as KidInformationListAdapter
-        kidViewModel.updatePupilParams(informationListAdapter.getPupilParamList())
-
+        kidViewModel.updatePupilParams((kid_activity_information_list.adapter as KidInformationListAdapter).getPupilParamList())
+        kidViewModel.updatePupilParams((kid_activity_health_list.adapter as KidInformationListAdapter).getPupilParamList())
     }
 }

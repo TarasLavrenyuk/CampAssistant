@@ -1,6 +1,8 @@
 package com.lavreniuk.campassistant.kidscreen
 
 import android.app.Activity
+import android.text.InputType
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
@@ -11,6 +13,7 @@ import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.utils.Helpers
+
 
 class KidInformationListAdapter(
     private var pupilParams: ArrayList<PupilParam> = arrayListOf(),
@@ -39,7 +42,7 @@ class KidInformationListAdapter(
 
     class ViewHolder(
         inflater: LayoutInflater,
-        parent: ViewGroup
+        private val parent: ViewGroup
     ) : RecyclerView.ViewHolder(
         inflater.inflate(R.layout.kid_information_list_item, parent, false)
     ) {
@@ -54,6 +57,9 @@ class KidInformationListAdapter(
             pupilParam: PupilParam,
             activity: Activity
         ) {
+            // set param name
+            kidParam.hint = parent.context.getString(pupilParam.paramType.resourceId)
+
             // set param value if exists
             pupilParam.paramValue?.let { kidParamValue.setText(it) }
 
@@ -64,27 +70,32 @@ class KidInformationListAdapter(
                     else kidParamValue.text.toString().trim()
             }
 
+
             when (pupilParam.paramType) {
-                PupilParamType.Room -> {
-                    kidParam.hint = "Room"
-                }
                 PupilParamType.PrimaryNumber -> {
-                    kidParam.hint = "Phone"
                     // TODO: add call number func
                 }
                 PupilParamType.BirthDay -> {
-                    kidParam.hint = "Birthday"
                     Helpers.setUpDateInputField(kidParamValue, activity)
                 }
                 PupilParamType.Number -> {
                     kidParam.hint = pupilParam.paramName
                     canBeRemoved = true
+                    // TODO: add call number func
                 }
                 PupilParamType.Social -> {
-                    kidParam.hint = "Social"
                     canBeRemoved = true
                 }
+
+                PupilParamType.Note -> {
+                    kidParamValue.gravity = Gravity.START
+                    kidParamValue.setSingleLine(false)
+                    kidParamValue.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+
+                }
             }
+
         }
     }
 }

@@ -44,19 +44,17 @@ class KidViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
 
-    fun getKidInformationParams(kidId: String): LiveData<List<PupilParam>> =
-        pupilParamRepo.getPupilParams(kidId)
+    fun getPupilGeneralParams(kidId: String): LiveData<List<PupilParam>> =
+        pupilParamRepo.getPupilGeneralParams(kidId)
+
+    fun getPupilHealthParams(kidId: String): LiveData<List<PupilParam>> =
+        pupilParamRepo.getPupilHealthParams(kidId)
 
     fun deletePupilParamById(pupilParamId: String) = ioThread {
         pupilParamRepo.deleteById(pupilParamId)
     }
 
-    fun updatePupilParams(params: ArrayList<PupilParam>) {
-        ioThread {
-//            params.forEach(pupilParamRepo::updateParam)
-            for (param in params) {
-                pupilParamRepo.updateParam(param)
-            }
-        }
+    fun updatePupilParams(params: ArrayList<PupilParam>) = ioThread {
+        params.forEach(pupilParamRepo::updateParam)
     }
 }

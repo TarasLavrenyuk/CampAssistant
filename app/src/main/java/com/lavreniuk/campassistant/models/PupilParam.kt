@@ -11,7 +11,7 @@ class PupilParam(
     @PrimaryKey
     val pupilParamId: String = GeneratorUtils.generateUUID(),
     var pupilId: String,
-    var paramName: String,
+    var paramName: String? = null,
     var paramValue: String?,
     var paramType: PupilParamType,
     val createdAt: Date = Date()
