@@ -53,6 +53,14 @@ class KidActivity : AppCompatActivity() {
             )
         }
 
+        kidViewModel.getKidPhoto(kidId).observe(this, Observer { pupilPhoto ->
+            ImageLoaderUtils.getBitmapFromPath(pupilPhoto)?.let {
+                kid_activity_kid_avatar.setImageBitmap(it)
+            } ?: run {
+                kid_activity_kid_avatar.setImageDrawable(getDrawable(R.drawable.ic_default_avatar))
+            }
+        })
+
         kidViewModel.getKidPhoto(kidId).observe(this, Observer { kidAvatar ->
             ImageLoaderUtils.getBitmapFromPath(kidAvatar)?.let {
                 kid_activity_kid_avatar.setImageBitmap(it)
@@ -93,12 +101,14 @@ class KidActivity : AppCompatActivity() {
             adapter = kidInformationListAdapter
 
             val swipeHandler = object : SwipeToDeleteCallback(context) {
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) =
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    updatePupilGeneralParams()
                     kidViewModel.deletePupilParamById(
                         kidInformationListAdapter.getItemOnPosition(
                             viewHolder.adapterPosition
                         ).pupilParamId
                     )
+                }
 
                 override fun getMovementFlags(
                     recyclerView: RecyclerView,
@@ -123,12 +133,16 @@ class KidActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        updatePupilParams()
+        updatePupilGeneralParams()
+        updatePupilHealthParams()
         super.onBackPressed()
     }
 
-    private fun updatePupilParams() {
+    private fun updatePupilGeneralParams() {
         kidViewModel.updatePupilParams((kid_activity_information_list.adapter as KidInformationListAdapter).getPupilParamList())
+    }
+
+    private fun updatePupilHealthParams() {
         kidViewModel.updatePupilParams((kid_activity_health_list.adapter as KidInformationListAdapter).getPupilParamList())
     }
 }
