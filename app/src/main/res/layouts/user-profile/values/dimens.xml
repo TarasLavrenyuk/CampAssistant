@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="person_screen_avatar_card_padding">10dp</dimen>
     <dimen name="person_screen_default_padding">25dp</dimen>
     <dimen name="person_screen_user_name_start_margin">120dp</dimen>
     <dimen name="person_screen_user_name_top_margin">30dp</dimen>
