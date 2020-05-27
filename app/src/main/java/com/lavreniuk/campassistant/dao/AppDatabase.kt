@@ -97,7 +97,7 @@ abstract class AppDatabase : RoomDatabase() {
                     pupilId = pupil1.pupilId,
                     paramName = "Mama number",
                     paramValue = "+380679555807",
-                    paramType = PupilParamType.Number
+                    paramType = PupilParamType.Contact
                 )
                 val pupilParam1_5 = PupilParam(
                     pupilId = pupil1.pupilId,

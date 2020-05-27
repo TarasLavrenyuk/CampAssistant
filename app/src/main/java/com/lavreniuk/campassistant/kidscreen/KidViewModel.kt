@@ -57,4 +57,8 @@ class KidViewModel(application: Application) : AndroidViewModel(application) {
     fun updatePupilParams(params: ArrayList<PupilParam>) = ioThread {
         params.forEach(pupilParamRepo::updateParam)
     }
+
+    fun createPupilParam(param: PupilParam) = ioThread {
+        pupilParamRepo.createParam(param)
+    }
 }

@@ -5,13 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.lavreniuk.campassistant.listeners.CustomOnTouchListenerForEditTextView
 import com.lavreniuk.campassistant.listeners.DateInputOnClickListener
-import java.util.Date
+import java.util.*
+
 
 object Helpers {
 
@@ -57,3 +59,20 @@ object Helpers {
 fun String?.getFirstLetterUpperCase() =
     if (this.isNullOrBlank()) null
     else get(0).toUpperCase().toString()
+
+class ShowKeyboard(
+    private val input: EditText,
+    private val activity: Activity
+) : Runnable {
+    override fun run() {
+        input.isFocusableInTouchMode = true
+        input.requestFocusFromTouch()
+        input.requestFocus()
+        activity.window
+            .setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(
+            input,
+            0
+        )
+    }
+}

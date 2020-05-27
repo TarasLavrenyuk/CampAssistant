@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.SwipeToDeleteCallback
+import com.lavreniuk.campassistant.dialogs.Contact
+import com.lavreniuk.campassistant.dialogs.CreateContactContract
 import com.lavreniuk.campassistant.dialogs.EnterNameContract
 import com.lavreniuk.campassistant.dialogs.Name
+import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
@@ -28,6 +31,20 @@ class KidActivity : AppCompatActivity() {
         registerForActivityResult(EnterNameContract()) { name ->
             name?.let {
                 kidViewModel.updateName(kidId, name.fName, name.lName)
+            }
+        }
+
+    private val createContactContractRegistration =
+        registerForActivityResult(CreateContactContract()) { contact ->
+            contact?.let {
+                kidViewModel.createPupilParam(
+                    PupilParam(
+                        pupilId = kidId,
+                        paramType = PupilParamType.Contact,
+                        paramName = it.name,
+                        paramValue = it.value
+                    )
+                )
             }
         }
 
@@ -91,6 +108,10 @@ class KidActivity : AppCompatActivity() {
             kid_activity_health_list,
             kidViewModel.getPupilHealthParams(kidId)
         )
+
+        kids_fragment_add_kid_button.setOnClickListener {
+            createContactContractRegistration.launch(Unit)
+        }
     }
 
     private fun setUpGeneralInformationList(

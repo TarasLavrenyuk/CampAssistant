@@ -58,6 +58,7 @@ class KidInformationListAdapter(
         ) {
             // set param name
             kidParam.hint = parent.context.getString(pupilParam.paramType.resourceId)
+            canBeRemoved = pupilParam.paramType.canBeRemoved
 
             // set param value if exists
             pupilParam.paramValue?.let { kidParamValue.setText(it) }
@@ -76,13 +77,9 @@ class KidInformationListAdapter(
                 PupilParamType.BirthDay -> {
                     Helpers.setUpDateInputField(kidParamValue, activity)
                 }
-                PupilParamType.Number -> {
+                PupilParamType.Contact -> {
                     kidParam.hint = pupilParam.paramName
-                    canBeRemoved = true
-                    // TODO: add call number func
-                }
-                PupilParamType.Social -> {
-                    canBeRemoved = true
+                    // TODO: determine if number and add call number func
                 }
 
                 PupilParamType.Note -> {

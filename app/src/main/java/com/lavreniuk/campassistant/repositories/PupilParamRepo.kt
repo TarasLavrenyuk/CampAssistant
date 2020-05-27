@@ -20,4 +20,6 @@ class PupilParamRepo @Inject constructor(
     fun deleteById(pupilParamId: String) = pupilParamDao.deleteById(pupilParamId)
 
     fun updateParam(param: PupilParam) = pupilParamDao.update(param)
+
+    fun createParam(param: PupilParam) = pupilParamDao.insert(param)
 }

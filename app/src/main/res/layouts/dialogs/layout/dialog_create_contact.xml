@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".dialogs.EnterNameDialog">
+    tools:context=".dialogs.CreateContactDialog">
 
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
         android:layout_width="match_parent"
@@ -15,27 +15,27 @@
         app:corner_radius="@dimen/dialog_corner_radius">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enter_name_dialog_fname_label"
+            android:id="@+id/create_contact_dialog_contact_key_label"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dialog_horizontal_padding"
             android:layout_marginTop="@dimen/dialog_vertical_padding"
-            android:hint="@string/ui_fname"
+            android:hint="@string/ui_contact_name"
             android:textColorHint="@color/colorLightGrey"
             app:boxStrokeColor="@color/colorLightGrey"
             app:boxStrokeWidth="2dp"
             app:counterEnabled="true"
-            app:counterMaxLength="15"
+            app:counterMaxLength="25"
             app:errorTextColor="@color/colorRed"
             app:hintTextColor="@color/colorLightGrey">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/enter_name_dialog_fname_input"
+                android:id="@+id/create_contact_dialog_contact_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:maxLength="15"
+                android:maxLength="25"
                 android:paddingTop="15dp"
                 android:singleLine="true"
                 android:textColor="@color/colorDarkGrey"
@@ -43,14 +43,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enter_name_dialog_lname_label"
+            android:id="@+id/create_contact_dialog_contact_value_label"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/enter_name_dialog_fname_label"
+            android:layout_below="@id/create_contact_dialog_contact_key_label"
             android:layout_marginHorizontal="@dimen/dialog_horizontal_padding"
             android:layout_marginTop="@dimen/dialog_vertical_padding"
-            android:hint="@string/ui_last_name"
+            android:hint="@string/ui_value"
             android:textColorHint="@color/colorLightGrey"
             app:boxStrokeColor="@color/colorLightGrey"
             app:boxStrokeWidth="2dp"
@@ -59,7 +59,7 @@
             app:hintTextColor="@color/colorLightGrey">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/enter_name_dialog_lname_input"
+                android:id="@+id/create_contact_dialog_contact_value_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
@@ -71,21 +71,20 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/enter_name_dialog_start_label"
+            android:id="@+id/create_contact_dialog_create_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/enter_name_dialog_lname_label"
+            android:layout_below="@id/create_contact_dialog_contact_value_label"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dialog_vertical_padding"
             android:layout_marginEnd="@dimen/dialog_horizontal_padding"
             android:layout_marginBottom="@dimen/dialog_vertical_padding"
             android:clickable="true"
             android:fontFamily="@font/helvetica_rounded_bold"
-            android:text="@string/ui_submit"
+            android:text="@string/ui_create"
             android:textColor="@color/colorBlue"
             android:textSize="20sp" />
 
     </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
-
 
 </RelativeLayout>

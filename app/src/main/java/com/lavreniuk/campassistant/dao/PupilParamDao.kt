@@ -23,11 +23,8 @@ interface PupilParamDao : AbstractDao<PupilParam> {
                 WHEN 'BirthDay'
                 THEN 3
 
-                WHEN 'Number'
+                WHEN 'Contact'
                 THEN 4
-
-                WHEN 'Social'
-                THEN 5
 
                 END
             ) ASC, createdAt DESC

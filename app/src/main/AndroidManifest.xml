@@ -34,6 +34,10 @@
             android:excludeFromRecents="true"
             android:theme="@style/DialogTheme" />
         <activity
+            android:name=".dialogs.CreateContactDialog"
+            android:excludeFromRecents="true"
+            android:theme="@style/DialogTheme" />
+        <activity
             android:name=".activities.RegistrationActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
