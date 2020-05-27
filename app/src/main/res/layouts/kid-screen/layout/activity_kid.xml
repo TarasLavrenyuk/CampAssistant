@@ -44,6 +44,35 @@
 
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kid_activity_avatar_card_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/kid_activity_red_spot_marginTop"
+        android:layout_marginEnd="@dimen/kid_activity_red_spot_marginEnd"
+        android:src="@drawable/red_spot" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/kid_activity_blue_spot_marginStart"
+        android:layout_marginTop="@dimen/kid_activity_blue_spot_marginTop"
+        android:src="@drawable/blue_spot" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/kids_fragment_add_kid_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/kid_activity_avatar_card_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/colorAlmostBlack"
+        app:backgroundTint="@color/colorAlmostBlack"
+        app:srcCompat="@drawable/ic_plus"
+        app:tint="@color/colorWhite" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,21 +81,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/kid_activity_red_spot_marginTop"
-                android:layout_marginEnd="@dimen/kid_activity_red_spot_marginEnd"
-                android:src="@drawable/red_spot" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/kid_activity_blue_spot_marginStart"
-                android:layout_marginTop="@dimen/kid_activity_blue_spot_marginTop"
-                android:src="@drawable/blue_spot" />
 
             <TextView
                 android:id="@+id/kid_activity_information_label"
@@ -115,17 +129,5 @@
 
         </RelativeLayout>
     </ScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/kids_fragment_add_kid_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/kid_activity_avatar_card_view"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-30dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/colorAlmostBlack"
-        app:srcCompat="@drawable/ic_plus"
-        app:tint="@color/colorWhite" />
 
 </RelativeLayout>
