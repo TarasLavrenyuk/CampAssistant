@@ -1,5 +1,7 @@
 package com.lavreniuk.campassistant.kidscreen
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,7 @@ import com.lavreniuk.campassistant.dialogs.Name
 import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
+import com.lavreniuk.campassistant.utils.RequestCodes
 import kotlinx.android.synthetic.main.activity_kid.*
 
 class KidActivity : AppCompatActivity() {
@@ -143,5 +146,29 @@ class KidActivity : AppCompatActivity() {
 
     private fun updatePupilHealthParams() {
         kidViewModel.updatePupilParams((kid_activity_health_list.adapter as KidInformationListAdapter).getPupilParamList())
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == 0) return
+
+        when (requestCode) {
+            RequestCodes.REQUEST_CODE_PHOTO_FROM_GALLERY -> {
+                kidViewModel.updateAvatar(
+                    kidId,
+                    ImageLoaderUtils.saveImage(
+                        ImageLoaderUtils.getBitmapFromGalleryUri(contentResolver, data!!.data)
+                    )
+                )
+            }
+            RequestCodes.REQUEST_CODE_PHOTO_FROM_CAMERA -> {
+                kidViewModel.updateAvatar(
+                    kidId,
+                    ImageLoaderUtils.saveImage(
+                        data?.extras?.get("data") as Bitmap
+                    )
+                )
+            }
+        }
     }
 }
