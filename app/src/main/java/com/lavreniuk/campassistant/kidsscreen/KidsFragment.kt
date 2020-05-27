@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
 import kotlinx.android.synthetic.main.fragment_kids.*
 
-
 class KidsFragment : Fragment() {
 
     private val viewModel: KidsViewModel by viewModels()
@@ -56,7 +55,7 @@ class KidsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.action_bar, menu);
+        inflater.inflate(R.menu.action_bar, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -4,5 +4,4 @@ enum class PupilOrder {
 
     LastName,
     Room
-
 }

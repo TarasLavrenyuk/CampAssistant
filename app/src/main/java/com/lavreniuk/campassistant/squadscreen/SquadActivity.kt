@@ -11,11 +11,8 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
-import com.google.android.material.textfield.TextInputEditText
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.ChildrenListAdapter
-import com.lavreniuk.campassistant.listeners.CustomOnTouchListenerForEditTextView
-import com.lavreniuk.campassistant.listeners.DateInputOnClickListener
 import com.lavreniuk.campassistant.utils.ConverterUtils
 import com.lavreniuk.campassistant.utils.Helpers
 import kotlinx.android.synthetic.main.activity_squad.*

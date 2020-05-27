@@ -14,7 +14,6 @@ import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.utils.Helpers
 
-
 class KidInformationListAdapter(
     private var pupilParams: ArrayList<PupilParam> = arrayListOf(),
     private val activity: Activity
@@ -70,7 +69,6 @@ class KidInformationListAdapter(
                     else kidParamValue.text.toString().trim()
             }
 
-
             when (pupilParam.paramType) {
                 PupilParamType.PrimaryNumber -> {
                     // TODO: add call number func
@@ -92,10 +90,8 @@ class KidInformationListAdapter(
                     kidParamValue.setSingleLine(false)
                     kidParamValue.inputType =
                         InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-
                 }
             }
-
         }
     }
 }

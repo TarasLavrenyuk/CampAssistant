@@ -17,7 +17,6 @@ import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import kotlinx.android.synthetic.main.activity_kid.*
 
-
 class KidActivity : AppCompatActivity() {
 
     private val kidViewModel: KidViewModel by viewModels()
