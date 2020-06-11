@@ -46,5 +46,8 @@ interface SquadDao : AbstractDao<Squad> {
     fun deleteSquad(squadId: String)
 
     @Query("SELECT S.* FROM squads S WHERE S.isCurrent = 1 ")
-    fun getActiveSquad(): Squad?
+    fun getActiveSquadObject(): Squad?
+
+    @Query("SELECT S.* FROM squads S WHERE S.isCurrent = 1 ")
+    fun getActiveSquad(): LiveData<Squad>
 }

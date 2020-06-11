@@ -13,6 +13,7 @@ class SquadRepo @Inject constructor(
     private val squadDao: SquadDao
 ) {
     val squadsWithPupils: LiveData<List<SquadWithPupils>> = squadDao.getSquadsWithPupils()
+    val activeSquad: LiveData<Squad> = squadDao.getActiveSquad()
 
     fun updateSquadName(squadId: String, newName: String) =
         squadDao.updateSquadName(squadId, newName)
@@ -34,5 +35,5 @@ class SquadRepo @Inject constructor(
 
     fun deleteSquad(squadId: String) = squadDao.deleteSquad(squadId)
 
-    fun getActiveSquad(): Squad? = squadDao.getActiveSquad()
+    fun getActiveSquadObject(): Squad? = squadDao.getActiveSquadObject()
 }

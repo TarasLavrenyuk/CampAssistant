@@ -27,7 +27,7 @@ class PupilRepo @Inject constructor(
 
     fun getPupilAvatar(pupilId: String): LiveData<String> = pupilDao.getPupilAvatar(pupilId)
 
-    fun update(pupil: Pupil) {
-        pupilDao.update(pupil)
-    }
+    fun update(pupil: Pupil) = pupilDao.update(pupil)
+
+    fun save(pupil: Pupil) = pupilDao.insert(pupil)
 }

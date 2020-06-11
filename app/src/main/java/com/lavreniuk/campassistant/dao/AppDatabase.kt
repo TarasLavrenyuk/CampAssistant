@@ -17,7 +17,7 @@ import com.lavreniuk.campassistant.utils.ioThread
 
 @Database(
     entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class, PupilParam::class],
-    version = 10
+    version = 11
 )
 @TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -27,7 +27,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun squadDao(): SquadDao
     abstract fun pupilDao(): PupilDao
     abstract fun pupilParamDao(): PupilParamDao
-
     abstract fun squadPupilCrossRefDao(): SquadPupilCrossRefDao
 
     companion object {

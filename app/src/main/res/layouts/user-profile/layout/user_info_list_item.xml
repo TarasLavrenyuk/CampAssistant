@@ -15,17 +15,17 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_info_list_param"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:endIconMode="custom"
-            app:endIconDrawable="@drawable/ic_plus"
-            app:endIconContentDescription="Kakayato huinya"
-
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-            app:boxStrokeWidth="2dp"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
             android:textColorHint="@color/colorLightGrey"
             android:textStyle="normal"
+
+            app:boxStrokeWidth="2dp"
+            app:endIconContentDescription="Kakayato huinya"
+            app:endIconDrawable="@drawable/ic_plus"
+            app:endIconMode="custom"
             app:hintTextAppearance="@style/UserSetting.UserParams.Caption"
             app:hintTextColor="@color/colorLightGrey">
 

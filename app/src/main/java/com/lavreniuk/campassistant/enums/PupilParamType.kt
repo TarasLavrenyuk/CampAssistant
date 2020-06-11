@@ -12,7 +12,7 @@ enum class PupilParamType(val resourceId: Int, val canBeRemoved: Boolean) {
     // Health params
     Height(resourceId = R.string.ui_pupil_param_height, canBeRemoved = false),
     Weight(resourceId = R.string.ui_pupil_param_weight, canBeRemoved = false),
-    Blood(resourceId = R.string.ui_pupil_param_blood, canBeRemoved = true),
+    Blood(resourceId = R.string.ui_pupil_param_blood, canBeRemoved = false),
     Note(resourceId = R.string.ui_pupil_param_note, canBeRemoved = false);
 
     companion object {

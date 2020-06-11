@@ -12,8 +12,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.lavreniuk.campassistant.listeners.CustomOnTouchListenerForEditTextView
 import com.lavreniuk.campassistant.listeners.DateInputOnClickListener
-import java.util.*
-
+import java.util.Date
 
 object Helpers {
 

@@ -22,4 +22,6 @@ class PupilParamRepo @Inject constructor(
     fun updateParam(param: PupilParam) = pupilParamDao.update(param)
 
     fun createParam(param: PupilParam) = pupilParamDao.insert(param)
+
+    fun save(pupilParams: List<PupilParam>) = pupilParamDao.insert(*pupilParams.toTypedArray())
 }
