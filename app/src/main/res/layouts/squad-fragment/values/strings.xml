@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="ui_seems_like_there_is_no_kids_yet_in_the_squad">
+        Seems like you don\'t have any kids in %1$s yet. Add them!!!
+    </string>
+
+    <string name="ui_seems_like_there_is_no_kids_yet">
+        Seems like you don\'t have any kids yet.
+    </string>
+
+</resources>

@@ -47,11 +47,23 @@ class KidsFragment : Fragment() {
             adapter = squadPupilsListAdapter
         }
         viewModel.pupilList.observe(viewLifecycleOwner, Observer { pupils ->
-            if (pupils.isNullOrEmpty()) {
-                squadPupilsListAdapter.updatePupilList(listOf())
-                kids_fragment_poster.visibility = View.VISIBLE
+            if (pupils.isEmpty()) {
                 kids_fragment_search_view_layout.visibility = View.GONE
                 kids_fragment_kids_list.visibility = View.GONE
+
+                kids_fragment_poster.visibility = View.VISIBLE
+
+                val currentSquad = viewModel.currentSquad.value
+                if (currentSquad == null) {
+                    kids_fragment_poster.text = getString(
+                        R.string.ui_seems_like_there_is_no_kids_yet
+                    )
+                } else {
+                    kids_fragment_poster.text = getString(
+                        R.string.ui_seems_like_there_is_no_kids_yet_in_the_squad,
+                        currentSquad.squadName
+                    )
+                }
             } else {
                 squadPupilsListAdapter.updatePupilList(pupils)
                 kids_fragment_poster.visibility = View.GONE

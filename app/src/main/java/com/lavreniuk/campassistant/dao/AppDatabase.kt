@@ -62,7 +62,7 @@ abstract class AppDatabase : RoomDatabase() {
                 pupilDao().deleteAll()
                 pupilParamDao().deleteAll()
 
-                val squad = Squad(squadName = "Awesome squad", isCurrent = true)
+                val squad = Squad(squadName = "Awesome squad", isCurrent = false)
                 val squad1 = Squad(squadName = "Zhabeniata")
                 squadDao().insert(squad, squad1)
 
@@ -178,15 +178,15 @@ abstract class AppDatabase : RoomDatabase() {
 //                    paramType = PupilParamType.Room
 //                )
 
-                pupilParamDao().insert(
-                    pupilParam1_1,
-                    pupilParam1_2,
-                    pupilParam1_3,
-                    pupilParam1_4,
-                    pupilParam1_5,
-                    pupilParam1_6,
-                    pupilParam1_7,
-                    pupilParam1_8
+//                pupilParamDao().insert(
+//                    pupilParam1_1,
+//                    pupilParam1_2,
+//                    pupilParam1_3,
+//                    pupilParam1_4,
+//                    pupilParam1_5,
+//                    pupilParam1_6,
+//                    pupilParam1_7,
+//                    pupilParam1_8
 //                    pupilParam2,
 //                    pupilParam3,
 //                    pupilParam4,
@@ -196,10 +196,10 @@ abstract class AppDatabase : RoomDatabase() {
 //                    pupilParam8,
 //                    pupilParam9,
 //                    pupilParam10
-                )
+//                )
 
-                val pupils = listOf(
-                    pupil1
+                val pupils: List<Pupil> = listOf(
+//                    pupil1
 //                    pupil2,
 //                    pupil3,
 //                    pupil4,
