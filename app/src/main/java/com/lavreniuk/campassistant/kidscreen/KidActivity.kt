@@ -109,7 +109,7 @@ class KidActivity : AppCompatActivity() {
             kidViewModel.getPupilHealthParams(kidId)
         )
 
-        kids_fragment_add_kid_button.setOnClickListener {
+        kid_activity_add_kid_param_button.setOnClickListener {
             createContactContractRegistration.launch(Unit)
         }
     }

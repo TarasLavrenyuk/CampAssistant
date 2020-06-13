@@ -61,7 +61,7 @@
         android:src="@drawable/blue_spot" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/kids_fragment_add_kid_button"
+        android:id="@+id/kid_activity_add_kid_param_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_below="@id/kid_activity_avatar_card_view"

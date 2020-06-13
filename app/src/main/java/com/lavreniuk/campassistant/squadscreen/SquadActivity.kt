@@ -1,6 +1,7 @@
 package com.lavreniuk.campassistant.squadscreen
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.CompoundButton
 import android.widget.Toast
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.adapters.ChildrenListAdapter
+import com.lavreniuk.campassistant.kidscreen.KidActivity
 import com.lavreniuk.campassistant.utils.ConverterUtils
 import com.lavreniuk.campassistant.utils.Helpers
 import kotlinx.android.synthetic.main.activity_squad.*
@@ -35,21 +37,8 @@ class SquadActivity : AppCompatActivity() {
 
         init()
 
-        // setup squad list
-        val childrenListAdapter = ChildrenListAdapter()
-        squad_activity_children_list.apply {
-            layoutManager = object : LinearLayoutManager(context) {
-                override fun canScrollHorizontally() = false
-                override fun canScrollVertically() = false
-            }
-            adapter = childrenListAdapter
-        }
-        squadViewModel.getPupilList(squadId).observe(this, Observer { pupils ->
-            pupils?.let {
-                squad_activity_children_label.text = "${getString(R.string.ui_children_number)} ${it.size}"
-                childrenListAdapter.updatePupilList(it)
-            }
-        })
+        setUpSquadList()
+        setUpCreatePupilButton()
 
         squad_activity_from_input.doAfterTextChanged {
             with(it.toString()) {
@@ -79,6 +68,37 @@ class SquadActivity : AppCompatActivity() {
             // TODO(Figure out where to display the button)
             showAlertDialogButtonClicked()
         }
+    }
+
+    private fun setUpCreatePupilButton() {
+        squad_activity_add_kid_button.setOnClickListener {
+            squadViewModel.createNewKid(squadId)?.let { newPupilId ->
+                startActivity(
+                    Intent(this, KidActivity::class.java).also {
+                        it.putExtra(getString(R.string.intent_kid_id), newPupilId)
+                    }
+                )
+            }
+        }
+    }
+
+    private fun setUpSquadList() {
+        // setup squad list
+        val childrenListAdapter = ChildrenListAdapter()
+        squad_activity_children_list.apply {
+            layoutManager = object : LinearLayoutManager(context) {
+                override fun canScrollHorizontally() = false
+                override fun canScrollVertically() = false
+            }
+            adapter = childrenListAdapter
+        }
+        squadViewModel.getPupilList(squadId).observe(this, Observer { pupils ->
+            pupils?.let {
+                squad_activity_children_label.text =
+                    "${getString(R.string.ui_children_number)} ${it.size}"
+                childrenListAdapter.updatePupilList(it)
+            }
+        })
     }
 
     private fun init() {
