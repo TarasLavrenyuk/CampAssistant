@@ -14,7 +14,10 @@ import java.util.ArrayList
 
 class KidViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val pupilRepo: PupilRepo = PupilRepo(AppDatabase.getInstance(application).pupilDao())
+    private val pupilRepo: PupilRepo = PupilRepo(
+        AppDatabase.getInstance(application).pupilDao(),
+        AppDatabase.getInstance(application).squadDao()
+    )
     private val pupilParamRepo: PupilParamRepo =
         PupilParamRepo(AppDatabase.getInstance(application).pupilParamDao())
 

@@ -2,11 +2,11 @@ package com.lavreniuk.campassistant.kidsscreen
 
 import android.widget.SectionIndexer
 import com.lavreniuk.campassistant.adapters.ChildrenListAdapter
-import com.lavreniuk.campassistant.models.dto.PupilWithRoom
+import com.lavreniuk.campassistant.models.dto.PupilWithInfo
 import com.lavreniuk.campassistant.utils.getFirstLetterUpperCase
 
 class ChildrenListAlphabeticalAdapter(
-    pupils: List<PupilWithRoom> = listOf()
+    pupils: List<PupilWithInfo> = listOf()
 ) : ChildrenListAdapter(pupils), SectionIndexer {
 
     private lateinit var mSectionPositions: ArrayList<Int>
@@ -14,7 +14,7 @@ class ChildrenListAlphabeticalAdapter(
     override fun getSections(): Array<String> {
         val sections = mutableListOf<String>()
         mSectionPositions = arrayListOf()
-        pupils.forEachIndexed { index: Int, pupil: PupilWithRoom ->
+        pupils.forEachIndexed { index: Int, pupil: PupilWithInfo ->
             pupil.lastName.getFirstLetterUpperCase()?.let { section ->
                 if (!sections.contains(section)) {
                     sections.add(section)

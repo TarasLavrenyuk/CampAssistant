@@ -10,7 +10,7 @@ import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.models.PupilParam
 import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
-import com.lavreniuk.campassistant.models.dto.PupilWithRoom
+import com.lavreniuk.campassistant.models.dto.PupilWithInfo
 import com.lavreniuk.campassistant.repositories.PupilParamRepo
 import com.lavreniuk.campassistant.repositories.PupilRepo
 import com.lavreniuk.campassistant.repositories.SquadPupilCrossRefRepo
@@ -19,7 +19,10 @@ import com.lavreniuk.campassistant.utils.ioThread
 
 class KidsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val pupilRepo: PupilRepo = PupilRepo(AppDatabase.getInstance(application).pupilDao())
+    private val pupilRepo: PupilRepo = PupilRepo(
+        AppDatabase.getInstance(application).pupilDao(),
+        AppDatabase.getInstance(application).squadDao()
+    )
     private val pupilParamRepo: PupilParamRepo =
         PupilParamRepo(AppDatabase.getInstance(application).pupilParamDao())
     private val squadRepo: SquadRepo = SquadRepo(AppDatabase.getInstance(application).squadDao())
@@ -28,48 +31,52 @@ class KidsViewModel(application: Application) : AndroidViewModel(application) {
 
     val currentSquad: LiveData<Squad> = squadRepo.activeSquad
 
-    val pupils = MediatorLiveData<List<PupilWithRoom>>()
-    private var currentOrder: PupilOrder = PupilOrder.LastName
+    val pupilList = MediatorLiveData<List<PupilWithInfo>>()
+    private var squadPupilsOrder: PupilOrder = PupilOrder.LastName
 
     init {
-        pupils.addSource(getPupils()) { result: List<PupilWithRoom>? ->
-            result?.let { pupils.value = sortPupils(it, currentOrder) }
+        pupilList.addSource(pupilRepo.pupilsOfCurrentSquadWithRooms) { pupils: List<PupilWithInfo>? ->
+            if (pupils == null) {
+                pupilList.value =
+                    sortSquadPupils(pupilRepo.getAllPupilsWithSquadsObjects(), squadPupilsOrder)
+            } else {
+                pupilList.value = sortSquadPupils(pupils, squadPupilsOrder)
+            }
         }
     }
 
-    private fun getPupils(): LiveData<List<PupilWithRoom>> =
-        squadRepo.getActiveSquadObject()?.let { currentSquad ->
-            pupilRepo.getSquadPupilsWithRooms(currentSquad.squadId)
-        } ?: pupilRepo.getAllPupilsWithRooms()
+    fun rearrangePupils(newOrder: PupilOrder) = pupilList.value?.let {
+        pupilList.value = sortSquadPupils(it, newOrder)
+    }.also { squadPupilsOrder = newOrder }
 
-    fun rearrangePupils(newOrder: PupilOrder) = pupils.value?.let {
-        pupils.value = sortPupils(it, newOrder)
-    }.also { currentOrder = newOrder }
-
-    private fun sortPupils(pupils: List<PupilWithRoom>, order: PupilOrder): List<PupilWithRoom> =
+    /**
+     * Method sorts squad pupils list.
+     */
+    private fun sortSquadPupils(
+        pupils: List<PupilWithInfo>,
+        order: PupilOrder
+    ): List<PupilWithInfo> =
         when (order) {
             PupilOrder.LastName -> {
                 pupils.sortedWith(compareBy { it.lastName })
             }
-            PupilOrder.Room -> {
-                pupils.sortedWith(compareBy { it.room })
+            PupilOrder.Info -> {
+                pupils.sortedWith(compareBy { it.info })
             }
         }
 
     fun changeOrder() {
-        if (currentOrder == PupilOrder.LastName) {
-            rearrangePupils(PupilOrder.Room)
+        if (squadPupilsOrder == PupilOrder.LastName) {
+            rearrangePupils(PupilOrder.Info)
             return
         }
-        if (currentOrder == PupilOrder.Room) {
+        if (squadPupilsOrder == PupilOrder.Info) {
             rearrangePupils(PupilOrder.LastName)
             return
         }
     }
 
-    fun createNewKid(): String? {
-        val squad = squadRepo.getActiveSquadObject() ?: return null
-
+    fun createNewKid(squadId: String): String? {
         val newPupil = Pupil(
             firstName = "New pupil"
         ).also {
@@ -78,7 +85,7 @@ class KidsViewModel(application: Application) : AndroidViewModel(application) {
                 pupilParamRepo.save(PupilParam.createInitPupilParams(it.pupilId))
                 squadPupilCrossRefDao.save(
                     SquadPupilCrossRef(
-                        squadId = squad.squadId,
+                        squadId = squadId,
                         pupilId = it.pupilId
                     )
                 )

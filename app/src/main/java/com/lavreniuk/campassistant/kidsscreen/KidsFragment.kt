@@ -36,34 +36,39 @@ class KidsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // setup squad list
-        val squadListAdapter = ChildrenListAlphabeticalAdapter()
+        setUpPupilList()
+        setUpAddKidButton()
+    }
+
+    private fun setUpPupilList() {
+        val squadPupilsListAdapter = ChildrenListAlphabeticalAdapter()
         kids_fragment_kids_list.apply {
             layoutManager = LinearLayoutManager(this@KidsFragment.context)
-            adapter = squadListAdapter
+            adapter = squadPupilsListAdapter
         }
-        viewModel.pupils.observe(viewLifecycleOwner, Observer { pupils ->
+        viewModel.pupilList.observe(viewLifecycleOwner, Observer { pupils ->
             if (pupils.isNullOrEmpty()) {
-                squadListAdapter.updatePupilList(listOf())
+                squadPupilsListAdapter.updatePupilList(listOf())
                 kids_fragment_poster.visibility = View.VISIBLE
                 kids_fragment_search_view_layout.visibility = View.GONE
                 kids_fragment_kids_list.visibility = View.GONE
             } else {
-                squadListAdapter.updatePupilList(pupils)
+                squadPupilsListAdapter.updatePupilList(pupils)
                 kids_fragment_poster.visibility = View.GONE
                 kids_fragment_search_view_layout.visibility = View.VISIBLE
                 kids_fragment_kids_list.visibility = View.VISIBLE
             }
         })
+    }
 
-        // setup addKid button
+    private fun setUpAddKidButton() {
         viewModel.currentSquad.observe(viewLifecycleOwner, Observer { activeSquad ->
             if (activeSquad == null) {
                 kids_fragment_add_kid_button.visibility = LinearLayout.GONE
             } else {
                 kids_fragment_add_kid_button.visibility = LinearLayout.VISIBLE
                 kids_fragment_add_kid_button.setOnClickListener {
-                    viewModel.createNewKid()?.let { newPupilId ->
+                    viewModel.createNewKid(activeSquad.squadId)?.let { newPupilId ->
                         startActivity(
                             Intent(this@KidsFragment.context, KidActivity::class.java).also {
                                 it.putExtra(getString(R.string.intent_kid_id), newPupilId)
@@ -72,9 +77,7 @@ class KidsFragment : Fragment() {
                     }
                 }
             }
-        }
-
-        )
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

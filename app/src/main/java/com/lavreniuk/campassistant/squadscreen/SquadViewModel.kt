@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.lavreniuk.campassistant.dao.AppDatabase
 import com.lavreniuk.campassistant.models.Squad
-import com.lavreniuk.campassistant.models.dto.PupilWithRoom
+import com.lavreniuk.campassistant.models.dto.PupilWithInfo
 import com.lavreniuk.campassistant.repositories.PupilRepo
 import com.lavreniuk.campassistant.repositories.SquadPupilCrossRefRepo
 import com.lavreniuk.campassistant.repositories.SquadRepo
@@ -17,11 +17,14 @@ class SquadViewModel(
 ) : AndroidViewModel(application) {
 
     private val squadRepo: SquadRepo = SquadRepo(AppDatabase.getInstance(application).squadDao())
-    private val pupilRepo: PupilRepo = PupilRepo(AppDatabase.getInstance(application).pupilDao())
+    private val pupilRepo: PupilRepo = PupilRepo(
+        AppDatabase.getInstance(application).pupilDao(),
+        AppDatabase.getInstance(application).squadDao()
+    )
     private val squadPupilCrossRefRepo: SquadPupilCrossRefRepo =
         SquadPupilCrossRefRepo(AppDatabase.getInstance(application).squadPupilCrossRefDao())
 
-    fun getPupilList(squadId: String): LiveData<List<PupilWithRoom>> = pupilRepo.getSquadPupilsWithRooms(squadId)
+    fun getPupilList(squadId: String): LiveData<List<PupilWithInfo>> = pupilRepo.getSquadPupilsWithRooms(squadId)
 
     fun updateSquadName(squadId: String, newName: String) {
         ioThread {

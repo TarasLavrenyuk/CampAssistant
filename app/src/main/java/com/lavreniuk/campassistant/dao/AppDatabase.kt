@@ -63,7 +63,8 @@ abstract class AppDatabase : RoomDatabase() {
                 pupilParamDao().deleteAll()
 
                 val squad = Squad(squadName = "Awesome squad", isCurrent = true)
-                squadDao().insert(squad)
+                val squad1 = Squad(squadName = "Zhabeniata")
+                squadDao().insert(squad, squad1)
 
                 val pupil1 = Pupil(firstName = "Taras", lastName = "Lavreniuk")
 //                val pupil2 = Pupil(firstName = "Max", lastName = "A")

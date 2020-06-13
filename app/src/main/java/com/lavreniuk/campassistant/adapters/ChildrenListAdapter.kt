@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.kidscreen.KidActivity
-import com.lavreniuk.campassistant.models.dto.PupilWithRoom
+import com.lavreniuk.campassistant.models.dto.PupilWithInfo
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 
 open class ChildrenListAdapter(
-    protected var pupils: List<PupilWithRoom> = listOf()
+    protected var pupils: List<PupilWithInfo> = listOf()
 ) : RecyclerView.Adapter<ChildrenListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +29,7 @@ open class ChildrenListAdapter(
         holder.bind(pupils[position])
     }
 
-    fun updatePupilList(newPupilList: List<PupilWithRoom>) {
+    fun updatePupilList(newPupilList: List<PupilWithInfo>) {
         pupils = newPupilList
         notifyDataSetChanged()
     }
@@ -45,7 +45,7 @@ open class ChildrenListAdapter(
         private val kidRoomLabel: TextView = itemView.findViewById(R.id.children_list_item_kid_room)
         private val layout: ViewGroup = itemView.findViewById(R.id.children_list_item_layout)
 
-        fun bind(pupil: PupilWithRoom) {
+        fun bind(pupil: PupilWithInfo) {
             ImageLoaderUtils.getBitmapFromPath(path = pupil.photo)?.let {
                 kidAvatarView.setImageBitmap(it)
             } ?: kotlin.run {
@@ -54,7 +54,7 @@ open class ChildrenListAdapter(
 
             kidNameLabel.text = pupil.getFullName()
 
-            kidRoomLabel.text = pupil.room?.let { it } ?: ""
+            kidRoomLabel.text = pupil.info ?: ""
 
             layout.setOnClickListener {
                 with(parent.context) {
