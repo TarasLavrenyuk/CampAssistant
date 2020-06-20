@@ -9,25 +9,12 @@
     <dimen name="default_button_height">40dp</dimen>
     <dimen name="default_button_padding_horizontal">15dp</dimen>
 
-    <dimen name="user_settings_default_padding">25dp</dimen>
-    <dimen name="user_name_start_margin">120dp</dimen>
-    <dimen name="user_name_top_margin">30dp</dimen>
-
-    <dimen name="user_info_list_item_corner_radius">5dp</dimen>
-
-    <dimen name="user_info_list_item_margin_between_list_items">10dp</dimen>
-    <dimen name="user_info_list_item_padding">10dp</dimen>
-
+    <dimen name="item_corner_radius">5dp</dimen>
 
     <dimen name="user_info_list_value_textsize">18sp</dimen>
     <dimen name="user_info_list_hint_textsize">15sp</dimen>
 
     <!--  SPOTS  -->
-    <!--  user settings activity  -->
-    <dimen name="user_settings_activity_red_spot_marginEnd">-30dp</dimen>
-    <dimen name="user_settings_activity_blue_spot_marginStart">-40dp</dimen>
-    <dimen name="user_settings_activity_blue_spot_marginBottom">-50dp</dimen>
-
     <!--  main activity  -->
     <dimen name="main_activity_yellow_spot_marginTop">-20dp</dimen>
     <dimen name="main_activity_yellow_spot_marginStart">-60dp</dimen>

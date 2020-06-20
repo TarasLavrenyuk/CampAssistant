@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:id="@+id/kids_fragment_poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Seems like you don't have any kids in the squad yet. Add some!!!" />
+        android:layout_marginTop="20dp" />
 
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
         android:id="@+id/kids_fragment_search_view_layout"
@@ -55,6 +55,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/colorAlmostBlack"
+        app:backgroundTint="@color/colorAlmostBlack"
         app:srcCompat="@drawable/ic_plus"
         app:tint="@color/colorWhite" />
 

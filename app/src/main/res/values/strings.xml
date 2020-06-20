@@ -13,6 +13,8 @@
     <string name="ui_no_info">No information</string>
     <string name="ui_user_avatar_content_description">User avatar</string>
     <string name="ui_information">Information</string>
+    <string name="ui_general_information">General information</string>
+    <string name="ui_health_information">Health information</string>
     <string name="ui_general">General</string>
     <string name="ui_settings">Settings</string>
 
@@ -36,6 +38,6 @@
 
     <!-- INTENTS -->
     <string name="intent_squad_id">squad-id</string>
-    <string name="intent_new_squad">new-squad</string>
+    <string name="intent_kid_id">squad-id</string>
 
 </resources>

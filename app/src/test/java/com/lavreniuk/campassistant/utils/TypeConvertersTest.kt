@@ -2,9 +2,11 @@ package com.lavreniuk.campassistant.utils
 
 import com.lavreniuk.campassistant.enums.Gender
 import com.lavreniuk.campassistant.enums.ParameterType
+import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.enums.SocialType
 import java.util.Date
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -77,5 +79,10 @@ class TypeConvertersTest {
             parameterType,
             fromStringToParameterType(fromParameterTypeToString(parameterType))
         )
+    }
+
+    @Test
+    fun test() {
+        println("${PupilParamType.Room}")
     }
 }

@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="ui_pupil_param_room">Room</string>
+    <string name="ui_pupil_param_number">Number</string>
+    <string name="ui_pupil_param_contact">Contact</string>
+    <string name="ui_pupil_param_birthday">Birthday</string>
+    <string name="ui_pupil_param_height">Height</string>
+    <string name="ui_pupil_param_weight">Weight</string>
+    <string name="ui_pupil_param_blood">Blood type</string>
+    <string name="ui_pupil_param_note">Notes</string>
+
+</resources>

@@ -1,7 +1,7 @@
 package com.lavreniuk.campassistant.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Insert
+import androidx.room.Update
 
 interface AbstractDao<T> {
 
@@ -10,6 +10,9 @@ interface AbstractDao<T> {
 
     @Insert
     fun insert(obj: T)
+
+    @Update
+    fun update(obj: T)
 
     fun deleteAll()
 }

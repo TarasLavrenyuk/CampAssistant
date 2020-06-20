@@ -65,7 +65,7 @@
         android:id="@+id/fragment_home_squad_list_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_home_poster"
+        android:layout_below="@id/fragment_home_user_avatar"
         android:layout_alignStart="@id/fragment_home_user_avatar"
         android:layout_marginTop="@dimen/fragment_home_squad_list_layout_margin_top">
 
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/fragment_home_my_squads_label"
-            android:layout_marginTop="@dimen/fragment_home_squad_list_margin_top"/>
+            android:layout_marginTop="@dimen/fragment_home_squad_list_margin_top" />
 
     </RelativeLayout>
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/user_info_list_item_margin_between_list_items"
+    android:layout_marginBottom="@dimen/person_info_list_item_margin_between_list_items"
     android:orientation="vertical">
 
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
@@ -11,21 +11,21 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
-        app:corner_radius="@dimen/user_info_list_item_corner_radius">
+        app:corner_radius="@dimen/item_corner_radius">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_info_list_param"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:endIconMode="custom"
-            app:endIconDrawable="@drawable/ic_plus"
-            app:endIconContentDescription="Kakayato huinya"
-
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-            app:boxStrokeWidth="2dp"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
             android:textColorHint="@color/colorLightGrey"
             android:textStyle="normal"
+
+            app:boxStrokeWidth="2dp"
+            app:endIconContentDescription="Kakayato huinya"
+            app:endIconDrawable="@drawable/ic_plus"
+            app:endIconMode="custom"
             app:hintTextAppearance="@style/UserSetting.UserParams.Caption"
             app:hintTextColor="@color/colorLightGrey">
 

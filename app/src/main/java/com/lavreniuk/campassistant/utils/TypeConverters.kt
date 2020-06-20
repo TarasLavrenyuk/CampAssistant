@@ -3,6 +3,7 @@ package com.lavreniuk.campassistant.utils
 import androidx.room.TypeConverter
 import com.lavreniuk.campassistant.enums.Gender
 import com.lavreniuk.campassistant.enums.ParameterType
+import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.enums.SocialType
 import java.util.Date
 
@@ -42,5 +43,14 @@ class TypeConverters {
     fun fromStringToSocialType(socialType: String): SocialType? {
         return if (socialType == "null") null
         else SocialType.valueOf(socialType)
+    }
+
+    @TypeConverter
+    fun fromPupilParamTypeToString(pupilParamType: PupilParamType?): String = "$pupilParamType"
+
+    @TypeConverter
+    fun fromStringToPupilParamType(pupilParamType: String): PupilParamType? {
+        return if (pupilParamType == "null") null
+        else PupilParamType.valueOf(pupilParamType)
     }
 }

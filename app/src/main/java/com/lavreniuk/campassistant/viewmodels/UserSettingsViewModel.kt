@@ -12,6 +12,7 @@ import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.repositories.ParamRepo
 import com.lavreniuk.campassistant.repositories.UserRepo
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
+import com.lavreniuk.campassistant.utils.ioThread
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -53,13 +54,13 @@ class UserSettingsViewModel @JvmOverloads constructor(
             paramRepo.insertParam(newParam)
         }
 
-    fun updateAvatar(path: String? = null) {
-        userPhoto.value?.let {
-            ImageLoaderUtils.deleteImage(it)
-        } ?: run {
+    fun deleteAvatar() = updateAvatar(null)
+
+    fun updateAvatar(path: String?) {
+        ioThread {
             userRepo.getUser()?.photo?.let { ImageLoaderUtils.deleteImage(it) }
+            userRepo.updateAvatar(path)
         }
-        userRepo.updateAvatar(path)
     }
 
     fun updateName(fName: String, lName: String? = null) {

@@ -1,0 +1,10 @@
+<resources>
+    <string name="ui_contact_name">Contact</string>
+    <string name="ui_value">Number, social, etc</string>
+    <string name="ui_create">Create</string>
+
+    <string name="ui_sort_by">Sort by:</string>
+    <string name="ui_room">room</string>
+    <string name="ui_squad">squad</string>
+
+</resources>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:focusableInTouchMode="true"
+    tools:context=".kidscreen.KidActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/kid_activity_avatar_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorBlue"
+        card_view:cardElevation="6dp"
+        card_view:cardMaxElevation="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/kid_activity_kid_avatar"
+            android:layout_width="@dimen/fragment_home_user_avatar_size"
+            android:layout_height="@dimen/fragment_home_user_avatar_size"
+            android:layout_marginStart="@dimen/person_screen_avatar_card_padding"
+            android:layout_marginTop="@dimen/person_screen_avatar_card_padding"
+            android:layout_marginBottom="@dimen/person_screen_avatar_card_padding"
+            android:clickable="true"
+            android:contentDescription="@string/ui_user_avatar_content_description"
+            android:focusable="true"
+            android:src="@drawable/ic_default_avatar" />
+
+        <TextView
+            android:id="@+id/kid_activity_kid_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/person_screen_user_name_start_margin"
+            android:layout_marginTop="@dimen/person_screen_user_name_top_margin"
+            android:layout_marginEnd="@dimen/person_screen_default_padding"
+            android:fontFamily="@font/helvetica_rounded_bold"
+            android:maxLines="1"
+            android:text="Ivan Petrov"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/default_textsize" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kid_activity_avatar_card_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/kid_activity_red_spot_marginTop"
+        android:layout_marginEnd="@dimen/kid_activity_red_spot_marginEnd"
+        android:src="@drawable/red_spot" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/kid_activity_blue_spot_marginStart"
+        android:layout_marginTop="@dimen/kid_activity_blue_spot_marginTop"
+        android:src="@drawable/blue_spot" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/kid_activity_add_kid_param_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/kid_activity_avatar_card_view"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/colorAlmostBlack"
+        app:backgroundTint="@color/colorAlmostBlack"
+        app:srcCompat="@drawable/ic_plus"
+        app:tint="@color/colorWhite" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kid_activity_avatar_card_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/kid_activity_information_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/person_screen_default_padding"
+                android:layout_marginTop="@dimen/person_screen_default_padding"
+                android:fontFamily="@font/helvetica_rounded_bold"
+                android:text="@string/ui_general_information"
+                android:textColor="@color/colorAlmostBlack"
+                android:textSize="@dimen/default_textsize" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/kid_activity_information_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/kid_activity_information_label"
+                android:layout_marginStart="@dimen/person_screen_default_padding"
+                android:layout_marginTop="@dimen/person_screen_default_padding"
+                android:layout_marginEnd="@dimen/person_screen_default_padding"
+                android:divider="@null"
+                android:dividerHeight="0dp" />
+
+            <TextView
+                android:id="@+id/kid_activity_health_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/kid_activity_information_list"
+                android:layout_marginStart="@dimen/person_screen_default_padding"
+                android:layout_marginTop="@dimen/person_screen_default_padding"
+                android:fontFamily="@font/helvetica_rounded_bold"
+                android:text="@string/ui_health_information"
+                android:textColor="@color/colorAlmostBlack"
+                android:textSize="@dimen/default_textsize" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/kid_activity_health_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/kid_activity_health_label"
+                android:layout_marginStart="@dimen/person_screen_default_padding"
+                android:layout_marginTop="@dimen/person_screen_default_padding"
+                android:layout_marginEnd="@dimen/person_screen_default_padding"
+                android:divider="@null"
+                android:dividerHeight="0dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

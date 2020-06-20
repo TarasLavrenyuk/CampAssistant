@@ -2,8 +2,8 @@
 <resources>
 
     <dimen name="fragment_home_margin_horizontal">25dp</dimen>
-    <dimen name="fragment_home_user_avatar_size">60dp</dimen>
-    <dimen name="fragment_home_avatar_margin_top">40dp</dimen>
+    <dimen name="fragment_home_user_avatar_size">100dp</dimen>
+    <dimen name="fragment_home_avatar_margin_top">25dp</dimen>
     <dimen name="fragment_home_settings_button_size">40dp</dimen>
     <dimen name="fragment_home_user_greetings_margin_top">10dp</dimen>
     <dimen name="fragment_home_user_greetings_text_size">25sp</dimen>
