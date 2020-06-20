@@ -8,4 +8,8 @@
         Seems like you don\'t have any kids yet.
     </string>
 
+    <string name="ui_all_kids">All kids</string>
+    <string name="ui_room">room</string>
+    <string name="ui_squad">squad</string>
+
 </resources>

@@ -29,7 +29,7 @@ class KidsViewModel(application: Application) : AndroidViewModel(application) {
     val currentSquad: LiveData<Squad> = squadRepo.activeSquad
 
     val pupilList = MediatorLiveData<List<PupilWithInfo>>()
-    private var squadPupilsOrder: PupilOrder = PupilOrder.LastName
+    var squadPupilsOrder: PupilOrder = PupilOrder.LastName
 
     init {
         pupilList.addSource(pupilRepo.pupilsOfCurrentSquadWithRooms) { pupils: List<PupilWithInfo>? ->
@@ -61,17 +61,6 @@ class KidsViewModel(application: Application) : AndroidViewModel(application) {
                 pupils.sortedWith(compareBy { it.info })
             }
         }
-
-    fun changeOrder() {
-        if (squadPupilsOrder == PupilOrder.LastName) {
-            rearrangePupils(PupilOrder.Info)
-            return
-        }
-        if (squadPupilsOrder == PupilOrder.Info) {
-            rearrangePupils(PupilOrder.LastName)
-            return
-        }
-    }
 
     fun createNewKid(squadId: String): String? = PupilUtils.createNewPupil(
         squadId,

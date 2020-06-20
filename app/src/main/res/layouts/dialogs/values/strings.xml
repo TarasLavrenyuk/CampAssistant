@@ -3,4 +3,6 @@
     <string name="ui_value">Value</string>
     <string name="ui_create">Create</string>
 
+    <string name="ui_sort_by">Sort by:</string>
+
 </resources>
