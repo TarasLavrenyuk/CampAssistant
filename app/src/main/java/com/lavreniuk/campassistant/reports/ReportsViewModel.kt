@@ -9,9 +9,7 @@ class ReportsViewModel(
 ) : AndroidViewModel(application) {
 
     private val reportRepo: ReportRepo =
-        ReportRepo(
-            AppDatabase.getInstance(
-                application
-            ).reportDao()
-        )
+        ReportRepo(AppDatabase.getInstance(application).reportDao())
+
+    val allReports = reportRepo.allReports
 }

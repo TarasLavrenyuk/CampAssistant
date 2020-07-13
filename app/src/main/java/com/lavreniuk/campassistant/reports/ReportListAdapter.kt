@@ -31,7 +31,7 @@ class ReportListAdapter(
         fun bind(report: Report) {
             reportIcon.setImageResource(R.drawable.ic_report)
             reportName.text = report.reportName
-            reportDate.text = report.updated.toString()
+            reportDate.text = ReportUtils.getReportDate(report.updated)
         }
     }
 }
