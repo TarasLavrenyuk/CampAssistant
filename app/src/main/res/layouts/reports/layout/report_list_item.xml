@@ -3,7 +3,7 @@
     android:id="@+id/children_list_item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/children_list_item_indent">
+    android:layout_marginHorizontal="20dp">
 
     <ImageView
         android:id="@+id/report_list_item_report_icon"
