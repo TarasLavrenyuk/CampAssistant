@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.activities.UserSettingsActivity
-import com.lavreniuk.campassistant.squadscreen.SquadActivity
+import com.lavreniuk.campassistant.squad.SquadActivity
+import com.lavreniuk.campassistant.user.UserSettingsActivity
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 

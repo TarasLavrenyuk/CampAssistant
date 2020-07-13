@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.kidscreen.KidActivity
-import com.lavreniuk.campassistant.models.dto.PupilWithInfo
+import com.lavreniuk.campassistant.pupil.KidActivity
+import com.lavreniuk.campassistant.pupil.PupilWithInfo
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 
 open class ChildrenListAdapter(

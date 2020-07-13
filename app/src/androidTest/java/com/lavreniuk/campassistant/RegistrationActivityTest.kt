@@ -12,8 +12,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
-import com.lavreniuk.campassistant.activities.RegistrationActivity
-import com.lavreniuk.campassistant.models.User
+import com.lavreniuk.campassistant.pupil.RegistrationActivity
+import com.lavreniuk.campassistant.user.User
 import com.lavreniuk.campassistant.utils.TestHelpers
 import org.junit.Rule
 import org.junit.Test
@@ -53,7 +53,10 @@ class RegistrationActivityTest {
     fun checkRegistrationActivityFirstAndLastNameInputs() {
         ActivityScenario.launch(RegistrationActivity::class.java)
 
-        val user = User(firstName = "Taras", lastName = "Lavreniuk")
+        val user = User(
+            firstName = "Taras",
+            lastName = "Lavreniuk"
+        )
 
         onView(withId(R.id.registration_activity_fname_input)).perform(replaceText(user.firstName))
         onView(withId(R.id.registration_activity_lname_input)).perform(typeText(user.lastName))

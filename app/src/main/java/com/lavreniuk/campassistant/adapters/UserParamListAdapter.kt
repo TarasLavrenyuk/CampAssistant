@@ -8,9 +8,9 @@ import com.google.android.material.textfield.TextInputLayout
 import com.lavreniuk.campassistant.R
 import com.lavreniuk.campassistant.R.id.user_info_list_param
 import com.lavreniuk.campassistant.R.id.user_info_list_value
-import com.lavreniuk.campassistant.enums.ParameterType
-import com.lavreniuk.campassistant.models.Param
-import com.lavreniuk.campassistant.models.User
+import com.lavreniuk.campassistant.user.Param
+import com.lavreniuk.campassistant.user.ParameterType
+import com.lavreniuk.campassistant.user.User
 
 class UserParamListAdapter(
     private var params: ArrayList<Param> = arrayListOf(

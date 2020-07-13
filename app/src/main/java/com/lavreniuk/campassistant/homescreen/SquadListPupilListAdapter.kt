@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.models.Pupil
+import com.lavreniuk.campassistant.pupil.Pupil
 import com.lavreniuk.campassistant.utils.ImageLoaderUtils
 import com.lavreniuk.campassistant.utils.Logger
 import de.hdodenhof.circleimageview.CircleImageView

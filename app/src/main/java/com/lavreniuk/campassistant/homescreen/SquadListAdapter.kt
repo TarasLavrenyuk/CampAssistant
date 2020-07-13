@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lavreniuk.campassistant.R
-import com.lavreniuk.campassistant.models.crossrefs.SquadWithPupils
-import com.lavreniuk.campassistant.squadscreen.SquadActivity
+import com.lavreniuk.campassistant.squad.SquadActivity
+import com.lavreniuk.campassistant.squad.SquadWithPupils
 
 class SquadListAdapter(
     private var squadsWithPupils: List<SquadWithPupils> = listOf()

@@ -8,7 +8,7 @@
     android:fillViewport="false"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".squadscreen.SquadActivity">
+    tools:context=".squad.SquadActivity">
 
     <com.lavreniuk.campassistant.customviews.RedSpot
         android:layout_width="wrap_content"

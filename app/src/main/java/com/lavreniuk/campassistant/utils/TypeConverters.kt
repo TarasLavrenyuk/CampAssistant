@@ -1,10 +1,10 @@
 package com.lavreniuk.campassistant.utils
 
 import androidx.room.TypeConverter
-import com.lavreniuk.campassistant.enums.Gender
-import com.lavreniuk.campassistant.enums.ParameterType
-import com.lavreniuk.campassistant.enums.PupilParamType
-import com.lavreniuk.campassistant.enums.SocialType
+import com.lavreniuk.campassistant.pupil.PupilParamType
+import com.lavreniuk.campassistant.user.Gender
+import com.lavreniuk.campassistant.user.ParameterType
+import com.lavreniuk.campassistant.user.SocialType
 import java.util.Date
 
 class TypeConverters {

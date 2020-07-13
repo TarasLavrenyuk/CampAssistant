@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:focusableInTouchMode="true"
-    tools:context=".kidscreen.KidActivity">
+    tools:context=".pupil.KidActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/kid_activity_avatar_card_view"
