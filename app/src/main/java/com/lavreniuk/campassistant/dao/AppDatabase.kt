@@ -10,14 +10,23 @@ import com.lavreniuk.campassistant.enums.PupilParamType
 import com.lavreniuk.campassistant.models.Param
 import com.lavreniuk.campassistant.models.Pupil
 import com.lavreniuk.campassistant.models.PupilParam
+import com.lavreniuk.campassistant.models.Report
 import com.lavreniuk.campassistant.models.Squad
 import com.lavreniuk.campassistant.models.User
 import com.lavreniuk.campassistant.models.crossrefs.SquadPupilCrossRef
 import com.lavreniuk.campassistant.utils.ioThread
 
 @Database(
-    entities = [User::class, Param::class, Squad::class, Pupil::class, SquadPupilCrossRef::class, PupilParam::class],
-    version = 11
+    entities = [
+        User::class,
+        Param::class,
+        Squad::class,
+        Pupil::class,
+        SquadPupilCrossRef::class,
+        PupilParam::class,
+        Report::class
+    ],
+    version = 12
 )
 @TypeConverters(com.lavreniuk.campassistant.utils.TypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -28,6 +37,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun pupilDao(): PupilDao
     abstract fun pupilParamDao(): PupilParamDao
     abstract fun squadPupilCrossRefDao(): SquadPupilCrossRefDao
+    abstract fun reportDao(): ReportDao
 
     companion object {
 
