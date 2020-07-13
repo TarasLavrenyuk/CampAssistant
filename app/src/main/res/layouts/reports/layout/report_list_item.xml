@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/children_list_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/children_list_item_indent">
+
+    <ImageView
+        android:id="@+id/report_list_item_report_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/report_list_item_report_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/report_list_item_report_icon"
+        android:text="New report" />
+
+    <TextView
+        android:id="@+id/report_list_item_report_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/report_list_item_report_name"
+        android:text="July 12, 2020" />
+
+</RelativeLayout>
